@@ -3,3 +3,10 @@ spring:
     name: spring-boot-example
   profiles:
     active: example
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+file:
+  upload-dir: /Users/rock/IdeaProjects
