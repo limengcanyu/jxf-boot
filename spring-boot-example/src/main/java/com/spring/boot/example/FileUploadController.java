@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class FileUploadController {
@@ -48,4 +48,52 @@ public class FileUploadController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("文件上传失败");
         }
     }
+
+    @PostMapping("/upload-multiple")
+    public ResponseEntity<Map<String, Object>> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+        Map<String, Object> response = new HashMap<>();
+        List<String> uploadedFiles = new ArrayList<>();
+        List<String> failedFiles = new ArrayList<>();
+
+        if (files == null || files.length == 0) {
+            return ResponseEntity.badRequest().body(Map.of("message", "请选择要上传的文件"));
+        }
+
+        Path uploadPath = Paths.get(uploadDir);
+        try {
+            // 检查上传目录是否存在，不存在则创建
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
+
+            for (MultipartFile file : files) {
+                if (file.isEmpty()) {
+                    failedFiles.add(file.getOriginalFilename());
+                    continue;
+                }
+
+                try {
+                    // 生成唯一的文件名
+                    String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+                    Path filePath = uploadPath.resolve(fileName);
+                    file.transferTo(filePath);
+                    uploadedFiles.add(fileName);
+                } catch (IOException e) {
+                    failedFiles.add(file.getOriginalFilename());
+                }
+            }
+
+            response.put("uploadedFiles", uploadedFiles);
+            response.put("failedFiles", failedFiles);
+            if (failedFiles.isEmpty()) {
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT).body(response);
+            }
+        } catch (IOException e) {
+            response.put("message", "文件上传失败，创建目录时出错");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
 }
