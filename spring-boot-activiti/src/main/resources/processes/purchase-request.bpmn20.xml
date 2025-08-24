@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="http://activiti.org/bpmn20"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
+
+  <process id="purchaseRequest" name="采购申请流程" isExecutable="true">
+    
+    <!-- 开始事件 -->
+    <startEvent id="startEvent" name="开始">
+      <documentation>员工提交采购申请</documentation>
+    </startEvent>
+    
+    <!-- 提交采购申请 -->
+    <userTask id="submitPurchase" name="提交采购申请" activiti:assignee="${applicant}">
+      <documentation>员工填写采购申请单</documentation>
+      <extensionElements>
+        <activiti:formProperty id="itemName" name="采购物品" type="string" required="true"/>
+        <activiti:formProperty id="quantity" name="数量" type="long" required="true"/>
+        <activiti:formProperty id="unitPrice" name="单价" type="double" required="true"/>
+        <activiti:formProperty id="totalAmount" name="总金额" type="double" required="true"/>
+        <activiti:formProperty id="supplier" name="供应商" type="string" required="true"/>
+        <activiti:formProperty id="urgency" name="紧急程度" type="enum" required="true">
+          <activiti:value id="low" name="低"/>
+          <activiti:value id="medium" name="中"/>
+          <activiti:value id="high" name="高"/>
+        </activiti:formProperty>
+        <activiti:formProperty id="reason" name="采购理由" type="string" required="true"/>
+      </extensionElements>
+    </userTask>
+    
+    <!-- 部门经理审批 -->
+    <userTask id="departmentApproval" name="部门经理审批" activiti:candidateGroups="manager">
+      <documentation>部门经理审批采购申请</documentation>
+      <extensionElements>
+        <activiti:formProperty id="deptApproved" name="部门审批" type="enum" required="true">
+          <activiti:value id="true" name="同意"/>
+          <activiti:value id="false" name="拒绝"/>
+        </activiti:formProperty>
+        <activiti:formProperty id="deptComment" name="审批意见" type="string"/>
+      </extensionElements>
+    </userTask>
+    
+    <!-- 审批网关 -->
+    <exclusiveGateway id="approvalGateway" name="审批决策"/>
+    
+    <!-- 财务审批 (金额>5000) -->
+    <userTask id="financeApproval" name="财务审批" activiti:candidateGroups="finance">
+      <documentation>财务部门审批采购申请</documentation>
+      <extensionElements>
+        <activiti:formProperty id="financeApproved" name="财务审批" type="enum" required="true">
+          <activiti:value id="true" name="同意"/>
+          <activiti:value id="false" name="拒绝"/>
+        </activiti:formProperty>
+        <activiti:formProperty id="financeComment" name="审批意见" type="string"/>
+      </extensionElements>
+    </userTask>
+    
+    <!-- 总经理审批 (金额>20000) -->
+    <userTask id="ceoApproval" name="总经理审批" activiti:candidateGroups="ceo">
+      <documentation>总经理审批采购申请</documentation>
+      <extensionElements>
+        <activiti:formProperty id="ceoApproved" name="总经理审批" type="enum" required="true">
+          <activiti:value id="true" name="同意"/>
+          <activiti:value id="false" name="拒绝"/>
+        </activiti:formProperty>
+        <activiti:formProperty id="ceoComment" name="审批意见" type="string"/>
+      </extensionElements>
+    </userTask>
+    
+    <!-- 财务网关 -->
+    <exclusiveGateway id="financeGateway" name="财务审批决策"/>
+    
+    <!-- CEO网关 -->
+    <exclusiveGateway id="ceoGateway" name="CEO审批决策"/>
+    
+    <!-- 采购执行 -->
+    <serviceTask id="executePurchase" name="执行采购" activiti:class="com.example.workflow.service.PurchaseExecuteService">
+      <documentation>执行采购流程</documentation>
+    </serviceTask>
+    
+    <!-- 申请拒绝 -->
+    <serviceTask id="rejectPurchase" name="拒绝申请" activiti:class="com.example.workflow.service.PurchaseRejectService">
+      <documentation>通知申请人采购申请被拒绝</documentation>
+    </serviceTask>
+    
+    <!-- 结束事件 -->
+    <endEvent id="endEvent" name="结束"/>
+    
+    <!-- 流程路径定义 -->
+    <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="submitPurchase"/>
+    <sequenceFlow id="flow2" sourceRef="submitPurchase" targetRef="departmentApproval"/>
+    <sequenceFlow id="flow3" sourceRef="departmentApproval" targetRef="approvalGateway"/>
+    
+    <!-- 部门经理拒绝 -->
+    <sequenceFlow id="flow4" sourceRef="approvalGateway" targetRef="rejectPurchase">
+      <conditionExpression xsi:type="tFormalExpression">${deptApproved == 'false'}</conditionExpression>
+    </sequenceFlow>
+    
+    <!-- 部门经理同意，金额<=5000 -->
+    <sequenceFlow id="flow5" sourceRef="approvalGateway" targetRef="executePurchase">
+      <conditionExpression xsi:type="tFormalExpression">${deptApproved == 'true' &amp;&amp; totalAmount &lt;= 5000}</conditionExpression>
+    </sequenceFlow>
+    
+    <!-- 部门经理同意，金额>5000，需要财务审批 -->
+    <sequenceFlow id="flow6" sourceRef="approvalGateway" targetRef="financeApproval">
+      <conditionExpression xsi:type="tFormalExpression">${deptApproved == 'true' &amp;&amp; totalAmount &gt; 5000}</conditionExpression>
+    </sequenceFlow>
+    
+    <sequenceFlow id="flow7" sourceRef="financeApproval" targetRef="financeGateway"/>
+    
+    <!-- 财务拒绝 -->
+    <sequenceFlow id="flow8" sourceRef="financeGateway" targetRef="rejectPurchase">
+      <conditionExpression xsi:type="tFormalExpression">${financeApproved == 'false'}</conditionExpression>
+    </sequenceFlow>
+    
+    <!-- 财务同意，金额<=20000 -->
+    <sequenceFlow id="flow9" sourceRef="financeGateway" targetRef="executePurchase">
+      <conditionExpression xsi:type="tFormalExpression">${financeApproved == 'true' &amp;&amp; totalAmount &lt;= 20000}</conditionExpression>
+    </sequenceFlow>
+    
+    <!-- 财务同意，金额>20000，需要CEO审批 -->
+    <sequenceFlow id="flow10" sourceRef="financeGateway" targetRef="ceoApproval">
+      <conditionExpression xsi:type="tFormalExpression">${financeApproved == 'true' &amp;&amp; totalAmount &gt; 20000}</conditionExpression>
+    </sequenceFlow>
+    
+    <sequenceFlow id="flow11" sourceRef="ceoApproval" targetRef="ceoGateway"/>
+    
+    <!-- CEO同意 -->
+    <sequenceFlow id="flow12" sourceRef="ceoGateway" targetRef="executePurchase">
+      <conditionExpression xsi:type="tFormalExpression">${ceoApproved == 'true'}</conditionExpression>
+    </sequenceFlow>
+    
+    <!-- CEO拒绝 -->
+    <sequenceFlow id="flow13" sourceRef="ceoGateway" targetRef="rejectPurchase">
+      <conditionExpression xsi:type="tFormalExpression">${ceoApproved == 'false'}</conditionExpression>
+    </sequenceFlow>
+    
+    <sequenceFlow id="flow14" sourceRef="executePurchase" targetRef="endEvent"/>
+    <sequenceFlow id="flow15" sourceRef="rejectPurchase" targetRef="endEvent"/>
+    
+  </process>
+</definitions>
