@@ -6,8 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 指南查询工具类（三条件任意组合查询，修复文件夹查询问题）
- * 先构建多根节点树形结构，然后根据查询条件进行过滤
+ * 阶段指南查询工具类（三条件任意组合查询，修复文件夹查询问题）
  */
 public class GuidanceQueryTool {
 
@@ -29,9 +28,8 @@ public class GuidanceQueryTool {
         List<GuidanceVO> roots = new ArrayList<>();
         for (GuidanceVO node : nodes) {
             if (node.getParent() == null) {
-                roots.add(node); // 添加根节点
+                roots.add(node);
             } else {
-                // 节点父级节点
                 GuidanceVO parentNode = nodeMap.get(node.getParent());
                 if (parentNode != null) {
                     if (!parentNode.getChildrenList().contains(node)) {
@@ -49,13 +47,12 @@ public class GuidanceQueryTool {
     /**
      * 核心查询方法（支持folder、name、subType任意组合）
      */
-    public static List<GuidanceVO> query(List<GuidanceVO> rootNodes, GuidanceDTO queryDTO) {
-        if (rootNodes == null) {
-            rootNodes = new ArrayList<>();
-        }
-        if (queryDTO == null) {
-            queryDTO = new GuidanceDTO();
-        }
+    public static List<GuidanceVO> query(
+            List<GuidanceVO> rootNodes,
+            GuidanceDTO queryDTO) {
+
+        if (rootNodes == null) rootNodes = new ArrayList<>();
+        if (queryDTO == null) queryDTO = new GuidanceDTO();
 
         // 提取并预处理查询条件
         String folderId = queryDTO.getFolder();
@@ -97,7 +94,10 @@ public class GuidanceQueryTool {
     /**
      * 单独过滤子节点列表（用于指定folder时，确保目标文件夹本身保留）
      */
-    private static List<GuidanceVO> filterChildren(List<GuidanceVO> children, String nameQuery, String subTypeQuery) {
+    private static List<GuidanceVO> filterChildren(
+            List<GuidanceVO> children,
+            String nameQuery,
+            String subTypeQuery) {
         List<GuidanceVO> filtered = new ArrayList<>();
         for (GuidanceVO child : children) {
             GuidanceVO filteredChild = filterSubtree(child, nameQuery, subTypeQuery);
@@ -137,7 +137,11 @@ public class GuidanceQueryTool {
     /**
      * 递归过滤子树（核心逻辑：三条件组合处理）
      */
-    private static GuidanceVO filterSubtree(GuidanceVO node, String nameQuery, String subTypeQuery) {
+    private static GuidanceVO filterSubtree(
+            GuidanceVO node,
+            String nameQuery,
+            String subTypeQuery) {
+
         // 先处理子节点
         List<GuidanceVO> filteredChildren = new ArrayList<>();
         for (GuidanceVO child : node.getChildrenList()) {
@@ -148,10 +152,14 @@ public class GuidanceQueryTool {
         }
 
         // 1. 名称匹配判断（name为空时默认匹配）
-        boolean matchesName = nameQuery == null || nameQuery.isEmpty() || node.getCombinedName().toLowerCase().contains(nameQuery);
+        boolean matchesName = (nameQuery == null || nameQuery.isEmpty())
+                ? true
+                : node.getCombinedName().toLowerCase().contains(nameQuery);
 
         // 2. 子类型匹配判断（subType为空时默认匹配）
-        boolean matchesSubType = subTypeQuery == null || subTypeQuery.trim().isEmpty() || (node.getSubType() != null && node.getSubType().equals(subTypeQuery));
+        boolean matchesSubType = (subTypeQuery == null || subTypeQuery.trim().isEmpty())
+                ? true
+                : (node.getSubType() != null && node.getSubType().equals(subTypeQuery));
 
         // 3. 处理文件夹节点
         if (node.isFolder()) {
@@ -167,7 +175,9 @@ public class GuidanceQueryTool {
 
         // 4. 处理非文件夹节点
         // 非文件夹节点必须同时匹配name和subType（为空时默认匹配）
-        return (matchesName && matchesSubType) ? copyNodeWithChildren(node, filteredChildren) : null;
+        return (matchesName && matchesSubType)
+                ? copyNodeWithChildren(node, filteredChildren)
+                : null;
     }
 
     /**

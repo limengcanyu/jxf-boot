@@ -16,18 +16,14 @@
     <description>spring-boot-resilience4j</description>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot2 -->
+        <!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot3 -->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot2</artifactId>
-            <version>1.7.1</version>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+            <version>2.3.0</version>
         </dependency>
 
         <!-- resilience4j 依赖 aop -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

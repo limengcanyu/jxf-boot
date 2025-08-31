@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>3.5.5</version>
     </parent>
 
     <groupId>org.rock.boot</groupId>
@@ -88,6 +88,7 @@
         <module>spring-boot-mongo</module>
         <module>spring-boot-multi-datasource-transaction</module>
         <module>spring-boot-mybatis-plus</module>
+        <module>spring-boot-mybatis-plus-basic</module>
         <module>spring-boot-mybatisplus</module>
         <module>spring-boot-mybatisplus-druid-dynamic-datasource</module>
         <module>spring-boot-mybatisplus-druid-multi-datasource</module>
@@ -133,9 +134,11 @@
         <module>spring-boot-ssl</module>
         <module>spring-boot-swagger2</module>
         <module>spring-boot-template</module>
+        <module>spring-boot-temporal</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-thrift</module>
         <module>spring-boot-tomcat</module>
+        <module>spring-boot-tree</module>
         <module>spring-boot-undertow</module>
         <module>spring-boot-validation</module>
         <module>spring-boot-webflux</module>
@@ -154,14 +157,14 @@
             <dependency>
                 <groupId>com.mysql</groupId>
                 <artifactId>mysql-connector-j</artifactId>
-                <version>8.4.0</version>
+                <version>9.4.0</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>3.2.3</version>
+                <version>3.5.2</version>
                 <type>pom</type>
             </dependency>
 
@@ -169,7 +172,7 @@
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers-bom</artifactId>
-                <version>1.19.8</version>
+                <version>1.21.3</version>
                 <type>pom</type>
             </dependency>
 
@@ -177,21 +180,21 @@
             <dependency>
                 <groupId>me.ahoo.cosid</groupId>
                 <artifactId>cosid-spring-boot-starter</artifactId>
-                <version>2.8.1</version>
+                <version>2.13.3</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
-                <version>2.12.0</version>
+                <version>2.12.1</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>3.30.0</version>
+                <version>3.51.0</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/com.yomahub/tlog-all-spring-boot-starter -->
@@ -205,14 +208,14 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
-                <version>3.3.4</version>
+                <version>4.0.3</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-sentinel -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>2023.0.1.2</version>
+                <version>2023.0.3.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -251,41 +254,42 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.50</version>
+            <version>2.0.58</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>33.2.1-jre</version>
+            <version>33.4.8-jre</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.27</version>
+            <version>5.8.40</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.github.ifeilong/feilong -->
         <dependency>
             <groupId>com.github.ifeilong</groupId>
             <artifactId>feilong</artifactId>
-            <version>4.0.8</version>
+            <version>4.3.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.14.0</version>
+            <version>3.18.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.xuxueli/xxl-tool -->
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>1.9.24</version> <!-- 使用你项目中的Kotlin版本 -->
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-tool</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
 
@@ -295,7 +299,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.14.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -306,7 +310,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.5.3</version>
                 <configuration>
                     <!-- Skipping Tests -->
                     <skipTests>true</skipTests>

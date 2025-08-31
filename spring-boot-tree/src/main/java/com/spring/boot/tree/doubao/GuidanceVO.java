@@ -27,6 +27,14 @@ public class GuidanceVO {
         this.namePrefix = namePrefix;
     }
 
+    public GuidanceVO(String identity, String name, String subType, String parent) {
+        this.identity = identity;
+        this.name = name;
+        this.subType = subType;
+        this.parent = parent;
+        this.namePrefix = namePrefix;
+    }
+
     public boolean isFolder() {
         return "folder".equals(subType);
     }
