@@ -1,4 +1,4 @@
-package com.spring.boot.log.springbootlog;
+package com.spring.boot.log;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
