@@ -1,17 +1,7 @@
 # DataSource Config
 spring:
-  datasource:
-    driver-class-name: org.h2.Driver
-    username: root
-    password: test
-    url: jdbc:h2:file:./data/testdb;DB_CLOSE_DELAY=-1;MODE=MYSQL;DATABASE_TO_UPPER=false
   sql:
     init:
       schema-locations: classpath:db/schema-h2.sql
       data-locations: classpath:db/data-h2.sql
       mode: always  # 确保初始化脚本总是执行
-  h2:
-    console:
-      enabled: true  # 启用H2控制台便于调试
-      # 控制台路径 http://localhost:8080/h2-console
-      path: /h2-console

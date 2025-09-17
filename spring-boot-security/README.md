@@ -1,25 +1,57 @@
-前后端分离的Spring Security后端项目
+项目结构 (Maven):
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── example
+│   │           └── securitydemo
+│   │               ├── SecurityDemoApplication.java
+│   │               ├── config
+│   │               │   ├── CorsConfig.java
+│   │               │   ├── MybatisPlusConfig.java
+│   │               │   └── SecurityConfig.java
+│   │               ├── controller
+│   │               │   ├── AuthController.java
+│   │               │   └── TestController.java
+│   │               ├── entity
+│   │               │   ├── Role.java
+│   │               │   └── User.java
+│   │               ├── exception
+│   │               │   ├── GlobalExceptionHandler.java
+│   │               │   └── UserNotFoundException.java
+│   │               ├── mapper
+│   │               │   ├── RoleMapper.java
+│   │               │   └── UserMapper.java
+│   │               ├── service
+│   │               │   ├── impl
+│   │               │   │   ├── RoleServiceImpl.java
+│   │               │   │   └── UserServiceImpl.java
+│   │               │   ├── RoleService.java
+│   │               │   └── UserService.java
+│   │               └── util
+│   │                   └── JwtUtil.java
+│   └── resources
+│       ├── application.yml
+│       ├── application-dev.yml
+│       ├── application-prod.yml
+│       └── db
+│           └── schema.sql
+└── test
+└── java
+└── com
+└── example
+└── securitydemo
+└── SecurityDemoApplicationTests.java
 
-Postman中
-登录url如下，可以是POST,GET请求，设置2个参数:username, password
-http://localhost:8080/login?username=rock&password=123456
-
-查询当前时间url如下，可以是POST,GET请求
-localhost:8080/time/selectTime
-
-登出url如下，可以是POST,GET请求
-localhost:8080/logout
-
-
-使用Redis Spring Session 替换 Web 容器的HttpSession
-1. how to use Spring Session to transparently leverage Redis to back a web application’s HttpSession when using Spring Boot
-
-1.1. You should now see a message indicating your are logged in with the user entered previously. The user’s information is stored in Redis rather than Tomcat’s HttpSession implementation.
-
-1.2. How does it work?
-Instead of using Tomcat’s HttpSession, we are actually persisting the values in Redis. Spring Session replaces the HttpSession with an implementation that is backed by Redis. When Spring Security’s SecurityContextPersistenceFilter saves the SecurityContext to the HttpSession it is then persisted into Redis.
-
-When a new HttpSession is created, Spring Session creates a cookie named SESSION in your browser that contains the id of your session. Go ahead and view the cookies (click for help with Chrome or Firefox).
-
-
+如何运行
+* 确保环境: 安装JDK 17+, Maven 3.x+
+* 创建项目: 使用IDE (如IntelliJ IDEA) 或 start.spring.io 创建一个Maven项目，使用上述 pom.xml 依赖。
+* 复制代码: 将以上代码片段复制到对应的目录和文件中。
+* 构建: 在项目根目录下运行 mvn clean install。
+* 运行: 运行 SecurityDemoApplication 类的 main 方法，或使用 mvn spring-boot:run。
+* 测试:
+  * 访问 http://localhost:8080/h2-console (使用JDBC URL jdbc:h2:mem:testdb) 可以查看H2数据库。
+  * 使用API工具 (如Postman) 测试 /api/auth/register 和 /api/auth/login 接口。
+  * 使用获取到的JWT Token测试 /api/test/user 和 /api/test/admin 接口。
+这个项目提供了一个坚实的基础，您可以根据具体业务需求进行扩展，例如添加更复杂的RBAC模型、OAuth2集成、Redis缓存Token等。
 
