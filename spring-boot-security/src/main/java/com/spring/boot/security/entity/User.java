@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +47,7 @@ public class User implements Serializable, UserDetails { // 实现 UserDetails
 
     // 用于存储用户的角色列表 (非数据库字段)
     @TableField(exist = false)
-    private List<String> roles;
+    private List<String> roles = new ArrayList<>();
 
     // --- UserDetails 接口方法实现 ---
 

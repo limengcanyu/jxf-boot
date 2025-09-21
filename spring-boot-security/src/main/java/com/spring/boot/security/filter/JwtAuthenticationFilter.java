@@ -1,7 +1,6 @@
 package com.spring.boot.security.filter;
 
 import com.spring.boot.security.entity.User;
-import com.spring.boot.security.service.UserService;
 import com.spring.boot.security.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -25,7 +25,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserService userService;
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // 如果用户名存在且SecurityContext中没有认证信息
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            User userDetails = (User) userService.loadUserByUsername(username); // 加载用户详情
+            User userDetails = (User) userDetailsService.loadUserByUsername(username); // 加载用户详情
 
             // 验证Token是否有效
             if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {

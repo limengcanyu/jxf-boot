@@ -5,8 +5,6 @@ import com.spring.boot.security.entity.User;
 import com.spring.boot.security.mapper.UserMapper;
 import com.spring.boot.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,23 +61,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.findRolesByUserId(userId);
     }
 
-    // --- UserDetailsService 接口实现 ---
-
-    /**
-     * 根据用户名加载用户信息
-     * 这是 Spring Security 认证流程调用的核心方法
-     *
-     * @param username 用户名
-     * @return UserDetails 对象 (这里是 User 实体)
-     * @throws UsernameNotFoundException 如果用户未找到
-     */
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = this.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("用户 '" + username + "' 不存在");
-        }
-        // User 实体已经实现了 UserDetails 接口，可以直接返回
-        return user;
-    }
 }

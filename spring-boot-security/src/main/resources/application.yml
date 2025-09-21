@@ -10,8 +10,6 @@ spring:
     init:
       schema-locations: classpath:db/schema.sql # 初始化数据库脚本
       mode: always # 总是执行初始化脚本
-  main:
-    allow-circular-references: true
 
 # MyBatis Plus 配置
 mybatis-plus:
