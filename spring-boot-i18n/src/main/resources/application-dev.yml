@@ -1,0 +1,3 @@
+spring:
+  messages:
+    cache-duration: 0s  # 开发环境实时刷新资源文件

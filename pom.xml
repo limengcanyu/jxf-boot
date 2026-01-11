@@ -60,6 +60,7 @@
         <module>spring-boot-docker</module>
         <module>spring-boot-doris</module>
         <module>spring-boot-example</module>
+        <module>spring-boot-fastexcel</module>
         <module>spring-boot-flaw</module>
         <module>spring-boot-flowable</module>
         <module>spring-boot-generator</module>

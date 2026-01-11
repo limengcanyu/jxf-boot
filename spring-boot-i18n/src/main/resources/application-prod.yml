@@ -1,0 +1,3 @@
+spring:
+  messages:
+    cache-duration: 3600s  # 生产环境缓存1小时

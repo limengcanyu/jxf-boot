@@ -1,0 +1,86 @@
+
+### 获取用户
+GET http://localhost:8080/prod/biz/user/1001
+
+### 更新用户
+PUT http://localhost:8080/prod/biz/user
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}
+
+### 删除用户
+DELETE http://localhost:8080/prod/biz/user/1002
+
+### 手动新增缓存
+PUT http://localhost:8080/prod/biz/manualPutCache
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}
+
+### 手动查询缓存
+GET http://localhost:8080/prod/biz/manualGetCache
+
+### 手动删除单个缓存
+PUT http://localhost:8080/prod/biz/manualEvictCache
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}
+
+### 手动批量清空整个缓存空间的所有缓存
+PUT http://localhost:8080/prod/biz/manualClearCache
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}
+
+### 手动更新缓存
+PUT http://localhost:8080/prod/biz/manualUpdateCache
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}
+
+### 手动更新缓存 Caffeine 原生 Cache 手动操作
+PUT http://localhost:8080/prod/biz/manualCaffeineCache
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}
+
+### 手动更新缓存 统一用「Spring 封装的 Cache」做所有手动操作
+PUT http://localhost:8080/prod/biz/onlySpringCache
+Content-Type: application/json
+
+{
+  "userId": 1002,
+  "userName": "用户_1002",
+  "age": 31,
+  "phone": "12345678910"
+}

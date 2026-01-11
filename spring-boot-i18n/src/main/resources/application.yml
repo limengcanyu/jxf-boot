@@ -1,0 +1,35 @@
+
+spring:
+  application:
+    name: akuma-module-i18n
+
+  # 国际化核心配置（正确、合法的属性）
+  messages:
+    basename: classpath:i18n/messages
+    encoding: UTF-8
+    cache-duration: 3600s
+    fallback-to-system-locale: false
+
+  # MVC配置（修正无效属性，使用合法配置）
+  mvc:
+    # 内容协商配置（替代无效的content-type配置）
+    content negotiation:
+      favor-parameter: false
+      media-types:
+        json: application/json;charset=UTF-8
+        xml: application/xml;charset=UTF-8
+    # 响应编码兜底（可选）
+    async:
+      request-timeout: 30000
+
+# HTTP编码配置（复用自动配置，解决乱码） 统一响应编码
+server:
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+      force-request: true
+      force-response: true
+  tomcat:
+    uri-encoding: UTF-8

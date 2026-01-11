@@ -1,0 +1,50 @@
+
+spring:
+  application:
+    name: spring-boot-caffeine
+
+server:
+  port: 8080
+  servlet:
+    context-path: /prod
+  tomcat:
+    threads:
+      max: 200
+    connection-timeout: 30000
+
+# ========== 核心修改：移除 refreshAfterWrite 配置，解决LoadingCache报错 ==========
+caffeine:
+  cache:
+    configs:
+      # 用户缓存
+      userCache:
+        maximumSize: 5000
+        expireAfterWrite: 1      # 写入后过期1分钟
+        recordStats: true
+      # 商品缓存-热点数据
+      goodsCache:
+        maximumSize: 10000
+        expireAfterAccess: 60    # 访问后过期60分钟（访问续命，热点数据常驻）
+        recordStats: true
+      # 订单缓存-核心修复：删除 refreshAfterWrite 配置，解决报错
+      orderCache:
+        maximumSize: 8000
+        expireAfterWrite: 2      # 写入后过期2分钟（保证高一致性）
+        recordStats: true
+      # 字典缓存-极少更新
+      dictCache:
+        maximumSize: 2000
+        expireAfterAccess: 1440  # 24小时过期
+        recordStats: true
+
+# 日志配置
+logging:
+  level:
+    #    root: INFO
+    org.akuma: DEBUG
+#    org.springframework.cache: INFO
+#  pattern:
+#    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n'
+#    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n'
+#  file:
+#    name: logs/prod-caffeine.log
