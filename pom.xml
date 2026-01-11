@@ -110,6 +110,7 @@
         <module>spring-boot-rabbitmq</module>
         <module>spring-boot-rabbitmq-consumer</module>
         <module>spring-boot-rabbitmq-producer</module>
+        <module>spring-boot-rate-limiting</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-redis-jedis</module>
         <module>spring-boot-redis-reactive</module>
@@ -144,7 +145,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
     </properties>
 
     <dependencyManagement>
