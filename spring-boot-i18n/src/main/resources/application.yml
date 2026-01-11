@@ -1,7 +1,7 @@
 
 spring:
   application:
-    name: akuma-module-i18n
+    name: spring-boot-i18n
 
   # 国际化核心配置（正确、合法的属性）
   messages:
