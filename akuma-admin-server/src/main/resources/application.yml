@@ -1,0 +1,6 @@
+server:
+  port: 8080  # 服务端端口
+
+spring:
+  application:
+    name: akuma-admin-server

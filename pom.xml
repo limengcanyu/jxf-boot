@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.5</version>
+        <version>3.5.13</version>
     </parent>
 
     <groupId>org.rock.boot</groupId>
@@ -17,13 +17,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>spring-boot-activiti</module>
-        <module>spring-boot-actuator</module>
-        <module>spring-boot-admin-client</module>
-        <module>spring-boot-admin-server</module>
-        <module>spring-boot-advice</module>
-        <module>spring-boot-akka</module>
-        <module>spring-boot-aliyun</module>
+        <module>akuma-activiti</module>
+        <module>akuma-actuator</module>
+        <module>akuma-admin-client</module>
+        <module>akuma-admin-server</module>
+        <module>akuma-advice</module>
+        <module>akuma-akka</module>
+        <module>akuma-aliyun</module>
         <module>spring-boot-annotation</module>
         <module>spring-boot-aop</module>
         <module>spring-boot-arthas</module>
@@ -71,6 +71,7 @@
         <module>spring-boot-httpcomponents</module>
         <module>spring-boot-huaweicloud</module>
         <module>spring-boot-hystrix</module>
+        <module>spring-boot-i18n</module>
         <module>spring-boot-influxdb</module>
         <module>spring-boot-jar-war</module>
         <module>spring-boot-jdbctemplate</module>
@@ -151,123 +152,162 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
+            <!-- Source: https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>3.5.2</version>
+                <version>3.2.3</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.testcontainers/testcontainers-bom -->
+            <!-- Source: https://mvnrepository.com/artifact/org.testcontainers/testcontainers-bom -->
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers-bom</artifactId>
-                <version>1.21.3</version>
+                <version>2.0.5</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/me.ahoo.cosid/cosid-spring-boot-starter -->
+            <!-- Source: https://mvnrepository.com/artifact/me.ahoo.cosid/cosid-spring-boot-starter -->
             <dependency>
                 <groupId>me.ahoo.cosid</groupId>
                 <artifactId>cosid-spring-boot-starter</artifactId>
-                <version>2.13.3</version>
+                <version>3.0.5</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-pool2</artifactId>
-                <version>2.12.1</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
+            <!-- Source: https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>3.51.0</version>
+                <version>4.3.1</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.yomahub/tlog-all-spring-boot-starter -->
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.13.1</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.yomahub/tlog-all-spring-boot-starter -->
             <dependency>
                 <groupId>com.yomahub</groupId>
                 <artifactId>tlog-all-spring-boot-starter</artifactId>
                 <version>1.5.2</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+            <!-- Source: https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>4.0.3</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-sentinel -->
+            <!-- Source: https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-sentinel -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>2023.0.3.3</version>
+                <version>2025.1.0.0</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot3-starter -->
+            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot3-starter -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-                <version>3.5.14</version>
+                <version>3.5.16</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-extension -->
+            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-extension -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-extension</artifactId>
-                <version>3.5.14</version>
+                <version>3.5.16</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-jsqlparser -->
+            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-annotation -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>3.5.16</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-jsqlparser -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-jsqlparser</artifactId>
-                <version>3.5.14</version>
+                <version>3.5.16</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
-                <version>3.5.14</version>
+                <version>3.5.16</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot3-starter-test -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter-test</artifactId>
+                <version>3.5.16</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.github.yulichang/mybatis-plus-join-boot-starter -->
+            <dependency>
+                <groupId>com.github.yulichang</groupId>
+                <artifactId>mybatis-plus-join-boot-starter</artifactId>
+                <version>1.5.7</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.freemarker/freemarker -->
             <dependency>
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>2.3.34</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+            <!-- Source: https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
             <dependency>
                 <groupId>com.mysql</groupId>
                 <artifactId>mysql-connector-j</artifactId>
-                <version>9.4.0</version>
+                <version>9.7.0</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+            <!-- Source: https://mvnrepository.com/artifact/com.h2database/h2 -->
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>2.3.232</version>
-                <scope>runtime</scope>
+<!--                <version>2.4.240</version>-->
+                <scope>test</scope>
             </dependency>
 
             <!-- JWT -->
-            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+            <!-- Source: https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
                 <version>0.13.0</version>
+                <scope>compile</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl -->
+            <!-- Source: https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-impl</artifactId>
@@ -275,7 +315,7 @@
                 <scope>runtime</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+            <!-- Source: https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-jackson</artifactId>
@@ -283,6 +323,115 @@
                 <scope>runtime</scope>
             </dependency>
 
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.20.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.5.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>1.15.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-compress -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>1.28.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>2.14.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>2.14.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-fileupload2-jakarta-servlet6 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-fileupload2-jakarta-servlet6</artifactId>
+                <version>2.0.0-M5</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>2.0.61</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.6.0-jre</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.8.44</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.github.ifeilong/feilong -->
+            <dependency>
+                <groupId>com.github.ifeilong</groupId>
+                <artifactId>feilong</artifactId>
+                <version>4.5.1</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/com.xuxueli/xxl-tool -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-tool</artifactId>
+                <version>2.5.0</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>4.5.18</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-ecs -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-ecs</artifactId>
+                <version>4.23.10</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -316,46 +465,34 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.58</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>33.4.8-jre</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.40</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.ifeilong/feilong -->
         <dependency>
             <groupId>com.github.ifeilong</groupId>
             <artifactId>feilong</artifactId>
-            <version>4.3.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.18.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.xuxueli/xxl-tool -->
         <dependency>
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-tool</artifactId>
-            <version>2.0.0</version>
         </dependency>
     </dependencies>
 
@@ -365,7 +502,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
+                <version>3.15.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -376,7 +513,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.3</version>
+                <version>3.5.5</version>
                 <configuration>
                     <!-- Skipping Tests -->
                     <skipTests>true</skipTests>

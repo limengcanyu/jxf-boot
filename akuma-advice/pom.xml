@@ -4,37 +4,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
         <artifactId>rock-boot</artifactId>
+        <groupId>org.rock.boot</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.i18n</groupId>
-    <artifactId>spring-boot-i18n</artifactId>
+    <groupId>org.akuma.advice</groupId>
+    <artifactId>akuma-advice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-i18n</name>
-    <description>spring-boot-i18n</description>
+    <name>akuma-advice</name>
+    <description>akuma-advice</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- 定时任务 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
