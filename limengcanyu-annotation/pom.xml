@@ -4,27 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
         <artifactId>rock-boot</artifactId>
+        <groupId>org.rock.boot</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <groupId>io.github.limengcanyu</groupId>
+    <artifactId>limengcanyu-annotation</artifactId>
+    <name>limengcanyu-annotation</name>
+    <description>limengcanyu-annotation</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 

@@ -9,23 +9,32 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
+    <groupId>com.spring.boot.i18n</groupId>
+    <artifactId>limengcanyu-i18n</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <name>spring-boot-i18n</name>
+    <description>spring-boot-i18n</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- 定时任务 -->
         <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

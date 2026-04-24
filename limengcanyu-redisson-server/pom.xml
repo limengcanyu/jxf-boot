@@ -9,21 +9,21 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
+    <groupId>com.spring.boot.data.redisson.server</groupId>
+    <artifactId>limengcanyu-redisson-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <name>spring-boot-data-redisson-server</name>
+    <description>spring-boot-data-redisson-server</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
+            <groupId>com.spring.boot.data.redisson.interfaces</groupId>
+            <artifactId>limengcanyu-redisson-interface</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

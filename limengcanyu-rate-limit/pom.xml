@@ -9,23 +9,26 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
+    <groupId>com.spring.boot.rate.limiting</groupId>
+    <artifactId>limengcanyu-rate-limit</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <name>spring-boot-rate-limiting</name>
+    <description>spring-boot-rate-limiting</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

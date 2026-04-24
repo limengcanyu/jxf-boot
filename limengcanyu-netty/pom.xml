@@ -9,22 +9,23 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <groupId>com.spring.boot.netty</groupId>
+    <artifactId>limengcanyu-netty</artifactId>
+    <version>0.0.1</version>
+    <name>spring-boot-netty</name>
+    <description>spring-boot-netty</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.79.Final</version>
         </dependency>
     </dependencies>
 

@@ -9,22 +9,18 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
+    <groupId>com.spring.boot.flowable</groupId>
+    <artifactId>limengcanyu-flowable</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <name>spring-boot-flowable</name>
+    <description>spring-boot-flowable</description>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.flowable/flowable-spring-boot-starter -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-spring-boot-starter</artifactId>
+            <version>6.7.2</version>
         </dependency>
     </dependencies>
 

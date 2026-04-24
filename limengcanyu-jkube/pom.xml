@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.rock.boot</groupId>
+        <artifactId>rock-boot</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.spring.boot.jkube</groupId>
+    <artifactId>limengcanyu-jkube</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-jkube</name>
+    <description>spring-boot-jkube</description>
+
+    <properties>
+        <!-- 生成Ingress -->
+        <jkube.createExternalUrls>true</jkube.createExternalUrls>
+        <jkube.domain>example.com</jkube.domain>
+    </properties>
+
+    <build>
+        <finalName>spring-boot-jkube-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jkube</groupId>
+                <artifactId>kubernetes-maven-plugin</artifactId>
+                <version>1.12.0</version>
+                <configuration>
+                    <buildStrategy>jib</buildStrategy>
+                    <images>
+                        <image>
+                            <!-- 镜像名称和tag -->
+                            <name>rock-boot/${project.artifactId}:${project.version}</name>
+                            <!-- 镜像别名 -->
+                            <alias>spring-boot-jkube</alias>
+                            <build>
+                                <!-- 基础镜像 -->
+                                <from>eclipse-temurin:17.0.6_10-jre-focal</from>
+                                <entryPoint>
+                                    <!-- 项目启动入口  -->
+                                    <shell>java -jar maven/spring-boot-jkube-${project.version}.jar</shell>
+
+                                    <!-- 设置JVM参数，每个arg元素只能设置一个参数 -->
+                                    <!--                                    <exec>-->
+                                    <!--                                        <arg>java</arg>-->
+                                    <!--                                        <arg>-jar</arg>-->
+                                    <!--                                        <arg>-XX:+UseZGC</arg>-->
+                                    <!--                                        <arg>-Dfile.encoding=UTF-8</arg>-->
+                                    <!--                                        <arg>-XX:+DisableExplicitGC</arg>-->
+                                    <!--                                        <arg>maven/spring-boot-jkube-${project.version}.jar</arg>-->
+                                    <!--                                    </exec>-->
+                                </entryPoint>
+                            </build>
+                        </image>
+                    </images>
+
+                    <resources>
+                        <controller>
+                            <env>
+                                <organization>Eclipse Foundation</organization>
+                                <projectname>spring-boot-jkube</projectname>
+                            </env>
+                            <replicas>2</replicas>
+                            <controllerName>${project.artifactId}</controllerName>
+                            <liveness>
+                                <getUrl>http://localhost:8080/actuator/health</getUrl>
+                                <initialDelaySeconds>3</initialDelaySeconds>
+                                <timeoutSeconds>3</timeoutSeconds>
+                            </liveness>
+                            <startup>
+                                <failureThreshold>30</failureThreshold>
+                                <periodSeconds>10</periodSeconds>
+                                <getUrl>http://localhost:8080/actuator/health</getUrl>
+                            </startup>
+                            <containerResources>
+                                <requests>
+                                    <memory>100Mi</memory>
+                                    <cpu>300m</cpu>
+                                </requests>
+                                <limits>
+                                    <memory>500Mi</memory>
+                                    <cpu>500m</cpu>
+                                </limits>
+                            </containerResources>
+                            <volumes>
+                                <volume>
+                                    <name>config</name>
+                                    <type>configMap</type>
+                                    <configMapName>config</configMapName>
+                                    <configMapItems>
+                                        <item>
+                                            <key>application.properties</key>
+                                            <path>application.properties</path>
+                                        </item>
+                                        <item>
+                                            <key>application-dev.properties</key>
+                                            <path>application-dev.properties</path>
+                                        </item>
+                                        <item>
+                                            <key>application-prd.properties</key>
+                                            <path>application-prd.properties</path>
+                                        </item>
+                                    </configMapItems>
+                                    <mounts>
+                                        <mount>/config</mount>
+                                    </mounts>
+                                    <readOnly>true</readOnly>
+                                </volume>
+                            </volumes>
+                        </controller>
+
+                        <services>
+                            <service>
+                                <name>${project.artifactId}</name>
+                                <expose>true</expose>
+                                <type>NodePort</type>
+                                <ports>
+                                    <port>
+                                        <name>http-8080</name>
+                                        <protocol>tcp</protocol>
+                                        <port>8080</port>
+                                        <targetPort>8080</targetPort>
+                                        <nodePort>31002</nodePort>
+                                    </port>
+                                </ports>
+                            </service>
+                        </services>
+
+                        <configMap>
+                            <name>spring-boot-jkube</name>
+                            <entries>
+                                <entry>
+                                    <name>application.properties</name>
+                                    <file>${project.basedir}/src/main/resources/application.properties</file>
+                                </entry>
+                                <entry>
+                                    <name>application-dev.properties</name>
+                                    <file>${project.basedir}/src/main/resources/application-dev.properties</file>
+                                </entry>
+                                <entry>
+                                    <name>application-prd.properties</name>
+                                    <file>${project.basedir}/src/main/resources/application-prd.properties</file>
+                                </entry>
+                            </entries>
+                        </configMap>
+
+                        <ingress>
+                            <ingressTlsConfigs>
+                                <ingressTlsConfig>
+                                    <hosts>
+                                        <host>foo.bar.com</host>
+                                    </hosts>
+                                    <secretName>testsecret-tls</secretName>
+                                </ingressTlsConfig>
+                            </ingressTlsConfigs>
+                            <ingressRules>
+                                <ingressRule>
+                                    <host>foo.bar.com</host>
+                                    <paths>
+                                        <path>
+                                            <pathType>Prefix</pathType>
+                                            <path>/jkube</path>
+                                            <serviceName>spring-boot-jkube</serviceName>
+                                            <servicePort>8080</servicePort>
+                                        </path>
+                                    </paths>
+                                </ingressRule>
+                            </ingressRules>
+                        </ingress>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

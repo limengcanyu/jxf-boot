@@ -4,28 +4,28 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
         <artifactId>rock-boot</artifactId>
+        <groupId>org.rock.boot</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.quartz</groupId>
-    <artifactId>spring-boot-quartz</artifactId>
+    <groupId>com.spring.boot.nebula</groupId>
+    <artifactId>limengcanyu-nebula</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-quartz</name>
-    <description>spring-boot-quartz</description>
+    <name>spring-boot-nebula</name>
+    <description>Demo project for Spring Boot</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.vesoft/client -->
         <dependency>
-            <groupId>com.spring.boot.mybatis.plus</groupId>
-            <artifactId>limengcanyu-mybatis-plus</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.vesoft</groupId>
+            <artifactId>client</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
-
 </project>
