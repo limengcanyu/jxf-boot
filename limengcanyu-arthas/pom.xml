@@ -4,15 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.arthas</groupId>
     <artifactId>limengcanyu-arthas</artifactId>
-    <name>spring-boot-arthas</name>
-    <description>spring-boot-arthas</description>
+    <name>limengcanyu-arthas</name>
+    <description>limengcanyu-arthas</description>
 
     <dependencies>
         <dependency>

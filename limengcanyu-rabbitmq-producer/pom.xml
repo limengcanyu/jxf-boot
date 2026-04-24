@@ -3,24 +3,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-		<artifactId>rock-boot</artifactId>
-		<groupId>org.rock.boot</groupId>
-		<version>1.0-SNAPSHOT</version>
+	<parent>
+		<groupId>io.github.limengcanyu</groupId>
+		<artifactId>limengcanyu-boot</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.spring.boot.rabbitmq.producer</groupId>
 	<artifactId>limengcanyu-rabbitmq-producer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-rabbitmq-producer</name>
-	<description>spring boot rabbitmq producer project</description>
+	<name>limengcanyu-rabbitmq-producer</name>
+	<description>limengcanyu-rabbitmq-producer</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,4 +41,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 </project>

@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.jkube</groupId>
     <artifactId>limengcanyu-jkube</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-jkube</name>
-    <description>spring-boot-jkube</description>
+    <name>limengcanyu-jkube</name>
+    <description>limengcanyu-jkube</description>
 
     <properties>
         <!-- 生成Ingress -->

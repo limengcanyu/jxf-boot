@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.akuma.admin.client</groupId>
     <artifactId>limengcanyu-admin-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>akuma-admin-client</name>
-    <description>akuma-admin-client</description>
+    <name>limengcanyu-admin-client</name>
+    <description>limengcanyu-admin-client project</description>
 
     <dependencies>
         <dependency>

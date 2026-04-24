@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.security</groupId>
     <artifactId>limengcanyu-security</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-security</name>
-    <description>spring-boot-security</description>
+    <name>limengcanyu-security</name>
+    <description>limengcanyu-security</description>
 
     <dependencies>
         <dependency>
@@ -82,7 +80,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
 </project>

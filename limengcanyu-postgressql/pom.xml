@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.postgres</groupId>
     <artifactId>limengcanyu-postgressql</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-postgres</name>
-    <description>Spring Boot Postgres Project</description>
+    <name>limengcanyu-postgressql</name>
+    <description>limengcanyu-postgressql</description>
 
     <properties>
         <mybatis.plus.boot.starter.version>3.3.1</mybatis.plus.boot.starter.version>
@@ -73,4 +71,5 @@
             <version>${p6spy.version}</version>
         </dependency>
     </dependencies>
+
 </project>

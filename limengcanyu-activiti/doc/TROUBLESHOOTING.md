@@ -755,4 +755,4 @@ tail -50 logs/spring.log >> diagnosis.log 2>&1
 **最后更新**: 2024-08-24  
 **版本**: v1.0.0
 
-如果本文档没有涵盖您遇到的问题，请参考 [DEPLOYMENT.md](./DEPLOYMENT.md) 获取更多部署相关信息。
+如果本文档没有涵盖您遇到的问题，请参考 [DEPLOYMENT.md](DEPLOYMENT.md) 获取更多部署相关信息。

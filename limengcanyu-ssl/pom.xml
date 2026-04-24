@@ -3,17 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.ssl</groupId>
     <artifactId>limengcanyu-ssl</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>spring-boot-ssl</name>
-    <url>http://maven.apache.org</url>
+    <name>limengcanyu-ssl</name>
+    <description>limengcanyu-ssl</description>
 
     <dependencies>
         <dependency>
@@ -21,4 +18,5 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
 </project>

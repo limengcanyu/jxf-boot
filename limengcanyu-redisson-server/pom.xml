@@ -4,16 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.data.redisson.server</groupId>
     <artifactId>limengcanyu-redisson-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-data-redisson-server</name>
-    <description>spring-boot-data-redisson-server</description>
+    <name>limengcanyu-redisson-server</name>
+    <description>limengcanyu-redisson-server</description>
 
     <dependencies>
         <dependency>
@@ -22,9 +21,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.spring.boot.data.redisson.interfaces</groupId>
+            <groupId>io.github.limengcanyu</groupId>
             <artifactId>limengcanyu-redisson-interface</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

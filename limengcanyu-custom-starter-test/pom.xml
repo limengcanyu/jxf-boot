@@ -3,17 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.custom.starter.test</groupId>
     <artifactId>limengcanyu-custom-starter-test</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>spring-boot-custom-starter-test</name>
-    <url>http://maven.apache.org</url>
+    <name>limengcanyu-custom-starter-test</name>
+    <description>limengcanyu-custom-starter-test</description>
 
     <dependencies>
         <dependency>
@@ -22,9 +19,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.spring.boot.custom.starter</groupId>
+            <groupId>io.github.limengcanyu</groupId>
             <artifactId>limengcanyu-custom-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 </project>

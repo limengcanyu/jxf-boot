@@ -11,10 +11,10 @@
         <version>3.5.13</version>
     </parent>
 
-    <groupId>org.rock.boot</groupId>
-    <artifactId>rock-boot</artifactId>
+    <groupId>io.github.limengcanyu</groupId>
+    <artifactId>limengcanyu-boot</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
 
     <modules>
         <module>limengcanyu-activiti</module>
@@ -141,6 +141,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>25</java.version>
+        <!-- 定义变量 -->
+        <project.group.suffix>limengcanyu</project.group.suffix>
     </properties>
 
     <dependencyManagement>

@@ -4,16 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>rock-boot</artifactId>
-		<groupId>org.rock.boot</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<groupId>io.github.limengcanyu</groupId>
+		<artifactId>limengcanyu-boot</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.spring.boot.poi</groupId>
 	<artifactId>limengcanyu-poi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-poi</name>
-	<description>spring boot poi project</description>
+	<name>limengcanyu-poi</name>
+	<description>limengcanyu-poi</description>
 
 	<dependencies>
 		<dependency>
@@ -35,4 +33,5 @@
 			<version>5.0.0</version>
 		</dependency>
 	</dependencies>
+
 </project>

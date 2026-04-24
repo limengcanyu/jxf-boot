@@ -3,16 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-		<artifactId>rock-boot</artifactId>
-		<groupId>org.rock.boot</groupId>
-		<version>1.0-SNAPSHOT</version>
+	<parent>
+		<groupId>io.github.limengcanyu</groupId>
+		<artifactId>limengcanyu-boot</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.akuma.aliyun</groupId>
 	<artifactId>limengcanyu-aliyun</artifactId>
-	<name>akuma-aliyun</name>
-	<description>akuma-aliyun</description>
+	<name>limengcanyu-aliyun</name>
+	<description>limengcanyu-aliyun</description>
 
 	<dependencies>
 		<dependency>

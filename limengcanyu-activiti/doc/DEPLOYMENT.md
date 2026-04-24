@@ -435,7 +435,7 @@ management:
 
 1. 检查应用日志：`tail -f logs/spring.log`
 2. 查看详细错误信息
-3. 参考 [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) 文档
+3. 参考 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) 文档
 4. 提交 Issue 并提供详细的错误日志
 
 ---

@@ -6,13 +6,11 @@
     <parent>
         <groupId>com.spring.boot.rocketmq.example</groupId>
         <artifactId>limengcanyu-rocketmq-example</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.rocketmq.produce</groupId>
-    <artifactId>spring-boot-rocketmq-produce</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-rocketmq-produce</name>
-    <description>spring-boot-rocketmq-produce</description>
+    <artifactId>limengcanyu-rocketmq-produce</artifactId>
+    <name>limengcanyu-rocketmq-produce</name>
+    <description>limengcanyu-rocketmq-produce</description>
 
 </project>

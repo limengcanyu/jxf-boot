@@ -5,16 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.mybatisplus</groupId>
-    <artifactId>spring-boot-mybatisplus</artifactId>
-    <name>spring-boot-mybatisplus</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <artifactId>limengcanyu-mybatisplus</artifactId>
+    <name>limengcanyu-mybatisplus</name>
+    <description>limengcanyu-mybatisplus</description>
 
     <dependencies>
         <dependency>
@@ -63,4 +61,5 @@
             <version>3.9.0</version>
         </dependency>
     </dependencies>
+
 </project>

@@ -4,23 +4,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.rocketmq.example</groupId>
     <artifactId>limengcanyu-rocketmq-example</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-rocketmq-example</name>
     <description>spring-boot-rocketmq-example</description>
 
     <modules>
-        <module>spring-boot-rocketmq-acl-consume</module>
-        <module>spring-boot-rocketmq-acl-produce</module>
-        <module>spring-boot-rocketmq-consume</module>
-        <module>spring-boot-rocketmq-produce</module>
+        <module>limengcanyu-rocketmq-acl-consume</module>
+        <module>limengcanyu-rocketmq-acl-produce</module>
+        <module>limengcanyu-rocketmq-consume</module>
+        <module>limengcanyu-rocketmq-produce</module>
     </modules>
 
     <dependencies>

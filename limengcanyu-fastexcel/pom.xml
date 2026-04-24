@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.fastexcel</groupId>
     <artifactId>limengcanyu-fastexcel</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-fastexcel</name>
-    <description>spring-boot-fastexcel</description>
+    <name>limengcanyu-fastexcel</name>
+    <description>limengcanyu-fastexcel</description>
 
     <dependencies>
         <dependency>

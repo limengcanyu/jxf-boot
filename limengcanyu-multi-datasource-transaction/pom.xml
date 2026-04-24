@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.multi.datasource.transaction</groupId>
     <artifactId>limengcanyu-multi-datasource-transaction</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-multi-datasource-transaction</name>
-    <description>spring boot multi datasource transaction project</description>
+    <name>limengcanyu-multi-datasource-transaction</name>
+    <description>limengcanyu-multi-datasource-transaction</description>
 
     <properties>
         <mybatis.plus.boot.starter.version>3.4.0</mybatis.plus.boot.starter.version>
@@ -75,4 +73,5 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
     </dependencies>
+
 </project>

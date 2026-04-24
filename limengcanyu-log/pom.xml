@@ -3,17 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-		<groupId>org.rock.boot</groupId>
-		<artifactId>rock-boot</artifactId>
-		<version>1.0-SNAPSHOT</version>
+	<parent>
+		<groupId>io.github.limengcanyu</groupId>
+		<artifactId>limengcanyu-boot</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.spring.boot.log</groupId>
 	<artifactId>limengcanyu-log</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-log</name>
-	<description>Spring Boot Log Project</description>
+	<name>limengcanyu-log</name>
+	<description>limengcanyu-log</description>
 
 	<dependencies>
 		<dependency>
@@ -33,4 +31,5 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 	</dependencies>
+
 </project>

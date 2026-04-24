@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.influxdb</groupId>
     <artifactId>limengcanyu-influxdb</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-influxdb</name>
-    <description>spring boot influxdb project</description>
+    <name>limengcanyu-influxdb</name>
+    <description>limengcanyu-influxdb</description>
 
     <dependencies>
         <dependency>

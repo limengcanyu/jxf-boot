@@ -3,17 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-		<artifactId>rock-boot</artifactId>
-		<groupId>org.rock.boot</groupId>
-		<version>1.0-SNAPSHOT</version>
+	<parent>
+		<groupId>io.github.limengcanyu</groupId>
+		<artifactId>limengcanyu-boot</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.spring.boot.okhttp</groupId>
 	<artifactId>limengcanyu-okhttp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-okhttp</name>
-	<description>spring boot okhttp project</description>
+	<name>limengcanyu-okhttp</name>
+	<description>limengcanyu-okhttp</description>
 
 	<dependencies>
 		<dependency>
@@ -34,4 +32,5 @@
 			<version>2.8.6</version>
 		</dependency>
 	</dependencies>
+
 </project>

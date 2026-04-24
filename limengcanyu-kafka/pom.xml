@@ -5,17 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.kafka</groupId>
     <artifactId>limengcanyu-kafka</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>spring-boot-kafka</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <name>limengcanyu-kafka</name>
+    <description>limengcanyu-kafka</description>
 
     <dependencies>
         <dependency>
@@ -34,4 +31,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>

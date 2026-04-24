@@ -6,13 +6,11 @@
 	<parent>
 		<groupId>com.spring.boot.rocketmq.example</groupId>
 		<artifactId>limengcanyu-rocketmq-example</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.spring.boot.rocketmq.acl.consume</groupId>
-	<artifactId>spring-boot-rocketmq-acl-consume</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-rocketmq-acl-consume</name>
-	<description>spring-boot-rocketmq-acl-consume</description>
+	<artifactId>limengcanyu-rocketmq-acl-consume</artifactId>
+	<name>limengcanyu-rocketmq-acl-consume</name>
+	<description>limengcanyu-rocketmq-acl-consume</description>
 
 </project>

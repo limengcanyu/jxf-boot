@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.shardingsphere.jdbc</groupId>
     <artifactId>limengcanyu-shardingsphere-jdbc</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-shardingsphere-jdbc</name>
-    <description>spring boot shardingsphere jdbc project</description>
+    <name>limengcanyu-shardingsphere-jdbc</name>
+    <description>limengcanyu-shardingsphere-jdbc</description>
 
     <dependencies>
         <dependency>

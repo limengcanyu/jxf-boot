@@ -4,15 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.akuma.akka</groupId>
     <artifactId>limengcanyu-akka</artifactId>
-    <name>akuma-akka</name>
-    <description>akuma-akka</description>
+    <name>limengcanyu-akka</name>
+    <description>limengcanyu-akka</description>
 
     <dependencies>
         <dependency>

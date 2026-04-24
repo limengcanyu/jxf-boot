@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.mybatisplus.druid.dynamic.datasource</groupId>
     <artifactId>limengcanyu-mybatis-plus-druid-dynamic-datasource</artifactId>
-    <name>spring-boot-mybatisplus-druid-dynamic-datasource</name>
-    <url>http://www.example.com</url>
+    <name>limengcanyu-mybatis-plus-druid-dynamic-datasource</name>
+    <description>limengcanyu-mybatis-plus-druid-dynamic-datasource</description>
 
     <dependencies>
         <dependency>
@@ -50,6 +49,6 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.28</version>
         </dependency>
-
     </dependencies>
+
 </project>

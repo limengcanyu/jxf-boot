@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.akuma.actuator</groupId>
     <artifactId>limengcanyu-actuator</artifactId>
-    <name>akuma-actuator</name>
+    <name>limengcanyu-actuator</name>
+    <description>limengcanyu-actuator</description>
 
     <dependencies>
         <dependency>

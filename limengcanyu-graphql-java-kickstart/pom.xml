@@ -4,17 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.graphql.java.kickstart</groupId>
     <artifactId>limengcanyu-graphql-java-kickstart</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-graphql-java-kickstart</name>
-    <description>spring boot graphql java kickstart project</description>
-
+    <name>limengcanyu-graphql-java-kickstart</name>
+    <description>limengcanyu-graphql-java-kickstart</description>
 
     <dependencies>
         <dependency>

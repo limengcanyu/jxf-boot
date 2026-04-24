@@ -3,16 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.rock.boot</groupId>
-        <artifactId>rock-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.mongo</groupId>
     <artifactId>limengcanyu-mongo</artifactId>
-    <packaging>jar</packaging>
-    <name>spring-boot-mongo</name>
-    <url>http://maven.apache.org</url>
+    <name>limengcanyu-mongo</name>
+    <description>limengcanyu-mongo</description>
 
     <dependencies>
         <dependency>
@@ -31,4 +29,5 @@
 <!--            <version>2.2.0</version>-->
 <!--        </dependency>-->
     </dependencies>
+
 </project>

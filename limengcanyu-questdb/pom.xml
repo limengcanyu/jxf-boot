@@ -4,17 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.questdb</groupId>
     <artifactId>limengcanyu-questdb</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-questdb</name>
-    <description>spring boot questdb project</description>
-
+    <name>limengcanyu-questdb</name>
+    <description>limengcanyu-questdb</description>
 
     <dependencies>
         <dependency>
@@ -29,4 +26,5 @@
             <version>5.0.6</version>
         </dependency>
     </dependencies>
+
 </project>

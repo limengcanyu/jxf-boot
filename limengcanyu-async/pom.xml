@@ -4,16 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>rock-boot</artifactId>
-        <groupId>org.rock.boot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>io.github.limengcanyu</groupId>
+        <artifactId>limengcanyu-boot</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.spring.boot.async</groupId>
     <artifactId>limengcanyu-async</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-async</name>
-    <description>Async Demo project for Spring Boot</description>
+    <name>limengcanyu-async</name>
+    <description>limengcanyu-async</description>
 
     <dependencies>
         <dependency>
@@ -27,4 +25,5 @@
             <version>2.11.5</version>
         </dependency>
     </dependencies>
+
 </project>
