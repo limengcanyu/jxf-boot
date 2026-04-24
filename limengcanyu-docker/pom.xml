@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-docker</artifactId>
-    <name>limengcanyu-docker</name>
-    <description>limengcanyu-docker</description>
+    <artifactId>${project.artifact.name}-docker</artifactId>
 
     <dependencies>
         <dependency>

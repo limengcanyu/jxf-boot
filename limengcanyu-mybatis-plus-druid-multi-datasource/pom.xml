@@ -8,9 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-mybatis-plus-druid-multi-datasource</artifactId>
-    <name>limengcanyu-mybatis-plus-druid-multi-datasource</name>
-    <description>limengcanyu-mybatis-plus-druid-multi-datasource</description>
+    <artifactId>${project.artifact.name}-mybatis-plus-druid-multi-datasource</artifactId>
 
     <dependencies>
         <dependency>

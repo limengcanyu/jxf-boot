@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-rabbitmq-producer</artifactId>
-	<name>limengcanyu-rabbitmq-producer</name>
-	<description>limengcanyu-rabbitmq-producer</description>
+	<artifactId>${project.artifact.name}-rabbitmq-producer</artifactId>
 
 	<dependencies>
 		<dependency>

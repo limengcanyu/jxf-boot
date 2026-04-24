@@ -8,9 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-mongo</artifactId>
-    <name>limengcanyu-mongo</name>
-    <description>limengcanyu-mongo</description>
+    <artifactId>${project.artifact.name}-mongo</artifactId>
 
     <dependencies>
         <dependency>

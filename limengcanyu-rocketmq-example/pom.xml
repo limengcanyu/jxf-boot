@@ -9,16 +9,14 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-rocketmq-example</artifactId>
+    <artifactId>${project.artifact.name}-rocketmq-example</artifactId>
     <packaging>pom</packaging>
-    <name>spring-boot-rocketmq-example</name>
-    <description>spring-boot-rocketmq-example</description>
 
     <modules>
-        <module>limengcanyu-rocketmq-acl-consume</module>
-        <module>limengcanyu-rocketmq-acl-produce</module>
-        <module>limengcanyu-rocketmq-consume</module>
-        <module>limengcanyu-rocketmq-produce</module>
+        <module>${project.artifact.name}-rocketmq-acl-consume</module>
+        <module>${project.artifact.name}-rocketmq-acl-produce</module>
+        <module>${project.artifact.name}-rocketmq-consume</module>
+        <module>${project.artifact.name}-rocketmq-produce</module>
     </modules>
 
     <dependencies>

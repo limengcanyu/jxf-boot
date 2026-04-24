@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-guava</artifactId>
-	<name>limengcanyu-guava</name>
-	<description>limengcanyu-guava</description>
+	<artifactId>${project.artifact.name}-guava</artifactId>
 
 	<dependencies>
 		<dependency>

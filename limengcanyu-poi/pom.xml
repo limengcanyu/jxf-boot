@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-poi</artifactId>
-	<name>limengcanyu-poi</name>
-	<description>limengcanyu-poi</description>
+	<artifactId>${project.artifact.name}-poi</artifactId>
 
 	<dependencies>
 		<dependency>

@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-async</artifactId>
-    <name>limengcanyu-async</name>
-    <description>limengcanyu-async</description>
+    <artifactId>${project.artifact.name}-async</artifactId>
 
     <dependencies>
         <dependency>

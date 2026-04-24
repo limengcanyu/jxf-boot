@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-temporal</artifactId>
-	<name>limengcanyu-temporal</name>
-	<description>limengcanyu-temporal</description>
+	<artifactId>${project.artifact.name}-temporal</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -35,6 +33,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<version>2.3.232</version>
 			<scope>runtime</scope>
 		</dependency>
 

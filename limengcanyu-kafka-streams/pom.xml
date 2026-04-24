@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-kafka-streams</artifactId>
-    <name>limengcanyu-kafka-streams</name>
-    <description>limengcanyu-kafka-streams</description>
+    <artifactId>${project.artifact.name}-kafka-streams</artifactId>
 
     <dependencies>
         <dependency>

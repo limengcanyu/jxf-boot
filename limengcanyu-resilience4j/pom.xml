@@ -9,10 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-resilience4j</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>limengcanyu-resilience4j</name>
-    <description>limengcanyu-resilience4j</description>
+    <artifactId>${project.artifact.name}-resilience4j</artifactId>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot3 -->

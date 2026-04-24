@@ -9,10 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-redisson-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>limengcanyu-redisson-server</name>
-    <description>limengcanyu-redisson-server</description>
+    <artifactId>${project.artifact.name}-redisson-server</artifactId>
 
     <dependencies>
         <dependency>
@@ -22,7 +19,7 @@
 
         <dependency>
             <groupId>io.github.limengcanyu</groupId>
-            <artifactId>limengcanyu-redisson-interface</artifactId>
+            <artifactId>${project.artifact.name}-redisson-interface</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

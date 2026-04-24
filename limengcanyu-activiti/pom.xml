@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.group.suffix}-activiti</artifactId>
+    <artifactId>${project.artifact.name}-activiti</artifactId>
 
     <properties>
         <activiti.version>6.0.0</activiti.version>

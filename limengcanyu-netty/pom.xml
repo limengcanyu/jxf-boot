@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-netty</artifactId>
-    <name>limengcanyu-netty</name>
-    <description>limengcanyu-netty</description>
+    <artifactId>${project.artifact.name}-netty</artifactId>
 
     <dependencies>
         <dependency>

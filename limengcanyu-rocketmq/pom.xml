@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-rocketmq</artifactId>
-	<name>limengcanyu-rocketmq</name>
-	<description>limengcanyu-rocketmq</description>
+	<artifactId>${project.artifact.name}-rocketmq</artifactId>
 
 	<dependencies>
 		<dependency>

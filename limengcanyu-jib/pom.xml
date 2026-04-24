@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-jib</artifactId>
-	<name>limengcanyu-jib</name>
-	<description>limengcanyu-jib</description>
+	<artifactId>${project.artifact.name}-jib</artifactId>
 
 	<dependencies>
 		<dependency>

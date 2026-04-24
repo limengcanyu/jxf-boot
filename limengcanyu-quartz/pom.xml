@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-quartz</artifactId>
-    <name>limengcanyu-quartz</name>
-    <description>limengcanyu-quartz</description>
+    <artifactId>${project.artifact.name}-quartz</artifactId>
 
     <dependencies>
         <dependency>

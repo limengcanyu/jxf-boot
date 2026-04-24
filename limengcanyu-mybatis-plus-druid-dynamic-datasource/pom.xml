@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-mybatis-plus-druid-dynamic-datasource</artifactId>
-    <name>limengcanyu-mybatis-plus-druid-dynamic-datasource</name>
-    <description>limengcanyu-mybatis-plus-druid-dynamic-datasource</description>
+    <artifactId>${project.artifact.name}-mybatis-plus-druid-dynamic-datasource</artifactId>
 
     <dependencies>
         <dependency>

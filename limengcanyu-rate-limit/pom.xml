@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-rate-limit</artifactId>
-    <name>limengcanyu-rate-limit</name>
-    <description>limengcanyu-rate-limit</description>
+    <artifactId>${project.artifact.name}-rate-limit</artifactId>
 
     <dependencies>
         <dependency>

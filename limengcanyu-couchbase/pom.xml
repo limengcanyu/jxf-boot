@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-couchbase</artifactId>
-    <name>limengcanyu-couchbase</name>
-    <description>limengcanyu-couchbase</description>
+    <artifactId>${project.artifact.name}-couchbase</artifactId>
 
     <dependencies>
         <dependency>

@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-jar-war</artifactId>
-    <name>limengcanyu-jar-war</name>
-    <description>limengcanyu-jar-war</description>
+    <artifactId>${project.artifact.name}-jar-war</artifactId>
 
     <properties>
         <java.version>15</java.version>

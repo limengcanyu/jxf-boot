@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-graphql-java-kickstart</artifactId>
-    <name>limengcanyu-graphql-java-kickstart</name>
-    <description>limengcanyu-graphql-java-kickstart</description>
+    <artifactId>${project.artifact.name}-graphql-java-kickstart</artifactId>
 
     <dependencies>
         <dependency>
@@ -70,4 +68,5 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
+
 </project>

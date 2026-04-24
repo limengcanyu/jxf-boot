@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-netty-common</artifactId>
-    <name>limengcanyu-netty-common</name>
-    <description>limengcanyu-netty-common</description>
+    <artifactId>${project.artifact.name}-netty-common</artifactId>
 
     <dependencies>
         <dependency>

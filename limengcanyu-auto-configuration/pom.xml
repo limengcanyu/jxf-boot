@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-auto-configuration</artifactId>
-    <name>limengcanyu-auto-configuration</name>
-    <description>limengcanyu-auto-configuration</description>
+    <artifactId>${project.artifact.name}-auto-configuration</artifactId>
 
     <dependencies>
         <dependency>
@@ -28,4 +26,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

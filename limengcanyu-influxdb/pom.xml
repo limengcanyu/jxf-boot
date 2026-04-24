@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-influxdb</artifactId>
-    <name>limengcanyu-influxdb</name>
-    <description>limengcanyu-influxdb</description>
+    <artifactId>${project.artifact.name}-influxdb</artifactId>
 
     <dependencies>
         <dependency>
@@ -26,4 +24,5 @@
             <version>2.21</version>
         </dependency>
     </dependencies>
+
 </project>

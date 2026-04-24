@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-configuration-processor</artifactId>
-	<name>limengcanyu-configuration-processor</name>
-	<description>limengcanyu-configuration-processor</description>
+	<artifactId>${project.artifact.name}-configuration-processor</artifactId>
 
 	<dependencies>
 		<dependency>

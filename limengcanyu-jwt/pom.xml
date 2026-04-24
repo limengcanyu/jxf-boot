@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-jwt</artifactId>
-    <name>limengcanyu-jwt</name>
-    <description>limengcanyu-jwt</description>
+    <artifactId>${project.artifact.name}-jwt</artifactId>
 
     <dependencies>
         <dependency>

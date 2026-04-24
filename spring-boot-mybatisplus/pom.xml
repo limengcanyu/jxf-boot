@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-mybatisplus</artifactId>
-    <name>limengcanyu-mybatisplus</name>
-    <description>limengcanyu-mybatisplus</description>
+    <artifactId>${project.artifact.name}-mybatisplus</artifactId>
 
     <dependencies>
         <dependency>

@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-fastexcel</artifactId>
-    <name>limengcanyu-fastexcel</name>
-    <description>limengcanyu-fastexcel</description>
+    <artifactId>${project.artifact.name}-fastexcel</artifactId>
 
     <dependencies>
         <dependency>

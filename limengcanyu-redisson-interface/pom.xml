@@ -9,8 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-redisson-interface</artifactId>
-    <name>limengcanyu-redisson-interface</name>
-    <description>limengcanyu-redisson-interface</description>
+    <artifactId>${project.artifact.name}-redisson-interface</artifactId>
 
 </project>

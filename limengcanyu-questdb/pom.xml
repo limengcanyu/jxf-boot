@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-questdb</artifactId>
-    <name>limengcanyu-questdb</name>
-    <description>limengcanyu-questdb</description>
+    <artifactId>${project.artifact.name}-questdb</artifactId>
 
     <dependencies>
         <dependency>

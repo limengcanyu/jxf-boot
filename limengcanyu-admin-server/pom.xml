@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-admin-server</artifactId>
-    <name>limengcanyu-admin-server</name>
-    <description>limengcanyu-admin-server</description>
+    <artifactId>${project.artifact.name}-admin-server</artifactId>
 
     <dependencies>
         <dependency>

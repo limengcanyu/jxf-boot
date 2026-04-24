@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-kubernetes</artifactId>
-    <name>limengcanyu-kubernetes</name>
-    <description>limengcanyu-kubernetes</description>
+    <artifactId>${project.artifact.name}-kubernetes</artifactId>
 
     <dependencies>
         <dependency>

@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-aop</artifactId>
-    <name>limengcanyu-aop</name>
-    <description>limengcanyu-aop</description>
+    <artifactId>${project.artifact.name}-aop</artifactId>
 
     <dependencies>
         <dependency>

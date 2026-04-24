@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-r2dbc</artifactId>
-    <name>limengcanyu-r2dbc</name>
-    <description>limengcanyu-r2dbc</description>
+    <artifactId>${project.artifact.name}-r2dbc</artifactId>
 
     <dependencies>
         <dependency>

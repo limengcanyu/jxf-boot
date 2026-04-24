@@ -9,8 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-common</artifactId>
-    <name>limengcanyu-common</name>
-    <description>limengcanyu-common</description>
+    <artifactId>${project.artifact.name}-common</artifactId>
 
 </project>

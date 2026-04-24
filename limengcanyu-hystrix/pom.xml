@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-hystrix</artifactId>
-    <name>limengcanyu-hystrix</name>
-    <description>limengcanyu-hystrix</description>
+    <artifactId>${project.artifact.name}-hystrix</artifactId>
 
     <dependencies>
         <dependency>
@@ -74,4 +72,5 @@
             <version>1.5.18</version>
         </dependency>
     </dependencies>
+
 </project>

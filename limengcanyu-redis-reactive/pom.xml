@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-redis-reactive</artifactId>
-    <name>limengcanyu-redis-reactive</name>
-    <description>limengcanyu-redis-reactive</description>
+    <artifactId>${project.artifact.name}-redis-reactive</artifactId>
 
     <dependencies>
         <dependency>

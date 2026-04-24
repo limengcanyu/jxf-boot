@@ -8,9 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-custom-starter-test</artifactId>
-    <name>limengcanyu-custom-starter-test</name>
-    <description>limengcanyu-custom-starter-test</description>
+    <artifactId>${project.artifact.name}-custom-starter-test</artifactId>
 
     <dependencies>
         <dependency>
@@ -19,9 +17,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.github.limengcanyu</groupId>
-            <artifactId>limengcanyu-custom-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>io.github.${project.artifact.name}</groupId>
+            <artifactId>${project.artifact.name}-custom-starter</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

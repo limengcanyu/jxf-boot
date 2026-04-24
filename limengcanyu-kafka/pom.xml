@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-kafka</artifactId>
-    <name>limengcanyu-kafka</name>
-    <description>limengcanyu-kafka</description>
+    <artifactId>${project.artifact.name}-kafka</artifactId>
 
     <dependencies>
         <dependency>

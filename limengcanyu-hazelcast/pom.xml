@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-hazelcast</artifactId>
-    <name>limengcanyu-hazelcast</name>
-    <description>limengcanyu-hazelcast</description>
+    <artifactId>${project.artifact.name}-hazelcast</artifactId>
 
     <dependencies>
         <dependency>
@@ -31,4 +29,5 @@
             <version>4.1</version>
         </dependency>
     </dependencies>
+
 </project>

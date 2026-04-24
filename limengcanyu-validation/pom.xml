@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-validation</artifactId>
-    <name>limengcanyu-validation</name>
-    <description>limengcanyu-validation</description>
+    <artifactId>${project.artifact.name}-validation</artifactId>
 
     <dependencies>
         <dependency>

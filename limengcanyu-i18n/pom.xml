@@ -9,11 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.github.limengcanyu</groupId>
-    <artifactId>limengcanyu-i18n</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>limengcanyu-i18n</name>
-    <description>limengcanyu-i18n</description>
+    <artifactId>${project.artifact.name}-i18n</artifactId>
 
     <dependencies>
         <dependency>

@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-cassandra</artifactId>
-	<name>limengcanyu-cassandra</name>
-	<description>limengcanyu-cassandra</description>
+	<artifactId>${project.artifact.name}-cassandra</artifactId>
 
 	<dependencies>
 		<dependency>

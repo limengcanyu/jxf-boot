@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-nebula</artifactId>
-    <name>limengcanyu-nebula</name>
-    <description>limengcanyu-nebula</description>
+    <artifactId>${project.artifact.name}-nebula</artifactId>
 
     <dependencies>
         <dependency>

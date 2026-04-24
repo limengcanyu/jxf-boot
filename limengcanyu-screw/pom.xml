@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-screw</artifactId>
-    <name>limengcanyu-screw</name>
-    <description>limengcanyu-screw</description>
+    <artifactId>${project.artifact.name}-screw</artifactId>
 
     <dependencies>
         <dependency>

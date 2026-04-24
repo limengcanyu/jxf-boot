@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-mongodb</artifactId>
-    <name>limengcanyu-mongodb</name>
-    <description>limengcanyu-mongodb</description>
+    <artifactId>${project.artifact.name}-mongodb</artifactId>
 
     <dependencies>
         <dependency>

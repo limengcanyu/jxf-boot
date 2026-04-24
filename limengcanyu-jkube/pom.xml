@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-jkube</artifactId>
-    <name>limengcanyu-jkube</name>
-    <description>limengcanyu-jkube</description>
+    <artifactId>${project.artifact.name}-jkube</artifactId>
 
     <properties>
         <!-- 生成Ingress -->

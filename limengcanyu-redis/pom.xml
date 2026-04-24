@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-redis</artifactId>
-    <name>limengcanyu-redis</name>
-    <description>limengcanyu-redis</description>
+    <artifactId>${project.artifact.name}-redis</artifactId>
 
     <dependencies>
         <dependency>
@@ -31,7 +29,7 @@
 
         <dependency>
             <groupId>io.github.limengcanyu</groupId>
-            <artifactId>limengcanyu-common</artifactId>
+            <artifactId>${project.artifact.name}-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

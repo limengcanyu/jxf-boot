@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-httpcomponents</artifactId>
-	<name>limengcanyu-httpcomponents</name>
-	<description>limengcanyu-httpcomponents</description>
+	<artifactId>${project.artifact.name}-httpcomponents</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -33,4 +31,5 @@
 			<version>4.4.13</version>
 		</dependency>
 	</dependencies>
+
 </project>

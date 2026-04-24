@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-okhttp</artifactId>
-	<name>limengcanyu-okhttp</name>
-	<description>limengcanyu-okhttp</description>
+	<artifactId>${project.artifact.name}-okhttp</artifactId>
 
 	<dependencies>
 		<dependency>

@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-test</artifactId>
-    <name>limengcanyu-test</name>
-    <description>limengcanyu-test</description>
+    <artifactId>${project.artifact.name}-test</artifactId>
 
     <dependencies>
         <dependency>

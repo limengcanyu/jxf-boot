@@ -8,9 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-ssl</artifactId>
-    <name>limengcanyu-ssl</name>
-    <description>limengcanyu-ssl</description>
+    <artifactId>${project.artifact.name}-ssl</artifactId>
 
     <dependencies>
         <dependency>

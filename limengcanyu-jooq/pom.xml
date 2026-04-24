@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-jooq</artifactId>
-    <name>limengcanyu-jooq</name>
-    <description>limengcanyu-jooq</description>
+    <artifactId>${project.artifact.name}-jooq</artifactId>
 
     <dependencies>
         <dependency>

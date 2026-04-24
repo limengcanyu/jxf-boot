@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-rocketmq-consumer</artifactId>
-	<name>limengcanyu-rocketmq-consumer</name>
-	<description>limengcanyu-rocketmq-consumer</description>
+	<artifactId>${project.artifact.name}-rocketmq-consumer</artifactId>
 
 	<dependencies>
 		<dependency>

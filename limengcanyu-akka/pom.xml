@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-akka</artifactId>
-    <name>limengcanyu-akka</name>
-    <description>limengcanyu-akka</description>
+    <artifactId>${project.artifact.name}-akka</artifactId>
 
     <dependencies>
         <dependency>

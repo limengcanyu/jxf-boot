@@ -8,9 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-undertow</artifactId>
-    <name>limengcanyu-undertow</name>
-    <description>limengcanyu-undertow</description>
+    <artifactId>${project.artifact.name}-undertow</artifactId>
 
     <dependencies>
         <dependency>

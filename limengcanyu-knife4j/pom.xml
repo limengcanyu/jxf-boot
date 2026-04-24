@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-knife4j</artifactId>
-    <name>limengcanyu-knife4j</name>
-    <description>limengcanyu-knife4j</description>
+    <artifactId>${project.artifact.name}-knife4j</artifactId>
 
     <dependencies>
         <dependency>

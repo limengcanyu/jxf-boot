@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-aliyun</artifactId>
-	<name>limengcanyu-aliyun</name>
-	<description>limengcanyu-aliyun</description>
+	<artifactId>${project.artifact.name}-aliyun</artifactId>
 
 	<dependencies>
 		<dependency>

@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-rest-template</artifactId>
-    <name>limengcanyu-rest-template</name>
-    <description>limengcanyu-rest-template</description>
+    <artifactId>${project.artifact.name}-rest-template</artifactId>
 
     <dependencies>
         <dependency>

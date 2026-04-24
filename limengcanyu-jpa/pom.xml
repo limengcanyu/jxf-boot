@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-jpa</artifactId>
-    <name>limengcanyu-jpa</name>
-    <description>limengcanyu-jpa</description>
+    <artifactId>${project.artifact.name}-jpa</artifactId>
 
     <dependencies>
         <dependency>

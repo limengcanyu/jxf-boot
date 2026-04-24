@@ -9,8 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-rocketmq-produce</artifactId>
-    <name>limengcanyu-rocketmq-produce</name>
-    <description>limengcanyu-rocketmq-produce</description>
+    <artifactId>${project.artifact.name}-rocketmq-produce</artifactId>
 
 </project>

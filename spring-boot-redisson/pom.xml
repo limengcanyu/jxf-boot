@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-redisson</artifactId>
-    <name>limengcanyu-redisson</name>
-    <description>limengcanyu-redisson</description>
+    <artifactId>${project.artifact.name}-redisson</artifactId>
 
     <dependencies>
         <dependency>

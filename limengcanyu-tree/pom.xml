@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-tree</artifactId>
-    <name>limengcanyu-tree</name>
-    <description>limengcanyu-tree</description>
+    <artifactId>${project.artifact.name}-tree</artifactId>
 
     <dependencies>
         <dependency>

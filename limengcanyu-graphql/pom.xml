@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-graphql</artifactId>
-    <name>limengcanyu-graphql</name>
-    <description>limengcanyu-graphql</description>
+    <artifactId>${project.artifact.name}-graphql</artifactId>
 
     <dependencies>
         <dependency>

@@ -9,8 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-rocketmq-consume</artifactId>
-    <name>limengcanyu-rocketmq-consume</name>
-    <description>limengcanyu-rocketmq-consume</description>
+    <artifactId>${project.artifact.name}-rocketmq-consume</artifactId>
 
 </project>

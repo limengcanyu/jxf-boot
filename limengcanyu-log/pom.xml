@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-log</artifactId>
-	<name>limengcanyu-log</name>
-	<description>limengcanyu-log</description>
+	<artifactId>${project.artifact.name}-log</artifactId>
 
 	<dependencies>
 		<dependency>

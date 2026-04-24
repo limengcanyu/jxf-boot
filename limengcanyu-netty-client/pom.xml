@@ -9,14 +9,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-netty-client</artifactId>
-    <name>limengcanyu-netty-client</name>
-    <description>limengcanyu-netty-client</description>
+    <artifactId>${project.artifact.name}-netty-client</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>io.github.limengcanyu</groupId>
-            <artifactId>limengcanyu-netty-common</artifactId>
+            <groupId>io.github.${project.artifact.name}</groupId>
+            <artifactId>${project.artifact.name}-netty-common</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

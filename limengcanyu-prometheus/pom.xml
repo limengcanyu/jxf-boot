@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-prometheus</artifactId>
-    <name>limengcanyu-prometheus</name>
-    <description>limengcanyu-prometheus</description>
+    <artifactId>${project.artifact.name}-prometheus</artifactId>
 
     <dependencies>
         <dependency>

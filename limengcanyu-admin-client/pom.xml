@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-admin-client</artifactId>
-    <name>limengcanyu-admin-client</name>
-    <description>limengcanyu-admin-client project</description>
+    <artifactId>${project.artifact.name}-admin-client</artifactId>
 
     <dependencies>
         <dependency>

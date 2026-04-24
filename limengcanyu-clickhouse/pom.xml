@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-clickhouse</artifactId>
-	<name>limengcanyu-clickhouse</name>
-	<description>limengcanyu-clickhouse</description>
+	<artifactId>${project.artifact.name}-clickhouse</artifactId>
 
 	<dependencies>
 		<dependency>

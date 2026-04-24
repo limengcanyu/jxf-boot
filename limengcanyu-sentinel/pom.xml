@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-sentinel</artifactId>
-	<name>limengcanyu-sentinel</name>
-	<description>limengcanyu-sentinel</description>
+	<artifactId>${project.artifact.name}-sentinel</artifactId>
 
 	<dependencies>
 		<dependency>

@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-neo4j</artifactId>
-	<name>limengcanyu-neo4j</name>
-	<description>limengcanyu-neo4j</description>
+	<artifactId>${project.artifact.name}-neo4j</artifactId>
 
 	<dependencies>
 		<dependency>

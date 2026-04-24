@@ -9,9 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>limengcanyu-doris</artifactId>
-    <name>limengcanyu-doris</name>
-    <description>limengcanyu-doris</description>
+    <artifactId>${project.artifact.name}-doris</artifactId>
 
     <dependencies>
         <dependency>

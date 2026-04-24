@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>limengcanyu-rabbitmq-consumer</artifactId>
-	<name>limengcanyu-rabbitmq-consumer</name>
-	<description>limengcanyu-rabbitmq-consumer</description>
+	<artifactId>${project.artifact.name}-rabbitmq-consumer</artifactId>
 
 	<dependencies>
 		<dependency>
