@@ -1,7 +1,0 @@
-# DataSource Config
-spring:
-  sql:
-    init:
-      schema-locations: classpath:db/schema-h2.sql
-      data-locations: classpath:db/data-h2.sql
-      mode: always  # 确保初始化脚本总是执行

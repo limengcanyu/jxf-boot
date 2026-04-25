@@ -1,9 +1,0 @@
-type Query {
-    hello: String
-    echo(toEcho: String): String
-
-    users: [User!]
-    user(id: ID!): User
-
-    bookById(id: ID): Book
-}

@@ -1,8 +1,0 @@
-POST http://localhost:8080/graphql
-Content-Type: application/json
-
-{
-  "query": "{hello,echo(toEcho: \"SpringBoot\"),users{id,password,username},user(id: \"user-1\"){id,password,username,info{id,age}}}"
-}
-
-###

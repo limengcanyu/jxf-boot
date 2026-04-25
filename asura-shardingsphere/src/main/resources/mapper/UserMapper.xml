@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.asura.shardingsphere.mapper.UserMapper">
+
+    <select id="selectAll" resultType="org.asura.shardingsphere.entity.User">
+        select user_id, fullname, pwd, mobile, id_card from t_user
+    </select>
+
+    <insert id="insertNew" parameterType="org.asura.shardingsphere.entity.User">
+        insert into t_user (user_id, fullname, age, birthday, pwd, mobile, id_card)
+        values (#{userId}, #{fullname}, #{age}, #{birthday}, #{pwd}, #{mobile}, #{idCard})
+    </insert>
+
+</mapper>

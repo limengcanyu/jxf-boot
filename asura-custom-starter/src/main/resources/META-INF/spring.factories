@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.asura.custom.starter.autoconfigure.AcmeAutoConfiguration
