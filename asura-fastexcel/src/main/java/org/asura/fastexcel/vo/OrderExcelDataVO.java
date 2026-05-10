@@ -1,5 +1,6 @@
 package org.asura.fastexcel.vo;
 
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,4 +21,3 @@ public class OrderExcelDataVO<T extends ExcelFixedColumnAble, D extends ExcelDyn
      */
     private List<D> dynamicColumns;
 }
-

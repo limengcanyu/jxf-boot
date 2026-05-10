@@ -1,30 +1,30 @@
 package org.asura.caffeine.service;
 
-import org.asura.caffeine.vo.GoodsVO;
-import org.asura.caffeine.vo.OrderVO;
-import org.asura.caffeine.vo.UserVO;
+import org.asura.caffeine.dto.GoodsDTO;
+import org.asura.caffeine.dto.OrderDTO;
+import org.asura.caffeine.dto.UserDTO;
 
 public interface BizDataService {
     // 用户相关
-    UserVO getUserById(Long userId);
-    UserVO updateUser(UserVO userVO);
+    UserDTO getUserById(Long userId);
+    UserDTO updateUser(UserDTO userDTO);
     void deleteUser(Long userId);
+    void clearAllUserCache();
 
     // 商品相关
-    GoodsVO getGoodsById(Long goodsId);
+    GoodsDTO getGoodsById(Long goodsId);
     void clearAllGoodsCache();
 
     // 订单相关
-    OrderVO getOrderById(Long orderId);
+    OrderDTO getOrderById(Long orderId);
     void cancelOrder(Long orderId);
 
     // 手动操作缓存
     void manualPutCache();
-    UserVO manualGetCache();
+    UserDTO manualGetCache();
     void manualEvictCache();
     void manualClearCache();
     void manualUpdateCache();
     void manualCaffeineCache();
     void onlySpringCache();
 }
-

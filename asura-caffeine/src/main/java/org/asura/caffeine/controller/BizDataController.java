@@ -1,10 +1,10 @@
 package org.asura.caffeine.controller;
 
-import org.asura.caffeine.service.BizDataService;
-import org.asura.caffeine.vo.GoodsVO;
-import org.asura.caffeine.vo.OrderVO;
-import org.asura.caffeine.vo.UserVO;
 import lombok.RequiredArgsConstructor;
+import org.asura.caffeine.dto.GoodsDTO;
+import org.asura.caffeine.dto.OrderDTO;
+import org.asura.caffeine.dto.UserDTO;
+import org.asura.caffeine.service.BizDataService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,25 +20,41 @@ public class BizDataController {
     private final BizDataService bizDataService;
 
     // ========== 用户接口 ==========
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<UserVO> getUser(@PathVariable Long userId) {
+
+    /**
+     * http://localhost:8080/prod/biz/getUser/1001
+     */
+    @GetMapping("/getUser/{userId}")
+    public ResponseEntity<UserDTO> getUser(@PathVariable Long userId) {
         return ResponseEntity.ok(bizDataService.getUserById(userId));
     }
 
-    @PutMapping("/user")
-    public ResponseEntity<UserVO> updateUser(@RequestBody UserVO userVO) {
+    @PutMapping("/updateUser")
+    public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userVO) {
         return ResponseEntity.ok(bizDataService.updateUser(userVO));
     }
 
-    @DeleteMapping("/user/{userId}")
+    /**
+     * http://localhost:8080/prod/biz/deleteUser/1001
+     */
+    @DeleteMapping("/deleteUser/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
         bizDataService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * http://localhost:8080/user/clearAllUserCache
+     * @return
+     */
+    @GetMapping("/clearAllUserCache")
+    public void clearAllUserCache() {
+        bizDataService.clearAllUserCache();
+    }
+
     // ========== 商品接口 ==========
     @GetMapping("/goods/{goodsId}")
-    public ResponseEntity<GoodsVO> getGoods(@PathVariable Long goodsId) {
+    public ResponseEntity<GoodsDTO> getGoods(@PathVariable Long goodsId) {
         return ResponseEntity.ok(bizDataService.getGoodsById(goodsId));
     }
 
@@ -50,7 +66,7 @@ public class BizDataController {
 
     // ========== 订单接口 ==========
     @GetMapping("/order/{orderId}")
-    public ResponseEntity<OrderVO> getOrder(@PathVariable Long orderId) {
+    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long orderId) {
         return ResponseEntity.ok(bizDataService.getOrderById(orderId));
     }
 
@@ -68,7 +84,7 @@ public class BizDataController {
     }
 
     @GetMapping("/manualGetCache")
-    public ResponseEntity<UserVO> manualGetCache() {
+    public ResponseEntity<UserDTO> manualGetCache() {
         return ResponseEntity.ok(bizDataService.manualGetCache());
     }
 
@@ -103,4 +119,3 @@ public class BizDataController {
     }
 
 }
-

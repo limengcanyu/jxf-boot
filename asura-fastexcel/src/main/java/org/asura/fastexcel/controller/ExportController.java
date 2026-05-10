@@ -1,20 +1,15 @@
 package org.asura.fastexcel.controller;
 
-
 import cn.idev.excel.ExcelWriter;
 import cn.idev.excel.FastExcelFactory;
 import cn.idev.excel.converters.longconverter.LongStringConverter;
 import cn.idev.excel.write.metadata.WriteSheet;
-import org.asura.fastexcel.dto.OrderExportDTO;
-import org.asura.fastexcel.service.OrderService;
-import org.asura.fastexcel.utils.ExcelBigDataExportUtil;
-import org.asura.fastexcel.utils.HttpUtils;
-import org.asura.fastexcel.vo.DynamicFieldObjectPageReqVO;
-import org.asura.fastexcel.vo.DynamicFieldObjectRespVO;
-import org.asura.fastexcel.vo.FixedFieldObjectRespVO;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.asura.common.util.HttpUtils;
+import org.asura.common.vo.DynamicFieldObjectPageReqVO;
+import org.asura.common.vo.DynamicFieldObjectRespVO;
+import org.asura.fastexcel.vo.FixedFieldObjectRespVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,25 +64,4 @@ public class ExportController {
         }
     }
 
-    @Resource
-    private OrderService orderService; // 业务服务层
-
-    /**
-     * 导出100M级订单数据（示例）
-     */
-    @GetMapping("/order/bigData")
-    public void exportBigOrderData(HttpServletResponse response) {
-        // 配置：每批查询2000行，平衡查询效率和内存占用
-        int pageSize = 2000;
-
-        // 调用工具类导出
-        ExcelBigDataExportUtil.exportBigData(
-                response,
-                "订单数据-全量",
-                (pageNum, size) -> orderService.queryOrderByPage(pageNum, size), // 分批查询数据
-                pageSize,
-                OrderExportDTO.class
-        );
-    }
 }
-

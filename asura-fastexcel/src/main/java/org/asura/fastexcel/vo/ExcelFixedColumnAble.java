@@ -13,4 +13,3 @@ public interface ExcelFixedColumnAble {
     Map<String, String> getFieldNameToIndexName();
 
 }
-

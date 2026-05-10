@@ -1,4 +1,3 @@
-
 ### 获取用户
 GET http://localhost:8080/prod/biz/user/1001
 

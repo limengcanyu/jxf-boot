@@ -1,8 +1,8 @@
 package org.asura.caffeine.controller;
 
 import com.github.benmanes.caffeine.cache.stats.CacheStats;
-import org.asura.caffeine.config.CaffeineCacheConfig;
 import lombok.RequiredArgsConstructor;
+import org.asura.caffeine.config.CaffeineCacheConfig;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.http.ResponseEntity;
@@ -55,5 +55,5 @@ public class CacheMonitorController {
         singleStats.put(cacheName + "-平均加载耗时(ms)", stats.averageLoadPenalty() / 1000000);
         return singleStats;
     }
-}
 
+}

@@ -1,18 +1,19 @@
 package org.asura.caffeine.service.impl;
 
-import org.asura.caffeine.config.CaffeineCacheConfig;
-import org.asura.caffeine.service.BizDataService;
-import org.asura.caffeine.vo.GoodsVO;
-import org.asura.caffeine.vo.OrderVO;
-import org.asura.caffeine.vo.UserVO;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.asura.caffeine.config.CaffeineCacheConfig;
+import org.asura.caffeine.dto.GoodsDTO;
+import org.asura.caffeine.dto.OrderDTO;
+import org.asura.caffeine.dto.UserDTO;
+import org.asura.caffeine.service.BizDataService;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -38,15 +39,15 @@ public class BizDataServiceImpl implements BizDataService {
     // ====================== 用户缓存操作 (userCache:写入5分钟过期) ======================
     @Override
     @Cacheable(value = CaffeineCacheConfig.CACHE_USER, key = "#userId", unless = "#result == null")
-    public UserVO getUserById(Long userId) {
+    public UserDTO getUserById(Long userId) {
         log.info("【用户缓存未命中】执行数据库查询 -> userId:{}", userId);
         // 生产环境替换为：Mybatis/JPA 查询数据库
-        return new UserVO(userId, "用户_" + userId, 25, "13800138000");
+        return new UserDTO(userId, "用户_" + userId, 25, "13800138000");
     }
 
     @Override
     @CachePut(value = CaffeineCacheConfig.CACHE_USER, key = "#userVO.userId")
-    public UserVO updateUser(UserVO userVO) {
+    public UserDTO updateUser(UserDTO userVO) {
         log.info("【更新用户】执行数据库更新 -> userId:{}", userVO.getUserId());
         // 生产环境替换为：Mybatis/JPA 更新数据库
         return userVO;
@@ -59,12 +60,21 @@ public class BizDataServiceImpl implements BizDataService {
         // 生产环境替换为：Mybatis/JPA 删除数据库
     }
 
+    /**
+     * 清空整个 userCache 缓存
+     */
+    @CacheEvict(value = CaffeineCacheConfig.CACHE_USER, allEntries = true)
+    @Override
+    public void clearAllUserCache() {
+        log.info("【用户缓存】执行批量清空操作");
+    }
+
     // ====================== 商品缓存操作 (goodsCache:访问1小时过期) ======================
     @Override
     @Cacheable(value = CaffeineCacheConfig.CACHE_GOODS, key = "#goodsId", unless = "#result == null")
-    public GoodsVO getGoodsById(Long goodsId) {
+    public GoodsDTO getGoodsById(Long goodsId) {
         log.info("【商品缓存未命中】执行数据库查询 -> goodsId:{}", goodsId);
-        return new GoodsVO(goodsId, "商品_" + goodsId, new BigDecimal("999.00"), 1000);
+        return new GoodsDTO(goodsId, "商品_" + goodsId, new BigDecimal("999.00"), 1000);
     }
 
     @Override
@@ -76,9 +86,9 @@ public class BizDataServiceImpl implements BizDataService {
     // ====================== 订单缓存操作 (orderCache:写入2分钟过期+异步刷新) ======================
     @Override
     @Cacheable(value = CaffeineCacheConfig.CACHE_ORDER, key = "#orderId", unless = "#result == null")
-    public OrderVO getOrderById(Long orderId) {
+    public OrderDTO getOrderById(Long orderId) {
         log.info("【订单缓存未命中】执行数据库查询 -> orderId:{}", orderId);
-        return new OrderVO(orderId, 1001L, 2001L, new BigDecimal("1999.00"), LocalDateTime.now());
+        return new OrderDTO(orderId, 1001L, 2001L, new BigDecimal("1999.00"), LocalDateTime.now());
     }
 
     @Override
@@ -97,7 +107,7 @@ public class BizDataServiceImpl implements BizDataService {
         // 1. 获取指定的缓存空间（比如userCache）
         Cache userCache = cacheManager.getCache(CaffeineCacheConfig.CACHE_USER);
         // 2. 手动写入缓存 key=1002, value=自定义用户对象
-        UserVO userVO = new UserVO(1002L, "手动新增用户", 30, "13900139000");
+        UserDTO userVO = new UserDTO(1002L, "手动新增用户", 30, "13900139000");
         assert userCache != null;
         userCache.put(1002L, userVO);
         log.info("✅ 手动写入缓存成功，key=1002");
@@ -108,13 +118,13 @@ public class BizDataServiceImpl implements BizDataService {
      * 无监听触发（查询不会修改缓存，监听只针对「新增/移除」行为）
      */
     @Override
-    public UserVO manualGetCache() {
+    public UserDTO manualGetCache() {
         Cache userCache = cacheManager.getCache(CaffeineCacheConfig.CACHE_USER);
         // 手动查询缓存，返回值是Cache.ValueWrapper，需要手动解包
         assert userCache != null;
         Cache.ValueWrapper wrapper = userCache.get(1002L);
         if (wrapper != null) {
-            return (UserVO) wrapper.get();
+            return (UserDTO) wrapper.get();
         }
         log.info("❌ 手动查询缓存未命中，key=1002");
         return null;
@@ -151,7 +161,7 @@ public class BizDataServiceImpl implements BizDataService {
     @Override
     public void manualUpdateCache() {
         Cache userCache = cacheManager.getCache(CaffeineCacheConfig.CACHE_USER);
-        UserVO newUserVO = new UserVO(1002L, "手动更新后的用户", 31, "13900139000");
+        UserDTO newUserVO = new UserDTO(1002L, "手动更新后的用户", 31, "13900139000");
         assert userCache != null;
         userCache.put(1002L, newUserVO);
         log.info("✅ 手动更新缓存成功，key=1002");
@@ -161,9 +171,9 @@ public class BizDataServiceImpl implements BizDataService {
     @Override
     public void manualCaffeineCache() {
         // 新增/更新 原生操作（无监听）
-        userCache.put(1003L, new UserVO(1003L, "原生缓存用户", 28, "13700137000"));
+        userCache.put(1003L, new UserDTO(1003L, "原生缓存用户", 28, "13700137000"));
         // 查询 原生查询（无监听）
-        UserVO userVO = (UserVO) userCache.getIfPresent(1003L);
+        UserDTO userVO = (UserDTO) userCache.getIfPresent(1003L);
         // 删除 原生删除 → 触发【主动删除】监听日志 ✔️
         userCache.invalidate(1003L);
         // 批量清空 原生删除 → 触发【主动删除】监听日志 ✔️
@@ -177,13 +187,13 @@ public class BizDataServiceImpl implements BizDataService {
     public void onlySpringCache() {
         org.springframework.cache.Cache userCache = cacheManager.getCache(CaffeineCacheConfig.CACHE_USER);
         Long userId = 1003L;
-        UserVO userVO = new UserVO(userId, "原生缓存用户", 28, "13700137000");
+        UserDTO userVO = new UserDTO(userId, "原生缓存用户", 28, "13700137000");
 
         // 新增 → 【缓存新增】日志 ✔️
         assert userCache != null;
         userCache.put(userId, userVO);
         // 查询 → 无日志
-        UserVO cacheUser = (UserVO) Objects.requireNonNull(userCache.get(userId)).get();
+        UserDTO cacheUser = (UserDTO) Objects.requireNonNull(userCache.get(userId)).get();
         // 删除 → 【主动删除】日志 ✔️
         userCache.evict(userId);
         // 批量清空 → 批量【主动删除】日志 ✔️
@@ -191,4 +201,3 @@ public class BizDataServiceImpl implements BizDataService {
     }
 
 }
-

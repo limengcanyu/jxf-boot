@@ -1,6 +1,5 @@
 package org.asura.fastexcel.vo;
 
-
 import jakarta.validation.Valid;
 import lombok.Data;
 
@@ -26,4 +25,3 @@ public class ExcelDataVO<T extends ExcelFixedColumnAble, D extends ExcelDynamicC
      */
     private int rowNum;
 }
-

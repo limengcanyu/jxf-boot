@@ -1,6 +1,5 @@
 package org.asura.fastexcel.vo;
 
-
 import cn.idev.excel.annotation.ExcelIgnoreUnannotated;
 import cn.idev.excel.annotation.ExcelProperty;
 import lombok.Data;
@@ -41,4 +40,3 @@ public class FixedFieldObjectRespVO {
     }
 
 }
-

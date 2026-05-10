@@ -2,19 +2,15 @@ package org.asura.caffeine.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.RemovalCause;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.Cache;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -99,6 +95,7 @@ public class CaffeineCacheConfig {
     }
 
     /**
+     * 继承基于Caffeine原生缓存的Spring缓存适配器实现类CaffeineCache
      * 自定义缓存类，监听【缓存新增】行为
      * ✅ 正确方法：super.lookup(key) 判断缓存是否存在（Spring封装类的标准方法）
      * ✅ 健壮性处理：过滤空key/空value，无空指针风险
@@ -123,28 +120,9 @@ public class CaffeineCacheConfig {
         }
     }
 
-    /**
-     * 读取yml中caffeine配置的属性类
-     * 配置前缀：caffeine.cache
-     */
-    @Component
-    @ConfigurationProperties(prefix = "caffeine.cache")
-    @Data
-    public static class CaffeineCacheProperties {
-        private Map<String, CacheConfig> configs;
-
-        @Data
-        public static class CacheConfig {
-            private Long maximumSize;        // 最大容量
-            private Integer expireAfterWrite;// 写入后过期(分钟)
-            private Integer expireAfterAccess;// 访问后过期(分钟)
-            private Boolean recordStats = false;// 是否开启统计
-        }
-    }
-
-    // ==============================================
-    // ========== 核心新增：手动注册4个缓存Bean ==========
-    // ==============================================
+    // =================================================================
+    // ========== 核心新增：手动注册4个缓存Bean（caffeine原生缓存） ==========
+    // =================================================================
     @Bean(name = CACHE_USER)
     public com.github.benmanes.caffeine.cache.Cache<Object, Object> userCache() {
         return getCaffeineNativeCache(CACHE_USER);
@@ -171,5 +149,5 @@ public class CaffeineCacheConfig {
         assert caffeineCache != null;
         return caffeineCache.getNativeCache();
     }
-}
 
+}

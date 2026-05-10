@@ -9,4 +9,3 @@ public interface ExcelDynamicColumnAble {
     Map<String, String> getDynamicColumnFieldName();
 
 }
-
