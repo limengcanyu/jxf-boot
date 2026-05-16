@@ -54,6 +54,7 @@
         <module>asura-guava</module>
         <module>asura-hazelcast</module>
         <module>asura-httpcomponents</module>
+        <module>asura-hutool</module>
         <module>asura-hystrix</module>
         <module>asura-i18n</module>
         <module>asura-influxdb</module>
