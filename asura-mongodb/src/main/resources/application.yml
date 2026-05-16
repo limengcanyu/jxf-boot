@@ -1,15 +1,19 @@
 spring:
   application:
-    name: spring-boot-data-mongodb
+    name: asura-mongodb
   data:
     mongodb:
       uri: mongodb://localhost:27017/test?retryWrites=true&w=majority
+#      uri: mongodb://192.168.81.129:30001,192.168.81.129:30002,192.168.81.129:30001/artanis
 #      additional-hosts:
 #        - "mongoserver2.example.com:23456"
       username: root
       password: PassW0rd321
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
 
 logging:
   level:
-    com.spring.boot: DEBUG
+    org.asura.mongodb: DEBUG
     org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+  pattern:
+    console: ${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %4line %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}

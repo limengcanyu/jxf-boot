@@ -39,31 +39,15 @@
         <module>${project.artifact.name}-couchbase</module>
         <module>${project.artifact.name}-custom-starter</module>
         <module>${project.artifact.name}-custom-starter-test</module>
-        <module>${project.artifact.name}-easyexcel</module>
-        <module>${project.artifact.name}-elasticsearch</module>
-        <module>${project.artifact.name}-graphql</module>
-        <module>${project.artifact.name}-jdbc</module>
-        <module>${project.artifact.name}-jooq</module>
-        <module>${project.artifact.name}-jpa</module>
-        <module>${project.artifact.name}-liteflow</module>
-        <module>${project.artifact.name}-mongodb</module>
-        <module>${project.artifact.name}-modulith-structure</module>
-        <module>${project.artifact.name}-neo4j</module>
-        <module>${project.artifact.name}-pulsar</module>
-        <module>${project.artifact.name}-quartz</module>
-        <module>${project.artifact.name}-r2dbc</module>
-        <module>${project.artifact.name}-rabbitmq</module>
-        <module>${project.artifact.name}-redis</module>
-        <module>${project.artifact.name}-redisson</module>
-        <module>${project.artifact.name}-redisson-client</module>
-        <module>${project.artifact.name}-redisson-interface</module>
-        <module>${project.artifact.name}-redisson-server</module>
         <module>${project.artifact.name}-disruptor</module>
         <module>${project.artifact.name}-doris</module>
+        <module>${project.artifact.name}-easyexcel</module>
+        <module>${project.artifact.name}-elasticsearch</module>
         <module>${project.artifact.name}-example</module>
         <module>${project.artifact.name}-fastexcel</module>
         <module>${project.artifact.name}-flaw</module>
         <module>${project.artifact.name}-flowable</module>
+        <module>${project.artifact.name}-graphql</module>
         <module>${project.artifact.name}-graphql-java-kickstart</module>
         <module>${project.artifact.name}-guava</module>
         <module>${project.artifact.name}-hazelcast</module>
@@ -72,21 +56,27 @@
         <module>${project.artifact.name}-i18n</module>
         <module>${project.artifact.name}-influxdb</module>
         <module>${project.artifact.name}-jackson</module>
+        <module>${project.artifact.name}-jdbc</module>
         <module>${project.artifact.name}-jib</module>
         <module>${project.artifact.name}-jkube</module>
+        <module>${project.artifact.name}-jooq</module>
+        <module>${project.artifact.name}-jpa</module>
         <module>${project.artifact.name}-jwt</module>
         <module>${project.artifact.name}-kafka</module>
         <module>${project.artifact.name}-kafka-streams</module>
         <module>${project.artifact.name}-knife4j</module>
         <module>${project.artifact.name}-kubernetes</module>
+        <module>${project.artifact.name}-liteflow</module>
         <module>${project.artifact.name}-log</module>
         <module>${project.artifact.name}-logstash</module>
-        <module>${project.artifact.name}-mongo</module>
+        <module>${project.artifact.name}-modulith-structure</module>
+        <module>${project.artifact.name}-mongodb</module>
         <module>${project.artifact.name}-multi-datasource-transaction</module>
         <module>${project.artifact.name}-mybatis-plus</module>
         <module>${project.artifact.name}-mybatis-plus-druid-dynamic-datasource</module>
         <module>${project.artifact.name}-mybatis-plus-druid-multi-datasource</module>
         <module>${project.artifact.name}-mybatis-plus-sharding-jdbc</module>
+        <module>${project.artifact.name}-neo4j</module>
         <module>${project.artifact.name}-netty</module>
         <module>${project.artifact.name}-netty-client</module>
         <module>${project.artifact.name}-netty-common</module>
@@ -95,17 +85,24 @@
         <module>${project.artifact.name}-poi</module>
         <module>${project.artifact.name}-postgressql</module>
         <module>${project.artifact.name}-prometheus</module>
+        <module>${project.artifact.name}-pulsar</module>
+        <module>${project.artifact.name}-quartz</module>
         <module>${project.artifact.name}-questdb</module>
+        <module>${project.artifact.name}-r2dbc</module>
+        <module>${project.artifact.name}-rabbitmq</module>
         <module>${project.artifact.name}-rabbitmq-consumer</module>
         <module>${project.artifact.name}-rabbitmq-producer</module>
         <module>${project.artifact.name}-rate-limit</module>
+        <module>${project.artifact.name}-redis</module>
         <module>${project.artifact.name}-redis-jedis</module>
         <module>${project.artifact.name}-redis-reactive</module>
+        <module>${project.artifact.name}-redisson</module>
+        <module>${project.artifact.name}-redisson-client</module>
+        <module>${project.artifact.name}-redisson-interface</module>
+        <module>${project.artifact.name}-redisson-server</module>
         <module>${project.artifact.name}-resilience4j</module>
+        <module>${project.artifact.name}-rest-template</module>
         <module>${project.artifact.name}-rocketmq</module>
-        <module>${project.artifact.name}-rocketmq-consumer</module>
-        <module>${project.artifact.name}-rocketmq-example</module>
-        <module>${project.artifact.name}-rocketmq-producer</module>
         <module>${project.artifact.name}-screw</module>
         <module>${project.artifact.name}-security</module>
         <module>${project.artifact.name}-sentinel</module>
@@ -113,7 +110,6 @@
         <module>${project.artifact.name}-shardingsphere-jdbc</module>
         <module>${project.artifact.name}-skywalking</module>
         <module>${project.artifact.name}-ssl</module>
-        <module>${project.artifact.name}-rest-template</module>
         <module>${project.artifact.name}-temporal</module>
         <module>${project.artifact.name}-test</module>
         <module>${project.artifact.name}-thrift</module>
@@ -437,27 +433,11 @@
                 <scope>compile</scope>
             </dependency>
 
-            <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-annotation -->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-annotation</artifactId>
-                <version>3.5.16</version>
-                <scope>compile</scope>
-            </dependency>
-
             <!-- Source: https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-jsqlparser -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-jsqlparser</artifactId>
                 <version>3.5.16</version>
-                <scope>compile</scope>
-            </dependency>
-
-            <!-- Source: https://mvnrepository.com/artifact/org.freemarker/freemarker -->
-            <dependency>
-                <groupId>org.freemarker</groupId>
-                <artifactId>freemarker</artifactId>
-                <version>2.3.34</version>
                 <scope>compile</scope>
             </dependency>
 
@@ -469,11 +449,25 @@
                 <scope>test</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+                <version>4.5.0</version>
+            </dependency>
+
             <!-- Source: https://mvnrepository.com/artifact/com.github.yulichang/mybatis-plus-join-boot-starter -->
             <dependency>
                 <groupId>com.github.yulichang</groupId>
                 <artifactId>mybatis-plus-join-boot-starter</artifactId>
                 <version>1.5.7</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.34</version>
                 <scope>compile</scope>
             </dependency>
 
@@ -623,6 +617,20 @@
                 <artifactId>micrometer-registry-prometheus</artifactId>
                 <version>1.16.5</version>
                 <scope>compile</scope>
+            </dependency>
+
+            <!-- ==================== lock4j ==================== -->
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>lock4j-redisson-spring-boot-starter</artifactId>
+                <version>2.2.7</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>lock4j-zookeeper-spring-boot-starter</artifactId>
+                <version>2.2.7</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

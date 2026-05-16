@@ -4,8 +4,10 @@ import org.asura.mongodb.repository.CommonMongoRepositoryImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableMongoRepositories(repositoryBaseClass = CommonMongoRepositoryImpl.class, basePackages = "com.spring.boot.data.mongodb.repository")
+@EnableTransactionManagement
+@EnableMongoRepositories(repositoryBaseClass = CommonMongoRepositoryImpl.class, basePackages = "org.asura.mongodb.repository")
 @SpringBootApplication
 public class AsuraMongodbApplication {
 
