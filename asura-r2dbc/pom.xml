@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-r2dbc</artifactId>
+    <artifactId>asura-r2dbc</artifactId>
 
     <dependencies>
         <dependency>

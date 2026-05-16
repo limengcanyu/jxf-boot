@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-multi-datasource-transaction</artifactId>
+    <artifactId>asura-multi-datasource-transaction</artifactId>
 
     <properties>
         <mybatis.plus.boot.starter.version>3.4.0</mybatis.plus.boot.starter.version>

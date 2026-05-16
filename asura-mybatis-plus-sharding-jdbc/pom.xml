@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-mybatis-plus-sharding-jdbc</artifactId>
+    <artifactId>asura-mybatis-plus-sharding-jdbc</artifactId>
 
     <dependencies>
         <dependency>

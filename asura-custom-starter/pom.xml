@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-custom-starter</artifactId>
+    <artifactId>asura-custom-starter</artifactId>
 
     <dependencies>
         <dependency>

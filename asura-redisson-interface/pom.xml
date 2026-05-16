@@ -9,6 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-redisson-interface</artifactId>
+    <artifactId>asura-redisson-interface</artifactId>
 
 </project>

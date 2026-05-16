@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-graphql-java-kickstart</artifactId>
+    <artifactId>asura-graphql-java-kickstart</artifactId>
 
     <dependencies>
         <dependency>

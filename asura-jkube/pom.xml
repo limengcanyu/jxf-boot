@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-jkube</artifactId>
+    <artifactId>asura-jkube</artifactId>
 
     <properties>
         <!-- 生成Ingress -->
@@ -39,7 +39,7 @@
                                     <!-- 项目启动入口  -->
                                     <shell>java -jar maven/spring-boot-jkube-${project.version}.jar</shell>
 
-                                    <!-- 设置JVM参数，每个arg元素只能设置一个参数 -->
+                                    <!-- 设置JVM参数，每个arg元素只能设置一个参�?-->
                                     <!--                                    <exec>-->
                                     <!--                                        <arg>java</arg>-->
                                     <!--                                        <arg>-jar</arg>-->

@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-actuator</artifactId>
+    <artifactId>asura-actuator</artifactId>
 
     <dependencies>
         <dependency>

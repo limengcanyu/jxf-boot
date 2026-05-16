@@ -9,7 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>${project.artifact.name}-thrift</artifactId>
+	<artifactId>asura-thrift</artifactId>
 
 	<dependencies>
 		<dependency>

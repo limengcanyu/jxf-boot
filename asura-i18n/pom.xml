@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-i18n</artifactId>
+    <artifactId>asura-i18n</artifactId>
 
     <dependencies>
         <dependency>

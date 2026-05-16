@@ -9,7 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>${project.artifact.name}-rabbitmq-producer</artifactId>
+	<artifactId>asura-rabbitmq-producer</artifactId>
 
 	<dependencies>
 		<dependency>

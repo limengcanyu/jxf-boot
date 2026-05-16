@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-camunda</artifactId>
+    <artifactId>asura-camunda</artifactId>
 
     <properties>
         <java.version>17</java.version>
@@ -73,7 +73,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- MySQL Database Driver (生产环境可选) -->
+        <!-- MySQL Database Driver (生产环境可�? -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

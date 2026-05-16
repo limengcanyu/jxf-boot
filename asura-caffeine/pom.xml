@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-caffeine</artifactId>
+    <artifactId>asura-caffeine</artifactId>
 
     <dependencies>
         <dependency>

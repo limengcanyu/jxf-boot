@@ -9,7 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>${project.artifact.name}-guava</artifactId>
+	<artifactId>asura-guava</artifactId>
 
 	<dependencies>
 		<dependency>

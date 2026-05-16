@@ -9,12 +9,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-netty-server</artifactId>
+    <artifactId>asura-netty-server</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.github.jiangxingfeng</groupId>
-            <artifactId>${project.artifact.name}-netty-common</artifactId>
+            <artifactId>asura-netty-common</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

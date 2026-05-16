@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-shardingsphere-jdbc</artifactId>
+    <artifactId>asura-shardingsphere-jdbc</artifactId>
 
     <dependencies>
         <dependency>
@@ -43,7 +43,7 @@
 
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>${project.artifact.name}-mybatis-plus</artifactId>
+            <artifactId>asura-mybatis-plus</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

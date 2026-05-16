@@ -9,7 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>${project.artifact.name}-temporal</artifactId>
+	<artifactId>asura-temporal</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -29,7 +29,7 @@
 			<version>3.5.14</version>
 		</dependency>
 
-		<!-- H2 Database (开发测试) -->
+		<!-- H2 Database (开发测�? -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

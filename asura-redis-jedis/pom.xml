@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-redis-jedis</artifactId>
+    <artifactId>asura-redis-jedis</artifactId>
 
     <dependencies>
         <dependency>

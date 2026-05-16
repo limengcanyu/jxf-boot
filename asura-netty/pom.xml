@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-netty</artifactId>
+    <artifactId>asura-netty</artifactId>
 
     <dependencies>
         <dependency>

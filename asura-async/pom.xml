@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-async</artifactId>
+    <artifactId>asura-async</artifactId>
 
     <dependencies>
         <dependency>

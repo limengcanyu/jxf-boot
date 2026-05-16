@@ -9,6 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${project.artifact.name}-common</artifactId>
+    <artifactId>asura-common</artifactId>
 
 </project>
