@@ -1,3 +1,26 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: asura-activiti
+
+  datasource:
+    url: jdbc:h2:mem:activiti;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  activiti:
+    database-schema-update: true
+    history-level: full
+    check-process-definitions: true
+
+logging:
+  level:
+    org.activiti: DEBUG

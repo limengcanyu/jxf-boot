@@ -9,5 +9,4 @@ public class AsuraActivitiApplication {
     public static void main(String[] args) {
         SpringApplication.run(AsuraActivitiApplication.class, args);
     }
-
 }
