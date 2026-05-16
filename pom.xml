@@ -39,6 +39,7 @@
         <module>${project.artifact.name}-couchbase</module>
         <module>${project.artifact.name}-custom-starter</module>
         <module>${project.artifact.name}-custom-starter-test</module>
+        <module>${project.artifact.name}-ddd-structure</module>
         <module>${project.artifact.name}-disruptor</module>
         <module>${project.artifact.name}-doris</module>
         <module>${project.artifact.name}-easyexcel</module>
@@ -67,6 +68,8 @@
         <module>${project.artifact.name}-knife4j</module>
         <module>${project.artifact.name}-kubernetes</module>
         <module>${project.artifact.name}-liteflow</module>
+        <module>${project.artifact.name}-lock4j-redisson</module>
+        <module>${project.artifact.name}-lock4j-zookeeper</module>
         <module>${project.artifact.name}-log</module>
         <module>${project.artifact.name}-logstash</module>
         <module>${project.artifact.name}-modulith-structure</module>
@@ -109,6 +112,7 @@
         <module>${project.artifact.name}-shardingsphere</module>
         <module>${project.artifact.name}-shardingsphere-jdbc</module>
         <module>${project.artifact.name}-skywalking</module>
+        <module>${project.artifact.name}-sse</module>
         <module>${project.artifact.name}-ssl</module>
         <module>${project.artifact.name}-temporal</module>
         <module>${project.artifact.name}-test</module>
