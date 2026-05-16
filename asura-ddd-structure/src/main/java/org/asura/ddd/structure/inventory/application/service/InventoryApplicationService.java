@@ -1,7 +1,7 @@
 package org.asura.ddd.structure.inventory.application.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.asura.ddd.structure.common.dto.response.PageResponse;
+import org.asura.ddd.structure.common.dto.response.ApiResponse;
 import org.asura.ddd.structure.inventory.application.dto.command.InventoryAdjustCommand;
 import org.asura.ddd.structure.inventory.application.dto.command.StockAdjustCommand;
 import org.asura.ddd.structure.inventory.application.dto.query.InventoryPageQuery;
@@ -61,14 +61,14 @@ public class InventoryApplicationService {
         inventoryRepository.deleteById(inventory.getId());
     }
 
-    public PageResponse<InventoryResponse> queryPage(InventoryPageQuery query) {
+    public ApiResponse<InventoryResponse> queryPage(InventoryPageQuery query) {
         IPage<Inventory> page = inventoryRepositoryImpl.findPage(
                 query.getPageNum(), 
                 query.getPageSize(), 
                 query.getProductId()
         );
         IPage<InventoryResponse> responsePage = page.convert(InventoryResponse::from);
-        return PageResponse.from(responsePage);
+        return ApiResponse.success(responsePage.getRecords(), responsePage);
     }
 
     public List<InventoryResponse> queryList(InventoryQuery query) {

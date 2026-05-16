@@ -1,6 +1,6 @@
 package org.asura.ddd.structure.inventory.infrastructure.controller;
 
-import org.asura.ddd.structure.common.dto.response.PageResponse;
+import org.asura.ddd.structure.common.dto.response.ApiResponse;
 import org.asura.ddd.structure.inventory.application.dto.command.InventoryAdjustCommand;
 import org.asura.ddd.structure.inventory.application.dto.command.StockAdjustCommand;
 import org.asura.ddd.structure.inventory.application.dto.query.InventoryPageQuery;
@@ -60,8 +60,8 @@ public class InventoryController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<PageResponse<InventoryResponse>> queryPage(@ModelAttribute InventoryPageQuery query) {
-        PageResponse<InventoryResponse> response = inventoryApplicationService.queryPage(query);
+    public ResponseEntity<ApiResponse<InventoryResponse>> queryPage(@ModelAttribute InventoryPageQuery query) {
+        ApiResponse<InventoryResponse> response = inventoryApplicationService.queryPage(query);
         return ResponseEntity.ok(response);
     }
 

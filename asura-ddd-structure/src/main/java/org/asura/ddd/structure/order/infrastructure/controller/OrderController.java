@@ -1,6 +1,6 @@
 package org.asura.ddd.structure.order.infrastructure.controller;
 
-import org.asura.ddd.structure.common.dto.response.PageResponse;
+import org.asura.ddd.structure.common.dto.response.ApiResponse;
 import org.asura.ddd.structure.order.application.dto.command.OrderCreateCommand;
 import org.asura.ddd.structure.order.application.dto.command.OrderStatusCommand;
 import org.asura.ddd.structure.order.application.dto.query.OrderPageQuery;
@@ -78,8 +78,8 @@ public class OrderController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<PageResponse<OrderResponse>> queryPage(@ModelAttribute OrderPageQuery query) {
-        PageResponse<OrderResponse> response = orderApplicationService.queryPage(query);
+    public ResponseEntity<ApiResponse<OrderResponse>> queryPage(@ModelAttribute OrderPageQuery query) {
+        ApiResponse<OrderResponse> response = orderApplicationService.queryPage(query);
         return ResponseEntity.ok(response);
     }
 

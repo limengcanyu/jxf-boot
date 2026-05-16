@@ -26,6 +26,6 @@ class DatabaseTest {
             "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'T_USER'", 
             Boolean.class
         );
-        assertTrue(exists, "Table t_user should exist");
+        assertEquals(Boolean.TRUE, exists, "Table t_user should exist");
     }
 }

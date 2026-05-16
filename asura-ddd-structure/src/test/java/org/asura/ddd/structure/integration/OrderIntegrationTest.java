@@ -175,7 +175,7 @@ class OrderIntegrationTest {
                         .param("pageNum", "1")
                         .param("pageSize", "10"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.records").isArray())
+                .andExpect(jsonPath("$.data").isArray())
                 .andExpect(jsonPath("$.total").isNumber())
                 .andExpect(jsonPath("$.pageNum").value(1))
                 .andExpect(jsonPath("$.pageSize").value(10));

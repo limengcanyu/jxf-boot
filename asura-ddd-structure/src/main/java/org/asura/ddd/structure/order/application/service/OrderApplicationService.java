@@ -1,7 +1,7 @@
 package org.asura.ddd.structure.order.application.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.asura.ddd.structure.common.dto.response.PageResponse;
+import org.asura.ddd.structure.common.dto.response.ApiResponse;
 import org.asura.ddd.structure.order.application.dto.command.OrderCreateCommand;
 import org.asura.ddd.structure.order.application.dto.command.OrderItemDTO;
 import org.asura.ddd.structure.order.application.dto.command.OrderStatusCommand;
@@ -101,7 +101,7 @@ public class OrderApplicationService {
         orderRepository.deleteById(orderId);
     }
 
-    public PageResponse<OrderResponse> queryPage(OrderPageQuery query) {
+    public ApiResponse<OrderResponse> queryPage(OrderPageQuery query) {
         IPage<Order> page = orderRepositoryImpl.findPage(
                 query.getPageNum(), 
                 query.getPageSize(), 
@@ -109,7 +109,7 @@ public class OrderApplicationService {
                 query.getStatus()
         );
         IPage<OrderResponse> responsePage = page.convert(OrderResponse::from);
-        return PageResponse.from(responsePage);
+        return ApiResponse.success(responsePage.getRecords(), responsePage);
     }
 
     public List<OrderResponse> queryList(OrderQuery query) {

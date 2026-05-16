@@ -1,6 +1,6 @@
 package org.asura.ddd.structure.user.infrastructure.controller;
 
-import org.asura.ddd.structure.common.dto.response.PageResponse;
+import org.asura.ddd.structure.common.dto.response.ApiResponse;
 import org.asura.ddd.structure.user.application.dto.command.UserRegisterCommand;
 import org.asura.ddd.structure.user.application.dto.command.UserUpdateCommand;
 import org.asura.ddd.structure.user.application.dto.query.UserPageQuery;
@@ -67,8 +67,8 @@ public class UserController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<PageResponse<UserResponse>> queryPage(@ModelAttribute UserPageQuery query) {
-        PageResponse<UserResponse> response = userApplicationService.queryPage(query);
+    public ResponseEntity<ApiResponse<UserResponse>> queryPage(@ModelAttribute UserPageQuery query) {
+        ApiResponse<UserResponse> response = userApplicationService.queryPage(query);
         return ResponseEntity.ok(response);
     }
 

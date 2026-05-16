@@ -1,10 +1,19 @@
 package org.asura.ddd.structure.common.dto.response;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+
+import java.util.List;
+
 public class ApiResponse<T> {
 
     private Integer code;
     private String message;
     private T data;
+    
+    private Long total;
+    private Integer pageNum;
+    private Integer pageSize;
+    private Integer pages;
 
     public ApiResponse() {
     }
@@ -21,6 +30,24 @@ public class ApiResponse<T> {
 
     public static <T> ApiResponse<T> success(String message, T data) {
         return new ApiResponse<>(200, message, data);
+    }
+
+    public static <T> ApiResponse<T> success(List<T> records, IPage<T> page) {
+        ApiResponse<T> response = new ApiResponse<>(200, "success", (T) records);
+        response.setTotal(page.getTotal());
+        response.setPageNum((int) page.getCurrent());
+        response.setPageSize((int) page.getSize());
+        response.setPages((int) page.getPages());
+        return response;
+    }
+
+    public static <T> ApiResponse<T> success(String message, List<T> records, IPage<T> page) {
+        ApiResponse<T> response = new ApiResponse<>(200, message, (T) records);
+        response.setTotal(page.getTotal());
+        response.setPageNum((int) page.getCurrent());
+        response.setPageSize((int) page.getSize());
+        response.setPages((int) page.getPages());
+        return response;
     }
 
     public static <T> ApiResponse<T> error(Integer code, String message) {
@@ -53,5 +80,37 @@ public class ApiResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getPages() {
+        return pages;
+    }
+
+    public void setPages(Integer pages) {
+        this.pages = pages;
     }
 }

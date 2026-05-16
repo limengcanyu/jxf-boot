@@ -1,7 +1,7 @@
 package org.asura.ddd.structure.user.application.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.asura.ddd.structure.common.dto.response.PageResponse;
+import org.asura.ddd.structure.common.dto.response.ApiResponse;
 import org.asura.ddd.structure.user.application.dto.command.AddressDTO;
 import org.asura.ddd.structure.user.application.dto.command.UserRegisterCommand;
 import org.asura.ddd.structure.user.application.dto.command.UserUpdateCommand;
@@ -94,7 +94,7 @@ public class UserApplicationService {
         userRepository.deleteById(userId);
     }
 
-    public PageResponse<UserResponse> queryPage(UserPageQuery query) {
+    public ApiResponse<UserResponse> queryPage(UserPageQuery query) {
         IPage<User> page = userRepositoryImpl.findPage(
                 query.getPageNum(), 
                 query.getPageSize(), 
@@ -103,7 +103,7 @@ public class UserApplicationService {
                 query.getEnabled()
         );
         IPage<UserResponse> responsePage = page.convert(UserResponse::from);
-        return PageResponse.from(responsePage);
+        return ApiResponse.success(responsePage.getRecords(), responsePage);
     }
 
     public List<UserResponse> queryList(UserQuery query) {
