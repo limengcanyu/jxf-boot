@@ -1,0 +1,21 @@
+package org.asura.ddd.structure.order.domain.model.valueobject;
+
+import lombok.Getter;
+
+@Getter
+public enum OrderStatus {
+
+    PENDING("待确认"),
+    CONFIRMED("已确认"),
+    PAID("已支付"),
+    SHIPPED("已发货"),
+    COMPLETED("已完成"),
+    CANCELLED("已取消");
+
+    private final String description;
+
+    OrderStatus(String description) {
+        this.description = description;
+    }
+
+}

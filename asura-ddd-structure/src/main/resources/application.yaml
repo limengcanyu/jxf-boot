@@ -1,3 +1,19 @@
 spring:
   application:
     name: asura-ddd-structure
+  datasource:
+    url: jdbc:h2:mem:ddd_structure;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.asura.ddd.structure: DEBUG

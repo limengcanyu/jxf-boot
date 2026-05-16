@@ -1,27 +1,23 @@
-# Getting Started
+### 项目结构
 
-### Reference Documentation
-
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.5.14/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.5.14/maven-plugin/build-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.5.14/reference/web/servlet.html)
-
-### Guides
-
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-
-### Maven Parent overrides
-
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+asura-ddd-structure/
+├── common/                              # 公共组件
+│   └── dto/response/ApiResponse.java    # 统一API响应封装
+├── infrastructure/                      # 全局基础设施
+│   └── exception/GlobalExceptionHandler.java
+├── user/                                # 用户领域
+│   ├── application/                     # 应用层
+│   │   ├── dto/command/                 # 命令DTO
+│   │   ├── dto/response/                # 响应DTO
+│   │   └── service/UserApplicationService.java
+│   ├── domain/                          # 领域层
+│   │   ├── model/aggregate/User.java
+│   │   ├── model/valueobject/           # Address, PhoneNumber
+│   │   ├── repository/UserRepository.java
+│   │   └── service/UserDomainService.java
+│   └── infrastructure/                  # 基础设施层
+│       ├── controller/UserController.java
+│       └── repository/UserRepositoryImpl.java
+├── order/                               # 订单领域（结构同上）
+└── inventory/                           # 库存领域（结构同上）
 
