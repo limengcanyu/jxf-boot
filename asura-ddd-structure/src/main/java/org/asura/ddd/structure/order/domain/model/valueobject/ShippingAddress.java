@@ -1,8 +1,5 @@
 package org.asura.ddd.structure.order.domain.model.valueobject;
 
-import lombok.Getter;
-
-@Getter
 public class ShippingAddress {
 
     private String province;
@@ -22,6 +19,26 @@ public class ShippingAddress {
         address.detail = detail;
         address.zipCode = zipCode;
         return address;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public String getZipCode() {
+        return zipCode;
     }
 
     @Override

@@ -1,11 +1,8 @@
 package org.asura.ddd.structure.inventory.domain.model.aggregate;
 
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Getter
 public class Inventory {
 
     private String id;
@@ -26,6 +23,18 @@ public class Inventory {
         inventory.reservedQuantity = 0;
         inventory.createdAt = LocalDateTime.now();
         inventory.updatedAt = LocalDateTime.now();
+        return inventory;
+    }
+
+    public static Inventory reconstruct(String id, String productId, Integer quantity, 
+                                       Integer reservedQuantity, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        Inventory inventory = new Inventory();
+        inventory.id = id;
+        inventory.productId = productId;
+        inventory.quantity = quantity;
+        inventory.reservedQuantity = reservedQuantity;
+        inventory.createdAt = createdAt;
+        inventory.updatedAt = updatedAt;
         return inventory;
     }
 
@@ -87,4 +96,27 @@ public class Inventory {
         return this.quantity - this.reservedQuantity;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Integer getReservedQuantity() {
+        return reservedQuantity;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }

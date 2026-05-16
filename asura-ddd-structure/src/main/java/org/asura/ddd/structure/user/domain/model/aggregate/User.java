@@ -1,13 +1,11 @@
 package org.asura.ddd.structure.user.domain.model.aggregate;
 
-import lombok.Getter;
 import org.asura.ddd.structure.user.domain.model.valueobject.Address;
 import org.asura.ddd.structure.user.domain.model.valueobject.PhoneNumber;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Getter
 public class User {
 
     private String id;
@@ -35,6 +33,20 @@ public class User {
         return user;
     }
 
+    public static User reconstruct(String id, String username, String email, PhoneNumber phoneNumber, 
+                                   Address address, LocalDateTime createdAt, LocalDateTime updatedAt, Boolean enabled) {
+        User user = new User();
+        user.id = id;
+        user.username = username;
+        user.email = email;
+        user.phoneNumber = phoneNumber;
+        user.address = address;
+        user.createdAt = createdAt;
+        user.updatedAt = updatedAt;
+        user.enabled = enabled;
+        return user;
+    }
+
     public void updateProfile(String email, PhoneNumber phoneNumber, Address address) {
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -52,4 +64,35 @@ public class User {
         this.updatedAt = LocalDateTime.now();
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
 }

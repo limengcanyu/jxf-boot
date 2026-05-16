@@ -37,6 +37,20 @@ public class Order {
         return order;
     }
 
+    public static Order reconstruct(String id, String userId, ShippingAddress shippingAddress, 
+                                   BigDecimal totalAmount, OrderStatus status, 
+                                   LocalDateTime createdAt, LocalDateTime updatedAt) {
+        Order order = new Order();
+        order.id = id;
+        order.userId = userId;
+        order.shippingAddress = shippingAddress;
+        order.totalAmount = totalAmount;
+        order.status = status;
+        order.createdAt = createdAt;
+        order.updatedAt = updatedAt;
+        return order;
+    }
+
     public void addItem(OrderItem item) {
         if (status != OrderStatus.PENDING) {
             throw new IllegalStateException("Cannot add items to non-pending order");
@@ -44,6 +58,10 @@ public class Order {
         this.items.add(item);
         this.totalAmount = this.totalAmount.add(item.getSubtotal());
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public void addItemForReconstruct(OrderItem item) {
+        this.items.add(item);
     }
 
     public void removeItem(String productId) {

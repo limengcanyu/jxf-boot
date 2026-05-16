@@ -1,7 +1,10 @@
 package org.asura.ddd.structure.order.infrastructure.controller;
 
-import org.asura.ddd.structure.common.dto.response.ApiResponse;
+import org.asura.ddd.structure.common.dto.response.PageResponse;
 import org.asura.ddd.structure.order.application.dto.command.OrderCreateCommand;
+import org.asura.ddd.structure.order.application.dto.command.OrderStatusCommand;
+import org.asura.ddd.structure.order.application.dto.query.OrderPageQuery;
+import org.asura.ddd.structure.order.application.dto.query.OrderQuery;
 import org.asura.ddd.structure.order.application.dto.response.OrderResponse;
 import org.asura.ddd.structure.order.application.service.OrderApplicationService;
 import org.springframework.http.HttpStatus;
@@ -21,50 +24,68 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<OrderResponse>> createOrder(@RequestBody OrderCreateCommand command) {
+    public ResponseEntity<OrderResponse> create(@RequestBody OrderCreateCommand command) {
         OrderResponse response = orderApplicationService.createOrder(command);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success("Order created successfully", response));
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<ApiResponse<OrderResponse>> getOrderById(@PathVariable String orderId) {
+    public ResponseEntity<OrderResponse> getById(@PathVariable String orderId) {
         OrderResponse response = orderApplicationService.getOrderById(orderId);
-        return ResponseEntity.ok(ApiResponse.success(response));
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<ApiResponse<List<OrderResponse>>> getOrdersByUserId(@PathVariable String userId) {
-        List<OrderResponse> responses = orderApplicationService.getOrdersByUserId(userId);
-        return ResponseEntity.ok(ApiResponse.success(responses));
+    public ResponseEntity<List<OrderResponse>> getByUserId(@PathVariable String userId) {
+        List<OrderResponse> response = orderApplicationService.getOrdersByUserId(userId);
+        return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("/{orderId}/confirm")
-    public ResponseEntity<ApiResponse<OrderResponse>> confirmOrder(@PathVariable String orderId) {
-        OrderResponse response = orderApplicationService.confirmOrder(orderId);
-        return ResponseEntity.ok(ApiResponse.success("Order confirmed", response));
+    @PutMapping("/confirm")
+    public ResponseEntity<OrderResponse> confirm(@RequestBody OrderStatusCommand command) {
+        OrderResponse response = orderApplicationService.confirmOrder(command);
+        return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("/{orderId}/pay")
-    public ResponseEntity<ApiResponse<OrderResponse>> payOrder(@PathVariable String orderId) {
-        OrderResponse response = orderApplicationService.payOrder(orderId);
-        return ResponseEntity.ok(ApiResponse.success("Order paid", response));
+    @PutMapping("/pay")
+    public ResponseEntity<OrderResponse> pay(@RequestBody OrderStatusCommand command) {
+        OrderResponse response = orderApplicationService.payOrder(command);
+        return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("/{orderId}/ship")
-    public ResponseEntity<ApiResponse<OrderResponse>> shipOrder(@PathVariable String orderId) {
-        OrderResponse response = orderApplicationService.shipOrder(orderId);
-        return ResponseEntity.ok(ApiResponse.success("Order shipped", response));
+    @PutMapping("/ship")
+    public ResponseEntity<OrderResponse> ship(@RequestBody OrderStatusCommand command) {
+        OrderResponse response = orderApplicationService.shipOrder(command);
+        return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("/{orderId}/complete")
-    public ResponseEntity<ApiResponse<OrderResponse>> completeOrder(@PathVariable String orderId) {
-        OrderResponse response = orderApplicationService.completeOrder(orderId);
-        return ResponseEntity.ok(ApiResponse.success("Order completed", response));
+    @PutMapping("/complete")
+    public ResponseEntity<OrderResponse> complete(@RequestBody OrderStatusCommand command) {
+        OrderResponse response = orderApplicationService.completeOrder(command);
+        return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("/{orderId}/cancel")
-    public ResponseEntity<ApiResponse<OrderResponse>> cancelOrder(@PathVariable String orderId) {
-        OrderResponse response = orderApplicationService.cancelOrder(orderId);
-        return ResponseEntity.ok(ApiResponse.success("Order cancelled", response));
+    @PutMapping("/cancel")
+    public ResponseEntity<OrderResponse> cancel(@RequestBody OrderStatusCommand command) {
+        OrderResponse response = orderApplicationService.cancelOrder(command);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{orderId}")
+    public ResponseEntity<Void> delete(@PathVariable String orderId) {
+        orderApplicationService.delete(orderId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<PageResponse<OrderResponse>> queryPage(@ModelAttribute OrderPageQuery query) {
+        PageResponse<OrderResponse> response = orderApplicationService.queryPage(query);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<OrderResponse>> queryList(@ModelAttribute OrderQuery query) {
+        List<OrderResponse> response = orderApplicationService.queryList(query);
+        return ResponseEntity.ok(response);
     }
 }

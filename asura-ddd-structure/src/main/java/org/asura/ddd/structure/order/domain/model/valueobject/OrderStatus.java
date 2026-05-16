@@ -1,8 +1,5 @@
 package org.asura.ddd.structure.order.domain.model.valueobject;
 
-import lombok.Getter;
-
-@Getter
 public enum OrderStatus {
 
     PENDING("待确认"),
@@ -16,6 +13,10 @@ public enum OrderStatus {
 
     OrderStatus(String description) {
         this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 }

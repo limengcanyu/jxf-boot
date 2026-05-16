@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.asura.ddd.structure.user.infrastructure.persistence.mapper.UserMapper">
+
+    <select id="selectPageByCondition" resultType="org.asura.ddd.structure.user.infrastructure.persistence.entity.UserEntity">
+        SELECT id, username, email, phone_country_code, phone_number, 
+               address_province, address_city, address_district, 
+               address_detail, address_zip_code, enabled, tenant_id, 
+               version, deleted, created_by, created_at, updated_by, updated_at
+        FROM t_user
+        WHERE deleted = FALSE
+        <if test="username != null and username != ''">
+            AND username LIKE '%' || #{username} || '%'
+        </if>
+        <if test="email != null and email != ''">
+            AND email LIKE '%' || #{email} || '%'
+        </if>
+        <if test="enabled != null">
+            AND enabled = #{enabled}
+        </if>
+        ORDER BY created_at DESC
+    </select>
+
+    <select id="selectByUsername" resultType="org.asura.ddd.structure.user.infrastructure.persistence.entity.UserEntity">
+        SELECT id, username, email, phone_country_code, phone_number, 
+               address_province, address_city, address_district, 
+               address_detail, address_zip_code, enabled, tenant_id, 
+               version, deleted, created_by, created_at, updated_by, updated_at
+        FROM t_user 
+        WHERE username = #{username} AND deleted = FALSE
+    </select>
+
+    <select id="selectByEmail" resultType="org.asura.ddd.structure.user.infrastructure.persistence.entity.UserEntity">
+        SELECT id, username, email, phone_country_code, phone_number, 
+               address_province, address_city, address_district, 
+               address_detail, address_zip_code, enabled, tenant_id, 
+               version, deleted, created_by, created_at, updated_by, updated_at
+        FROM t_user 
+        WHERE email = #{email} AND deleted = FALSE
+    </select>
+
+</mapper>

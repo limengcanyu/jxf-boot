@@ -1,13 +1,9 @@
 package org.asura.ddd.structure.user.application.dto.response;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.asura.ddd.structure.user.domain.model.aggregate.User;
 
 import java.time.format.DateTimeFormatter;
 
-@Setter
-@Getter
 public class UserResponse {
 
     private String id;
@@ -29,7 +25,7 @@ public class UserResponse {
         response.id = user.getId();
         response.username = user.getUsername();
         response.email = user.getEmail();
-        response.phoneNumber = user.getPhoneNumber() != null ? user.getPhoneNumber().getFullNumber() : null;
+        response.phoneNumber = user.getPhoneNumber() != null ? user.getPhoneNumber().toString() : null;
         response.address = user.getAddress() != null ? AddressResponse.from(user.getAddress()) : null;
         response.createdAt = user.getCreatedAt() != null ? user.getCreatedAt().format(FORMATTER) : null;
         response.updatedAt = user.getUpdatedAt() != null ? user.getUpdatedAt().format(FORMATTER) : null;
@@ -37,4 +33,67 @@ public class UserResponse {
         return response;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public AddressResponse getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressResponse address) {
+        this.address = address;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }

@@ -1,11 +1,7 @@
 package org.asura.ddd.structure.order.application.dto.response;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.asura.ddd.structure.order.domain.model.entity.OrderItem;
 
-@Setter
-@Getter
 public class OrderItemResponse {
 
     private String productId;
@@ -27,4 +23,43 @@ public class OrderItemResponse {
         return response;
     }
 
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(String subtotal) {
+        this.subtotal = subtotal;
+    }
 }

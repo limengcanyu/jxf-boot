@@ -1,45 +1,30 @@
 package org.asura.ddd.structure.user.domain.model.valueobject;
 
-import lombok.Getter;
-
-import java.util.regex.Pattern;
-
-@Getter
 public class PhoneNumber {
 
-    private static final Pattern CHINA_PHONE_PATTERN = Pattern.compile("^1[3-9]\\d{9}$");
+    private String countryCode;
+    private String number;
 
-    private final String countryCode;
-    private final String number;
-
-    private PhoneNumber(String countryCode, String number) {
-        this.countryCode = countryCode;
-        this.number = number;
+    private PhoneNumber() {
     }
 
     public static PhoneNumber of(String countryCode, String number) {
-        validate(countryCode, number);
-        return new PhoneNumber(countryCode, number);
+        PhoneNumber phoneNumber = new PhoneNumber();
+        phoneNumber.countryCode = countryCode;
+        phoneNumber.number = number;
+        return phoneNumber;
     }
 
     public static PhoneNumber ofChina(String number) {
         return of("+86", number);
     }
 
-    private static void validate(String countryCode, String number) {
-        if (countryCode == null || countryCode.isEmpty()) {
-            throw new IllegalArgumentException("Country code cannot be empty");
-        }
-        if (number == null || number.isEmpty()) {
-            throw new IllegalArgumentException("Phone number cannot be empty");
-        }
-        if ("+86".equals(countryCode) && !CHINA_PHONE_PATTERN.matcher(number).matches()) {
-            throw new IllegalArgumentException("Invalid China phone number format");
-        }
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public String getFullNumber() {
-        return countryCode + number;
+    public String getNumber() {
+        return number;
     }
 
     @Override
@@ -59,6 +44,6 @@ public class PhoneNumber {
 
     @Override
     public String toString() {
-        return getFullNumber();
+        return countryCode + number;
     }
 }

@@ -1,11 +1,7 @@
 package org.asura.ddd.structure.order.application.dto.response;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.asura.ddd.structure.order.domain.model.valueobject.ShippingAddress;
 
-@Setter
-@Getter
 public class ShippingAddressResponse {
 
     private String province;
@@ -27,4 +23,43 @@ public class ShippingAddressResponse {
         return response;
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 }

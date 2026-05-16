@@ -1,10 +1,5 @@
 package org.asura.ddd.structure.inventory.application.dto.command;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Setter
-@Getter
 public class InventoryAdjustCommand {
 
     private String productId;
@@ -18,4 +13,19 @@ public class InventoryAdjustCommand {
         this.quantity = quantity;
     }
 
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }
