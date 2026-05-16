@@ -1,0 +1,19 @@
+### jobs
+GET http://localhost:8071/jobs
+Accept: application/json
+
+### launch job
+GET http://localhost:8071/launch/importUserJob
+Accept: application/json
+
+### launch importUserJob
+GET http://localhost:8071/launch/importUserJob
+Accept: application/json
+
+### launch taskletJob
+GET http://localhost:8071/launch/taskletJob
+Accept: application/json
+
+### launch taskletStepJob
+GET http://localhost:8071/launch/taskletStepJob
+Accept: application/json

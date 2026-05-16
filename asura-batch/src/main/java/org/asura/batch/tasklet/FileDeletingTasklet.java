@@ -30,15 +30,19 @@ public class FileDeletingTasklet implements Tasklet, InitializingBean {
         logger.debug("==========FileDeletingTasklet execute==========");
 
         File dir = directory.getFile();
-//        Assert.state(dir.isDirectory());
+        if (!dir.exists()) {
+            logger.warn("Directory {} does not exist, skipping deletion", dir.getPath());
+            return RepeatStatus.FINISHED;
+        }
+
+        Assert.state(dir.isDirectory(), "Resource must be a directory");
 
         File[] files = dir.listFiles();
         if (files != null) {
-            for (int i = 0; i < files.length; i++) {
-                boolean deleted = files[i].delete();
+            for (File file : files) {
+                boolean deleted = file.delete();
                 if (!deleted) {
-                    throw new UnexpectedJobExecutionException("Could not delete file " +
-                            files[i].getPath());
+                    throw new UnexpectedJobExecutionException("Could not delete file " + file.getPath());
                 }
             }
         }

@@ -9,51 +9,37 @@ import org.asura.batch.tasklet.TaskletStep2;
 import org.asura.batch.tasklet.TaskletStep3;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
-/**
- * <p>Description: </p>
- *
- * @author Rock Jiang
- * @version 1.0
- * @date 2019/2/22 0022
- */
 @Configuration
-@EnableBatchProcessing
 public class BatchConfiguration {
-    @Autowired
-    public JobBuilderFactory jobBuilderFactory;
 
-    @Autowired
-    public StepBuilderFactory stepBuilderFactory;
-
-    // tag::readerwriterprocessor[] Step的reade，rwriter，processor设置
     @Bean
     public FlatFileItemReader<Person> reader() {
+        BeanWrapperFieldSetMapper<Person> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
+        fieldSetMapper.setTargetType(Person.class);
+
         return new FlatFileItemReaderBuilder<Person>()
                 .name("personItemReader")
                 .resource(new ClassPathResource("sample-data.csv"))
                 .delimited()
                 .names(new String[]{"firstName", "lastName"})
-                .fieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
-                    setTargetType(Person.class);
-                }})
+                .fieldSetMapper(fieldSetMapper)
                 .build();
     }
 
@@ -70,15 +56,11 @@ public class BatchConfiguration {
                 .dataSource(dataSource)
                 .build();
     }
-    // end::readerwriterprocessor[]
 
-    // tag::Tasklet
     @Bean
     public FileDeletingTasklet fileDeletingTasklet() {
         FileDeletingTasklet tasklet = new FileDeletingTasklet();
-
-        tasklet.setDirectoryResource(new FileSystemResource("spring-boot-batch/target/test-outputs/test-dir"));
-
+        tasklet.setDirectoryResource(new FileSystemResource("./target/test-outputs/test-dir"));
         return tasklet;
     }
 
@@ -96,87 +78,66 @@ public class BatchConfiguration {
     public TaskletStep3 taskletStep3() {
         return new TaskletStep3();
     }
-    // end::Tasklet
 
-    // tag::jobstep[] job设置
     @Bean
-    public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
-        return jobBuilderFactory.get("importUserJob")
-                .incrementer(new RunIdIncrementer())
+    public Job importUserJob(JobCompletionNotificationListener listener, Step step1, JobRepository jobRepository) {
+        return new JobBuilder("importUserJob", jobRepository)
+                .start(step1)
                 .listener(listener)
-                .flow(step1)
-                .end()
                 .build();
     }
 
     @Bean
-    public Job taskletJob() {
-        return this.jobBuilderFactory.get("taskletJob")
-                .start(deleteFilesInDir())
+    public Job taskletJob(JobRepository jobRepository, Step deleteFilesInDir) {
+        return new JobBuilder("taskletJob", jobRepository)
+                .start(deleteFilesInDir)
                 .build();
     }
 
-    /**
-     * Sequential Flow
-     *
-     * @return
-     */
     @Bean
-    public Job taskletStepJob() {
-        return this.jobBuilderFactory.get("taskletStepJob")
-                .start(taskletStep1Step())
-                .next(taskletStep2Step())
-                .next(taskletStep3Step())
+    public Job taskletStepJob(JobRepository jobRepository, Step taskletStep1Step, Step taskletStep2Step, Step taskletStep3Step) {
+        return new JobBuilder("taskletStepJob", jobRepository)
+                .start(taskletStep1Step)
+                .next(taskletStep2Step)
+                .next(taskletStep3Step)
                 .build();
     }
 
-    /**
-     * Chunk-oriented Processing
-     *
-     * @param writer
-     * @return
-     */
     @Bean
-    public Step step1(JdbcBatchItemWriter<Person> writer) {
-        return stepBuilderFactory.get("step1")
-                .<Person, Person>chunk(10)
+    public Step step1(JdbcBatchItemWriter<Person> writer, JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("step1", jobRepository)
+                .<Person, Person>chunk(10, transactionManager)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer)
                 .build();
     }
 
-    /**
-     * TaskletStep
-     *
-     * @return
-     */
     @Bean
-    public Step deleteFilesInDir() {
-        return this.stepBuilderFactory.get("deleteFilesInDir")
-                .tasklet(fileDeletingTasklet())
+    public Step deleteFilesInDir(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("deleteFilesInDir", jobRepository)
+                .tasklet(fileDeletingTasklet(), transactionManager)
                 .build();
     }
 
     @Bean
-    public Step taskletStep1Step(){
-        return this.stepBuilderFactory.get("taskletStep1")
-                .tasklet(taskletStep1())
+    public Step taskletStep1Step(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("taskletStep1", jobRepository)
+                .tasklet(taskletStep1(), transactionManager)
                 .build();
     }
 
     @Bean
-    public Step taskletStep2Step(){
-        return this.stepBuilderFactory.get("taskletStep2")
-                .tasklet(taskletStep2())
+    public Step taskletStep2Step(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("taskletStep2", jobRepository)
+                .tasklet(taskletStep2(), transactionManager)
                 .build();
     }
 
     @Bean
-    public Step taskletStep3Step(){
-        return this.stepBuilderFactory.get("taskletStep3")
-                .tasklet(taskletStep3())
+    public Step taskletStep3Step(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("taskletStep3", jobRepository)
+                .tasklet(taskletStep3(), transactionManager)
                 .build();
     }
-    // end::jobstep[]
 }
