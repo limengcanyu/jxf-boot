@@ -16,7 +16,7 @@ public class AsuraSkywalkingApplication {
     }
 
     /**
-     * http://localhost:8081/hello
+     * <a href="http://localhost:8081/hello">...</a>
      *
      * @return
      */

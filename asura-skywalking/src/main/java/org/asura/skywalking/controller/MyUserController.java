@@ -1,11 +1,10 @@
 package org.asura.skywalking.controller;
 
-import com.spring.boot.mybatis.plus.controller.UserController;
-import com.spring.boot.mybatis.plus.entity.User;
-import com.spring.boot.mybatis.plus.service.UserService;
-import org.asura.skywalking.service.MyUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.asura.skywalking.service.MyUserService;
+import org.asura.skywalking.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,17 +14,16 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 @RequestMapping("/user")
-public class MyUserController extends UserController {
+public class MyUserController {
 
     @Autowired
     private MyUserService myUserService;
 
     /**
-     * http://localhost:8081/user/asyncGetUser
+     * <a href="http://localhost:8080/user/asyncGetUser">...</a>
      *
-     * @return
      */
-    @RequestMapping("/asyncGetUser")
+    @GetMapping("/asyncGetUser")
     public List<User> asyncGetUser() {
         log.debug("call asyncGetUser =====================");
 

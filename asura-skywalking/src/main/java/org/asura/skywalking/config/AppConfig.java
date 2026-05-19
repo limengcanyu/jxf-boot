@@ -1,4 +1,4 @@
-package org.asura.skywalking;
+package org.asura.skywalking.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

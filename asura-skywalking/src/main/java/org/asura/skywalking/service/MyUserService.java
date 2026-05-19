@@ -1,11 +1,10 @@
 package org.asura.skywalking.service;
 
-import com.spring.boot.mybatis.plus.entity.User;
-import com.spring.boot.mybatis.plus.service.UserService;
+import org.asura.skywalking.vo.User;
 
 import java.util.List;
 
-public interface MyUserService extends UserService {
+public interface MyUserService {
 
     /**
      * 异步链路追踪
