@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: asura-akka
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.asura.akka: DEBUG
+    akka: INFO
+
+akka:
+  loglevel: INFO
+  actor:
+    provider: "akka.remote.RemoteActorRefProvider"
+  remote:
+    artery:
+      enabled: on
+      transport: tcp
+      canonical:
+        hostname: 127.0.0.1
+        port: 2552
