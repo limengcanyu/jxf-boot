@@ -1,6 +1,0 @@
-GET http://localhost:8080/graphql?query={echo(toEcho: "SpringBoot"),users{id,password,username},user(id: "user-1"){id,password,username,info{id,age}}}
-Content-Type: application/x-www-form-urlencoded
-
-###
-
-

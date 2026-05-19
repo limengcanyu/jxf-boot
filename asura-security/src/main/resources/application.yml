@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: security-demo
+  profiles:
+    active: dev # 默认激活开发环境
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql # 初始化数据库脚本
+      mode: always # 总是执行初始化脚本
+
+# MyBatis Plus 配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印SQL日志
+  global-config:
+    db-config:
+      id-type: auto # 主键策略
+
+# JWT 配置
+jwt:
+  secret: mySecretKey123456789012345678901234567890123456789012345678901234567890 # 请使用更安全的密钥管理方式
+  expiration: 86400000 # 24小时 (毫秒)
+
+logging:
+  pattern:
+    console: ${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %4line %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}
+  level:
+    com.spring.boot.security: DEBUG
+    org.springframework.security.web: DEBUG

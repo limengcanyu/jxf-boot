@@ -1,0 +1,79 @@
+package org.asura.shardingsphere;
+
+import org.asura.shardingsphere.entity.Order;
+import org.asura.shardingsphere.entity.OrderItem;
+import org.asura.shardingsphere.mapper.OrderMapper;
+import org.asura.shardingsphere.service.IOrderItemService;
+import org.asura.shardingsphere.service.IOrderService;
+import org.asura.shardingsphere.utils.IDUtils;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@SpringBootTest
+public class ApplicationShardingsphereJdbcSingleFeatureShardingAutoTablesTests {
+    @Autowired
+    private IOrderService iOrderService;
+
+    @Autowired
+    private IOrderItemService iOrderItemService;
+
+    @Autowired
+    private OrderMapper orderMapper;
+
+    @Test
+    public void saveOrder() {
+        for (int i = 0; i < 10; i++) {
+            Long userId = IDUtils.generateKey();
+
+            if (i % 2 == 0 && userId != null && userId % 2 == 0) {
+                userId += 1;
+            }
+
+            Order order = new Order();
+            order.setUserId(userId);
+            order.setCreateTime(LocalDateTime.now());
+            iOrderService.save(order);
+
+            for (int j = 1; j <= 1; j++) {
+                OrderItem orderItem = new OrderItem();
+                orderItem.setOrderId(order.getOrderId());
+                orderItem.setUserId(userId);
+                orderItem.setCreateTime(LocalDateTime.now());
+                iOrderItemService.save(orderItem);
+            }
+        }
+
+//        List<Long> userIdList = Arrays.asList(0L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L);
+//
+//        userIdList.forEach(userId -> {
+//            Order order = new Order();
+//            order.setUserId(userId);
+//            order.setCreateTime(LocalDateTime.now());
+//            iOrderService.save(order);
+//
+//            for (int j = 1; j <= 1; j++) {
+//                OrderItem orderItem = new OrderItem();
+//                orderItem.setOrderId(order.getOrderId());
+//                orderItem.setUserId(userId);
+//                orderItem.setCreateTime(LocalDateTime.now());
+//                iOrderItemService.save(orderItem);
+//            }
+//        });
+    }
+
+    @Test
+    public void selectOrder() {
+        List<Order> list = iOrderService.list();
+        list.forEach(System.out::println);
+
+        System.out.println("-----------------------------------");
+
+        list = orderMapper.queryOrderJoinOrderItem();
+        list.forEach(System.out::println);
+    }
+
+}

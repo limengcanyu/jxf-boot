@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: asura-modulith-structure
+  modulith:
+    events:
+      completion-mode: delete
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:modulithdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.modulith: INFO
+    com.example.modulith: INFO
+

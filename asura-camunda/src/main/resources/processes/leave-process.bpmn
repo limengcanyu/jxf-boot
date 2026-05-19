@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0">
+  <bpmn:process id="leave-process" name="请假流程" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="start-event" name="开始">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="start-event" targetRef="submit-application" />
+    
+    <bpmn:userTask id="submit-application" name="提交请假申请" camunda:assignee="${applicant}">
+      <bpmn:documentation>员工提交请假申请</bpmn:documentation>
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:userTask>
+    
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="submit-application" targetRef="manager-review" />
+    
+    <bpmn:userTask id="manager-review" name="经理审批" camunda:assignee="manager">
+      <bpmn:documentation>经理审批请假申请</bpmn:documentation>
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:incoming>Flow_7</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+    
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="manager-review" targetRef="gateway-days" />
+    
+    <bpmn:exclusiveGateway id="gateway-days" name="请假天数判断">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    
+    <bpmn:sequenceFlow id="Flow_4" name="≤3天" sourceRef="gateway-days" targetRef="gateway-manager-decision">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${days &lt;= 3}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:sequenceFlow id="Flow_5" name="&gt;3天" sourceRef="gateway-days" targetRef="director-review">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${days &gt; 3}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:userTask id="director-review" name="总监审批" camunda:assignee="director">
+      <bpmn:documentation>总监审批长期请假申请</bpmn:documentation>
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_6</bpmn:outgoing>
+    </bpmn:userTask>
+    
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="director-review" targetRef="gateway-director-decision" />
+    
+    <bpmn:exclusiveGateway id="gateway-director-decision" name="总监审批结果">
+      <bpmn:incoming>Flow_6</bpmn:incoming>
+      <bpmn:outgoing>Flow_8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    
+    <bpmn:sequenceFlow id="Flow_7" name="驳回" sourceRef="gateway-director-decision" targetRef="manager-review">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:sequenceFlow id="Flow_8" name="批准" sourceRef="gateway-director-decision" targetRef="approve-task">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:exclusiveGateway id="gateway-manager-decision" name="经理审批结果">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_10</bpmn:outgoing>
+      <bpmn:outgoing>Flow_11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    
+    <bpmn:sequenceFlow id="Flow_10" name="批准" sourceRef="gateway-manager-decision" targetRef="approve-task">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:sequenceFlow id="Flow_11" name="拒绝" sourceRef="gateway-manager-decision" targetRef="reject-task">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:serviceTask id="approve-task" name="批准处理" camunda:delegateExpression="${leaveApprovedDelegate}">
+      <bpmn:documentation>系统处理批准逻辑</bpmn:documentation>
+      <bpmn:incoming>Flow_8</bpmn:incoming>
+      <bpmn:incoming>Flow_10</bpmn:incoming>
+      <bpmn:outgoing>Flow_12</bpmn:outgoing>
+    </bpmn:serviceTask>
+    
+    <bpmn:serviceTask id="reject-task" name="拒绝处理" camunda:delegateExpression="${leaveRejectedDelegate}">
+      <bpmn:documentation>系统处理拒绝逻辑</bpmn:documentation>
+      <bpmn:incoming>Flow_11</bpmn:incoming>
+      <bpmn:incoming>Flow_9</bpmn:incoming>
+      <bpmn:outgoing>Flow_13</bpmn:outgoing>
+    </bpmn:serviceTask>
+    
+    <bpmn:sequenceFlow id="Flow_9" name="拒绝" sourceRef="gateway-director-decision" targetRef="reject-task">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    
+    <bpmn:sequenceFlow id="Flow_12" sourceRef="approve-task" targetRef="end-approved" />
+    
+    <bpmn:sequenceFlow id="Flow_13" sourceRef="reject-task" targetRef="end-rejected" />
+    
+    <bpmn:endEvent id="end-approved" name="请假批准">
+      <bpmn:incoming>Flow_12</bpmn:incoming>
+    </bpmn:endEvent>
+    
+    <bpmn:endEvent id="end-rejected" name="请假拒绝">
+      <bpmn:incoming>Flow_13</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="leave-process">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start-event">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="159" y="145" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1" bpmnElement="submit-application">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_2" bpmnElement="manager-review">
+        <dc:Bounds x="390" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1" bpmnElement="gateway-days" isMarkerVisible="true">
+        <dc:Bounds x="545" y="95" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="540" y="152" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_3" bpmnElement="director-review">
+        <dc:Bounds x="650" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_2" bpmnElement="gateway-director-decision" isMarkerVisible="true">
+        <dc:Bounds x="805" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="795" y="272" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_3" bpmnElement="gateway-manager-decision" isMarkerVisible="true">
+        <dc:Bounds x="675" y="95" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="665" y="152" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_4" bpmnElement="approve-task">
+        <dc:Bounds x="900" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_5" bpmnElement="reject-task">
+        <dc:Bounds x="900" y="280" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1" bpmnElement="end-approved">
+        <dc:Bounds x="1082" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1076" y="145" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_2" bpmnElement="end-rejected">
+        <dc:Bounds x="1082" y="302" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1076" y="345" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="390" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="490" y="120" />
+        <di:waypoint x="545" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="595" y="120" />
+        <di:waypoint x="675" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="626" y="102" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="570" y="145" />
+        <di:waypoint x="570" y="240" />
+        <di:waypoint x="650" y="240" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="576" y="190" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="750" y="240" />
+        <di:waypoint x="805" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="830" y="215" />
+        <di:waypoint x="830" y="50" />
+        <di:waypoint x="440" y="50" />
+        <di:waypoint x="440" y="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="848" y="190" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="830" y="215" />
+        <di:waypoint x="830" y="120" />
+        <di:waypoint x="900" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="848" y="165" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
+        <di:waypoint x="830" y="265" />
+        <di:waypoint x="830" y="320" />
+        <di:waypoint x="900" y="320" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="848" y="290" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
+        <di:waypoint x="725" y="120" />
+        <di:waypoint x="900" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="804" y="102" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
+        <di:waypoint x="700" y="145" />
+        <di:waypoint x="700" y="320" />
+        <di:waypoint x="900" y="320" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="708" y="230" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12">
+        <di:waypoint x="1000" y="120" />
+        <di:waypoint x="1082" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13">
+        <di:waypoint x="1000" y="320" />
+        <di:waypoint x="1082" y="320" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

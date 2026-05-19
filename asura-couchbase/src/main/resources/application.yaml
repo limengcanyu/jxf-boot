@@ -1,0 +1,8 @@
+spring:
+  couchbase:
+    connection-string: "couchbase://127.0.0.1"
+    username: "Administrator"
+    password: "Gaohang321"
+  data:
+    couchbase:
+      bucket-name: travel-sample

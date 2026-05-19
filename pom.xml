@@ -8,198 +8,144 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.1</version>
+        <version>3.5.14</version>
     </parent>
 
-    <groupId>com.spring.boot.alice</groupId>
-    <artifactId>spring-boot-alice</artifactId>
+    <groupId>io.github.jiangxingfeng</groupId>
+    <artifactId>asura-boot</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>spring-boot-activiti</module>
-        <module>spring-boot-actuator</module>
-        <module>spring-boot-admin-client</module>
-        <module>spring-boot-admin-server</module>
-        <module>spring-boot-advice</module>
-        <module>spring-boot-akka</module>
-        <module>spring-boot-aliyun</module>
-        <module>spring-boot-annotation</module>
-        <module>spring-boot-aop</module>
-        <module>spring-boot-arthas</module>
-        <module>spring-boot-async</module>
-        <module>spring-boot-auto-configuration</module>
-        <module>spring-boot-batch</module>
-        <module>spring-boot-caffeine</module>
-        <module>spring-boot-camunda</module>
-        <module>spring-boot-clickhouse</module>
-        <module>spring-boot-configuration-processor</module>
-        <module>spring-boot-custom-starter</module>
-        <module>spring-boot-custom-starter-test</module>
-        <module>spring-boot-data-cassandra</module>
-        <module>spring-boot-data-elasticsearch</module>
-        <module>spring-boot-data-graphql</module>
-        <module>spring-boot-data-jdbc</module>
-        <module>spring-boot-data-jooq</module>
-        <module>spring-boot-data-liteflow</module>
-        <module>spring-boot-data-mongodb</module>
-        <module>spring-boot-data-pulsar</module>
-        <module>spring-boot-data-quartz</module>
-        <module>spring-boot-data-r2dbc</module>
-        <module>spring-boot-data-rabbitmq</module>
-        <module>spring-boot-data-redis</module>
-        <module>spring-boot-data-redisson</module>
-        <module>spring-boot-data-redisson-client</module>
-        <module>spring-boot-data-redisson-interface</module>
-        <module>spring-boot-data-redisson-server</module>
-        <module>spring-boot-docker</module>
-        <module>spring-boot-doris</module>
-        <module>spring-boot-elasticsearch</module>
-        <module>spring-boot-example</module>
-        <module>spring-boot-flaw</module>
-        <module>spring-boot-flowable</module>
-        <module>spring-boot-generator</module>
-        <module>spring-boot-graphql</module>
-        <module>spring-boot-graphql-java-kickstart</module>
-        <module>spring-boot-hazelcast</module>
-        <module>spring-boot-httpcomponents</module>
-        <module>spring-boot-huaweicloud</module>
-        <module>spring-boot-hystrix</module>
-        <module>spring-boot-influxdb</module>
-        <module>spring-boot-jar-war</module>
-        <module>spring-boot-jdbctemplate</module>
-        <module>spring-boot-jetty</module>
-        <module>spring-boot-jib</module>
-        <module>spring-boot-jkube</module>
-        <module>spring-boot-jpa</module>
-        <module>spring-boot-json</module>
-        <module>spring-boot-jwt</module>
-        <module>spring-boot-kafka</module>
-        <module>spring-boot-kafka-consumer</module>
-        <module>spring-boot-kafka-producer</module>
-        <module>spring-boot-kafka-streams</module>
-        <module>spring-boot-knife4j</module>
-        <module>spring-boot-kubernetes</module>
-        <module>spring-boot-log</module>
-        <module>spring-boot-logstash</module>
-        <module>spring-boot-mongo</module>
-        <module>spring-boot-multi-datasource-transaction</module>
-        <module>spring-boot-mybatis-plus</module>
-        <module>spring-boot-mybatisplus</module>
-        <module>spring-boot-mybatisplus-druid-dynamic-datasource</module>
-        <module>spring-boot-mybatisplus-druid-multi-datasource</module>
-        <module>spring-boot-mybatisplus-sharding-jdbc</module>
-        <module>spring-boot-mycat</module>
-        <module>spring-boot-nebula</module>
-        <module>spring-boot-neo4j</module>
-        <module>spring-boot-netty</module>
-        <module>spring-boot-netty-client</module>
-        <module>spring-boot-netty-common</module>
-        <module>spring-boot-netty-server</module>
-        <module>spring-boot-okhttp</module>
-        <module>spring-boot-poi</module>
-        <module>spring-boot-postgres</module>
-        <module>spring-boot-prometheus</module>
-        <module>spring-boot-pulsar</module>
-        <module>spring-boot-qingcloud</module>
-        <module>spring-boot-quartz</module>
-        <module>spring-boot-questdb</module>
-        <module>spring-boot-rabbitmq</module>
-        <module>spring-boot-rabbitmq-consumer</module>
-        <module>spring-boot-rabbitmq-producer</module>
-        <module>spring-boot-redis</module>
-        <module>spring-boot-redis-jedis</module>
-        <module>spring-boot-redis-reactive</module>
-        <module>spring-boot-redis-redisson</module>
-        <module>spring-boot-redisson</module>
-        <module>spring-boot-resilience4j</module>
-        <module>spring-boot-rocketmq</module>
-        <module>spring-boot-rocketmq-consumer</module>
-        <module>spring-boot-rocketmq-example</module>
-        <module>spring-boot-rocketmq-producer</module>
-        <module>spring-boot-screw</module>
-        <module>spring-boot-security</module>
-        <module>spring-boot-security-custom</module>
-        <module>spring-boot-security-custom-cluster</module>
-        <module>spring-boot-security-token</module>
-        <module>spring-boot-security-token-cluster</module>
-        <module>spring-boot-sentinel</module>
-        <module>spring-boot-shardingsphere</module>
-        <module>spring-boot-shardingsphere-jdbc</module>
-        <module>spring-boot-shiro</module>
-        <module>spring-boot-skywalking</module>
-        <module>spring-boot-ssl</module>
-        <module>spring-boot-swagger2</module>
-        <module>spring-boot-template</module>
-        <module>spring-boot-testing</module>
-        <module>spring-boot-thrift</module>
-        <module>spring-boot-tomcat</module>
-        <module>spring-boot-undertow</module>
-        <module>spring-boot-validation</module>
-        <module>spring-boot-webflux</module>
-        <module>spring-boot-xxl-job</module>
-        <module>vue-element-admin</module>
+        <module>asura-activiti</module>
+        <module>asura-actuator</module>
+        <module>asura-admin-client</module>
+        <module>asura-admin-server</module>
+        <module>asura-akka</module>
+        <module>asura-annotation</module>
+        <module>asura-aop</module>
+        <module>asura-arthas</module>
+        <module>asura-async</module>
+        <module>asura-auto-configuration</module>
+        <module>asura-batch</module>
+        <module>asura-bom</module>
+        <module>asura-caffeine</module>
+        <module>asura-camunda</module>
+        <module>asura-cassandra</module>
+        <module>asura-clickhouse</module>
+        <module>asura-code-executor</module>
+        <module>asura-common</module>
+        <module>asura-completablefuture</module>
+        <module>asura-configuration-processor</module>
+        <module>asura-consul</module>
+        <module>asura-couchbase</module>
+        <module>asura-custom-starter</module>
+        <module>asura-custom-starter-test</module>
+        <module>asura-ddd-structure</module>
+        <module>asura-disruptor</module>
+        <module>asura-doris</module>
+        <module>asura-easyexcel</module>
+        <module>asura-elasticsearch</module>
+        <module>asura-example</module>
+        <module>asura-fastexcel</module>
+        <module>asura-flaw</module>
+        <module>asura-flowable</module>
+        <module>asura-graphql</module>
+        <module>asura-graphql-java-kickstart</module>
+        <module>asura-guava</module>
+        <module>asura-hazelcast</module>
+        <module>asura-httpcomponents</module>
+        <module>asura-hutool</module>
+        <module>asura-hystrix</module>
+        <module>asura-i18n</module>
+        <module>asura-influxdb</module>
+        <module>asura-jackson</module>
+        <module>asura-jdbc</module>
+        <module>asura-jib</module>
+        <module>asura-jkube</module>
+        <module>asura-jooq</module>
+        <module>asura-jpa</module>
+        <module>asura-jwt</module>
+        <module>asura-kafka</module>
+        <module>asura-kafka-streams</module>
+        <module>asura-knife4j</module>
+        <module>asura-kubernetes</module>
+        <module>asura-liteflow</module>
+        <module>asura-lock4j-redisson</module>
+        <module>asura-lock4j-zookeeper</module>
+        <module>asura-log</module>
+        <module>asura-logstash</module>
+        <module>asura-modulith-structure</module>
+        <module>asura-mongodb</module>
+        <module>asura-multi-datasource-transaction</module>
+        <module>asura-mybatis-plus</module>
+        <module>asura-mybatis-plus-druid-dynamic-datasource</module>
+        <module>asura-mybatis-plus-druid-multi-datasource</module>
+        <module>asura-mybatis-plus-sharding-jdbc</module>
+        <module>asura-neo4j</module>
+        <module>asura-netty</module>
+        <module>asura-netty-client</module>
+        <module>asura-netty-common</module>
+        <module>asura-netty-server</module>
+        <module>asura-okhttp</module>
+        <module>asura-poi</module>
+        <module>asura-postgressql</module>
+        <module>asura-prometheus</module>
+        <module>asura-pulsar</module>
+        <module>asura-quartz</module>
+        <module>asura-questdb</module>
+        <module>asura-r2dbc</module>
+        <module>asura-rabbitmq</module>
+        <module>asura-rabbitmq-consumer</module>
+        <module>asura-rabbitmq-producer</module>
+        <module>asura-rate-limit</module>
+        <module>asura-redis</module>
+        <module>asura-redis-jedis</module>
+        <module>asura-redis-reactive</module>
+        <module>asura-redisson</module>
+        <module>asura-redisson-client</module>
+        <module>asura-redisson-interface</module>
+        <module>asura-redisson-server</module>
+        <module>asura-resilience4j</module>
+        <module>asura-rest-template</module>
+        <module>asura-rocketmq</module>
+        <module>asura-screw</module>
+        <module>asura-security</module>
+        <module>asura-sentinel</module>
+        <module>asura-shardingsphere</module>
+        <module>asura-shardingsphere-jdbc</module>
+        <module>asura-skywalking</module>
+        <module>asura-sse</module>
+        <module>asura-ssl</module>
+        <module>asura-temporal</module>
+        <module>asura-test</module>
+        <module>asura-thrift</module>
+        <module>asura-tomcat</module>
+        <module>asura-tree</module>
+        <module>asura-undertow</module>
+        <module>asura-validation</module>
+        <module>asura-webflux</module>
+        <module>asura-xxl-job</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
+        <java.version>25</java.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
             <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>3.0.0-M8</version>
+                <groupId>org.asura.bom</groupId>
+                <artifactId>asura-bom</artifactId>
+                <version>${project.version}</version>
                 <type>pom</type>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.testcontainers/testcontainers-bom -->
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>testcontainers-bom</artifactId>
-                <version>1.17.6</version>
-                <type>pom</type>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/me.ahoo.cosid/cosid-spring-boot-starter -->
-            <dependency>
-                <groupId>me.ahoo.cosid</groupId>
-                <artifactId>cosid-spring-boot-starter</artifactId>
-                <version>2.0.5</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-pool2</artifactId>
-                <version>2.11.1</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>3.19.1</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/com.yomahub/tlog-all-spring-boot-starter -->
-            <dependency>
-                <groupId>com.yomahub</groupId>
-                <artifactId>tlog-all-spring-boot-starter</artifactId>
-                <version>1.5.0</version>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -229,51 +175,55 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.21</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.1-jre</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.10</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.ifeilong/feilong -->
         <dependency>
             <groupId>com.github.ifeilong</groupId>
             <artifactId>feilong</artifactId>
-            <version>3.3.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-tool</artifactId>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.15.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
 
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.5.5</version>
                 <configuration>
                     <!-- Skipping Tests -->
                     <skipTests>true</skipTests>

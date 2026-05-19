@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: akuma-admin-client
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080  # 服务端地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # 暴露所有端点
+  endpoint:
+    health:
+      show-details: always  # 显示健康详情
+  info:
+    env:
+      enabled: true  # 启用环境信息

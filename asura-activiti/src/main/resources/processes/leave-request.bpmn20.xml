@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
+             id="definitions"
+             targetNamespace="http://activiti.org/processdef">
+
+    <process id="leaveRequest" name="Leave Request Process" isExecutable="true">
+
+        <startEvent id="start" name="Start">
+            <extensionElements>
+                <activiti:formProperty id="employeeName" name="Employee Name" type="string" required="true"/>
+                <activiti:formProperty id="startDate" name="Start Date" type="date" required="true"/>
+                <activiti:formProperty id="endDate" name="End Date" type="date" required="true"/>
+                <activiti:formProperty id="reason" name="Reason" type="string" required="true"/>
+            </extensionElements>
+        </startEvent>
+
+        <sequenceFlow id="flow1" sourceRef="start" targetRef="managerApproval"/>
+
+        <userTask id="managerApproval" name="Manager Approval">
+            <extensionElements>
+                <activiti:assignee>${manager}</activiti:assignee>
+                <activiti:formProperty id="approved" name="Approved" type="boolean" required="true"/>
+                <activiti:formProperty id="comment" name="Comment" type="string"/>
+            </extensionElements>
+        </userTask>
+
+        <sequenceFlow id="flow2" sourceRef="managerApproval" targetRef="approvalDecision"/>
+
+        <exclusiveGateway id="approvalDecision" name="Approval Decision"/>
+
+        <sequenceFlow id="flow3" sourceRef="approvalDecision" targetRef="hrApproval">
+            <conditionExpression xsi:type="tFormalExpression">${approved == true}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow4" sourceRef="approvalDecision" targetRef="rejected">
+            <conditionExpression xsi:type="tFormalExpression">${approved == false}</conditionExpression>
+        </sequenceFlow>
+
+        <userTask id="hrApproval" name="HR Approval">
+            <extensionElements>
+                <activiti:assignee>${hr}</activiti:assignee>
+                <activiti:formProperty id="hrApproved" name="HR Approved" type="boolean" required="true"/>
+                <activiti:formProperty id="hrComment" name="HR Comment" type="string"/>
+            </extensionElements>
+        </userTask>
+
+        <sequenceFlow id="flow5" sourceRef="hrApproval" targetRef="hrDecision"/>
+
+        <exclusiveGateway id="hrDecision" name="HR Decision"/>
+
+        <sequenceFlow id="flow6" sourceRef="hrDecision" targetRef="approved">
+            <conditionExpression xsi:type="tFormalExpression">${hrApproved == true}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow7" sourceRef="hrDecision" targetRef="rejected">
+            <conditionExpression xsi:type="tFormalExpression">${hrApproved == false}</conditionExpression>
+        </sequenceFlow>
+
+        <endEvent id="approved" name="Approved"/>
+
+        <endEvent id="rejected" name="Rejected"/>
+
+        <sequenceFlow id="flow8" sourceRef="rejected" targetRef="endRejected"/>
+        <sequenceFlow id="flow9" sourceRef="approved" targetRef="endApproved"/>
+
+        <endEvent id="endApproved" name="Leave Approved"/>
+        <endEvent id="endRejected" name="Leave Rejected"/>
+
+    </process>
+
+</definitions>

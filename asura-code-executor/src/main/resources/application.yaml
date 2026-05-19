@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: asura-code-executor
+
+java:
+  runner:
+    security:
+      allow-keywords: false
+      deny-keywords: false

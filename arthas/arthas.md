@@ -3,7 +3,7 @@
 #### 启动 arthas
 
 ```shell
-cd E:\IdeaProjects\spring-boot-alice\arthas\arthas-packaging-3.6.7-bin
+cd E:\IdeaProjects\rock-boot\arthas\arthas-packaging-3.6.7-bin
 
 java -jar arthas-boot.jar
 

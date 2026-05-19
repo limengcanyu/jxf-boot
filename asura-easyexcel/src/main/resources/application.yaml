@@ -1,0 +1,17 @@
+server:
+  port: 8080  # 服务端口
+
+spring:
+  application:
+    name: asura-easyexcel
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 100MB # 单个文件最大大小
+      max-request-size: 200MB # 单次请求最大大小
+
+# 导入临时目录配置（建议使用绝对路径）
+import:
+  temp:
+    #    dir: D:/import_temp  # 改为你有权限的绝对路径，不要用Tomcat临时目录
+    dir: \tmp\import_temp  # 改为你有权限的绝对路径，不要用Tomcat临时目录

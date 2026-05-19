@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/your_prod_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai # 替换为实际生产数据库URL
+    username: your_prod_username # 替换为实际生产数据库用户名
+    password: your_prod_password # 替换为实际生产数据库密码
+
+logging:
+  level:
+    com.spring.boot.security: INFO # 生产环境减少日志

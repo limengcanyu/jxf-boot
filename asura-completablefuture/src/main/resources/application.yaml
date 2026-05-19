@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: asura-completablefuture
+  lifecycle:
+    # 核心：控制Bean销毁/资源释放的超时时间（确保虚拟线程关闭钩子执行完成）
+    timeout-per-shutdown-phase: 30s
+
+server:
+  # 这是唯一需要的优雅停机开关，无需其他Tomcat专属配置
+  shutdown: graceful
+  # Tomcat 基础有效配置（3.5.8 官方支持）
+  tomcat:
+    # 连接超时时间（标准配置，IDE可识别）
+    connection-timeout: 2s
+    # 最大工作线程数（按需配置，可选）
+    threads:
+      max: 200
+    # Tomcat 连接池基础配置（可选，IDE可识别）
+    max-connections: 8192
+    accept-count: 100

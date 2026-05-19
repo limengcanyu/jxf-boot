@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: spring-boot-rate-limiting
+
+logging:
+  level:
+    com.spring.boot.rate.limiting: debug
