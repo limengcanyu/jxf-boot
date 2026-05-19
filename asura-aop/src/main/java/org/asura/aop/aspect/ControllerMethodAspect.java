@@ -17,9 +17,8 @@ public class ControllerMethodAspect {
     }
 
     @Before(value = "doComputePointcut() && args(tenantId, companyId, salaryMonth)", argNames = "tenantId,companyId,salaryMonth")
-    public String doComputeBeforeAdvice(String tenantId, String companyId, String salaryMonth) {
+    public void doComputeBeforeAdvice(String tenantId, String companyId, String salaryMonth) {
         log.debug("=== ControllerMethodAspect do Compute Before tenantId: {} companyId: {} salaryMonth: {}", tenantId, companyId, salaryMonth);
-        return "doComputeBeforeAdvice return";
     }
 
     @AfterReturning(value = "doComputePointcut() && args(tenantId, companyId, salaryMonth)", argNames = "tenantId,companyId,salaryMonth")
@@ -27,9 +26,9 @@ public class ControllerMethodAspect {
         log.debug("=== ControllerMethodAspect do Compute After Returning tenantId: {} companyId: {} salaryMonth: {}", tenantId, companyId, salaryMonth);
     }
 
-    @AfterThrowing(value = "doComputePointcut() && args(tenantId, companyId, salaryMonth)", argNames = "tenantId,companyId,salaryMonth")
-    public void doComputeAfterThrowingAdvice(String tenantId, String companyId, String salaryMonth) {
-        log.debug("=== ControllerMethodAspect do Compute After Throwing tenantId: {} companyId: {} salaryMonth: {}", tenantId, companyId, salaryMonth);
+    @AfterThrowing(value = "doComputePointcut() && args(tenantId, companyId, salaryMonth)", throwing = "ex", argNames = "tenantId,companyId,salaryMonth,ex")
+    public void doComputeAfterThrowingAdvice(String tenantId, String companyId, String salaryMonth, Exception ex) {
+        log.debug("=== ControllerMethodAspect do Compute After Throwing tenantId: {} companyId: {} salaryMonth: {} exception: {}", tenantId, companyId, salaryMonth, ex.getMessage());
     }
 
     @Around(value = "doComputePointcut() && args(tenantId, companyId, salaryMonth)", argNames = "pjp,tenantId,companyId,salaryMonth")

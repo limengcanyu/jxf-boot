@@ -13,7 +13,8 @@ public class SampleController {
     private SampleService sampleService;
 
     /**
-     * localhost:8080/compute?tenantId=tenant_001&companyId=company_001&salaryMonth=2020-01
+     * 测试aop
+     * <a href="http://localhost:8080/compute?tenantId=tenant_001&companyId=company_001&salaryMonth=2020-01">...</a>
      *
      * @return
      */

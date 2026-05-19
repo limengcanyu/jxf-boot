@@ -26,9 +26,9 @@ public class ControllerAspect {
         log.debug("=== ControllerAspect do Compute After Returning");
     }
 
-    @AfterThrowing("doComputeAspectPointcut()")
-    public void doComputeAfterThrowingAdvice() {
-        log.debug("=== ControllerAspect do Compute After Throwing");
+    @AfterThrowing(value = "doComputeAspectPointcut()", throwing = "ex")
+    public void doComputeAfterThrowingAdvice(Exception ex) {
+        log.debug("=== ControllerAspect do Compute After Throwing: {}", ex.getMessage());
     }
 
     @Around("doComputeAspectPointcut()")
