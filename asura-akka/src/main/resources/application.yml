@@ -9,11 +9,42 @@ logging:
   level:
     org.asura.akka: DEBUG
     akka: INFO
+    akka.cluster: DEBUG
 
+# ==================== Akka 配置 ====================
 akka:
+  # 日志级别
   loglevel: INFO
+  
+  # Actor 提供者配置
   actor:
-    provider: "akka.remote.RemoteActorRefProvider"
+    provider: cluster
+    
+    # 调度器配置（高并发优化）
+    default-dispatcher:
+      type: Dispatcher
+      executor: "thread-pool-executor"
+      thread-pool-executor:
+        core-pool-size-min: 8
+        core-pool-size-max: 32
+        max-pool-size: 64
+        keep-alive-time: 60s
+        queue-size: 10000
+      throughput: 100
+    
+    # 分片消息调度器
+    sharding-dispatcher:
+      type: Dispatcher
+      executor: "thread-pool-executor"
+      thread-pool-executor:
+        core-pool-size-min: 16
+        core-pool-size-max: 64
+        max-pool-size: 128
+        keep-alive-time: 60s
+        queue-size: 20000
+      throughput: 50
+
+  # 远程通信配置
   remote:
     artery:
       enabled: on
@@ -21,3 +52,40 @@ akka:
       canonical:
         hostname: 127.0.0.1
         port: 2552
+      # 流量控制
+      flow-control:
+        max-outgoing-bytes: 10485760
+        max-incoming-bytes: 10485760
+  
+  # 集群配置
+  cluster:
+    # 角色配置（用于集群分片）
+    roles:
+      - counter
+    
+    # 种子节点
+    seed-nodes:
+      - "akka://asura-akka-system@127.0.0.1:2552"
+      - "akka://asura-akka-system@127.0.0.1:2553"
+      - "akka://asura-akka-system@127.0.0.1:2554"
+    
+    # 故障检测
+    failure-detector:
+      threshold: 10.0
+      heartbeat-interval: 1s
+      acceptable-heartbeat-pause: 3s
+    
+    # 分片配置
+    sharding:
+      # 分片数量（根据集群规模调整）
+      number-of-shards: 100
+      # 实体空闲超时
+      entity-idle-timeout: 10m
+      # 分片重启延迟
+      shard-startup-timeout: 60s
+
+  # 序列化配置（生产环境推荐使用 Jackson CBOR）
+  serialization:
+    serialization-bindings:
+      "java.io.Serializable": jackson-cbor
+      "java.lang.Object": jackson-cbor

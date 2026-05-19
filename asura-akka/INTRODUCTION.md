@@ -1,5 +1,9 @@
 # Akka 介绍
 
+https://doc.akka.io/
+
+https://guobinhit.github.io/akka-guide/
+
 ### 一、什么是 Akka
 
 Akka 是一个用于构建高并发、分布式、容错应用的开源工具包和运行时，基于 Actor 模型实现。它由 Lightbend（原 Typesafe）公司开发，支持 Java 和 Scala 两种语言。
