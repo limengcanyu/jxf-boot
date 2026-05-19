@@ -37,6 +37,7 @@
         <module>asura-common</module>
         <module>asura-completablefuture</module>
         <module>asura-configuration-processor</module>
+        <module>asura-consul</module>
         <module>asura-couchbase</module>
         <module>asura-custom-starter</module>
         <module>asura-custom-starter-test</module>

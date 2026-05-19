@@ -1,0 +1,35 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
+
+spring:
+  application:
+    name: asura-consul
+  config:
+    import: "optional:consul:localhost:8500"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      # 配置中心核心配置
+      config:
+        enabled: true
+        format: YAML
+        default-context: ${spring.application.name}
+        data-key: data
+        watch:
+          # 开启配置自动刷新
+          enabled: true
+          # 每秒检查一次
+          delay: 1000
+        prefixes:
+          # Consul KV 路径：/config/demo-service/data
+          - config
+      discovery:
+        instance-id: custom-service-id1
+        serviceName: ${spring.application.name}-instance1
+
+server:
+  port: 8081
