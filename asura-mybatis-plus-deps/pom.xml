@@ -9,27 +9,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.asura.ddd.structure</groupId>
-    <artifactId>asura-ddd-structure</artifactId>
+    <groupId>org.asura.mybatis.plus.deps</groupId>
+    <artifactId>asura-mybatis-plus-deps</artifactId>
+    <packaging>pom</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>org.asura.webmvc.deps</groupId>
-            <artifactId>asura-webmvc-deps</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
@@ -60,11 +44,11 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.github.yulichang</groupId>
@@ -83,21 +67,5 @@
             <artifactId>mysql-connector-j</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>false</skipTests>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

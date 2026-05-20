@@ -12,6 +12,12 @@
     <artifactId>asura-liteflow</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.yomahub/liteflow-spring-boot-starter -->
         <dependency>
             <groupId>com.yomahub</groupId>

@@ -13,8 +13,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Source: https://mvnrepository.com/artifact/org.eclipse.jdt/org.eclipse.jdt.core -->
@@ -24,7 +25,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Java代码校验依赖�?开�?-->
+        <!-- Java代码校验依赖�?开�?-->
         <!-- Java Parser：自定义安全规则校验 -->
         <dependency>
             <groupId>com.github.javaparser</groupId>
@@ -41,15 +42,15 @@
             <artifactId>spotbugs</artifactId>
             <scope>test</scope> <!-- 非必需，可根据需求改为compile -->
         </dependency>
-        <!-- Java代码校验依赖�?结束 -->
+        <!-- Java代码校验依赖�?结束 -->
 
-        <!-- 本地缓存（线程安�?编译结果缓存�?-->
+        <!-- 本地缓存（线程安�?编译结果缓存�?-->
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
         </dependency>
 
-        <!-- 工具类（MD5生成�?-->
+        <!-- 工具类（MD5生成�?-->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>

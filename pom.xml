@@ -79,6 +79,7 @@
         <module>asura-mongodb</module>
         <module>asura-multi-datasource-transaction</module>
         <module>asura-mybatis-plus</module>
+        <module>asura-mybatis-plus-deps</module>
         <module>asura-mybatis-plus-druid-dynamic-datasource</module>
         <module>asura-mybatis-plus-druid-multi-datasource</module>
         <module>asura-mybatis-plus-sharding-jdbc</module>
@@ -125,6 +126,8 @@
         <module>asura-undertow</module>
         <module>asura-validation</module>
         <module>asura-webflux</module>
+        <module>asura-webflux-deps</module>
+        <module>asura-webmvc-deps</module>
         <module>asura-xxl-job</module>
     </modules>
 

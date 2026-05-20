@@ -13,8 +13,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.asura.webmvc.deps</groupId>
+			<artifactId>asura-webmvc-deps</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
@@ -29,7 +30,7 @@
 			<version>3.5.14</version>
 		</dependency>
 
-		<!-- H2 Database (开发测�? -->
+		<!-- H2 Database (开发测�? -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
