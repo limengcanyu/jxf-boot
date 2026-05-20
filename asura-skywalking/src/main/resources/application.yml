@@ -1,6 +1,18 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: asura-skywalking
+
 logging:
   level:
     org.asura.skywalking: debug
+    org.springframework.web: info
+
+# SkyWalking Agent 配置说明：
+# SkyWalking Agent 通过 JVM 参数配置，而非此处配置
+# 启动时添加以下参数：
+# -javaagent:/path/to/skywalking-agent/skywalking-agent.jar
+# -Dskywalking.agent.service_name=${spring.application.name}
+# -Dskywalking.collector.backend_service=localhost:11800
