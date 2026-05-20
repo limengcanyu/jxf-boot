@@ -20,10 +20,10 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Spring Boot Starter Data JPA -->
@@ -73,7 +73,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- MySQL Database Driver (生产环境可�? -->
+        <!-- MySQL Database Driver (生产环境可�? -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

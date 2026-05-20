@@ -13,6 +13,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.github.jiangxingfeng</groupId>
             <artifactId>asura-netty-common</artifactId>
             <version>${project.version}</version>

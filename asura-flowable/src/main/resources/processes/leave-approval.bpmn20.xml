@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:flowable="http://flowable.org/bpmn"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
+             id="leave-approval-definitions"
+             name="Leave Approval Process"
+             targetNamespace="http://flowable.org/leave">
+
+    <process id="leaveApproval" name="Leave Approval" isExecutable="true">
+
+        <startEvent id="startEvent" flowable:formFieldValidation="true">
+            <extensionElements>
+                <flowable:formProperty id="applicant" name="申请人" type="string" required="true"/>
+                <flowable:formProperty id="leaveType" name="请假类型" type="enum" required="true">
+                    <flowable:value id="annual" name="年假"/>
+                    <flowable:value id="sick" name="病假"/>
+                    <flowable:value id="personal" name="事假"/>
+                </flowable:formProperty>
+                <flowable:formProperty id="startDate" name="开始日期" type="date" required="true"/>
+                <flowable:formProperty id="endDate" name="结束日期" type="date" required="true"/>
+                <flowable:formProperty id="reason" name="请假原因" type="string" required="true"/>
+            </extensionElements>
+        </startEvent>
+
+        <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="managerApprovalTask"/>
+
+        <userTask id="managerApprovalTask" name="部门经理审批" flowable:candidateGroups="manager">
+            <extensionElements>
+                <flowable:formProperty id="approved" name="审批结果" type="enum" required="true">
+                    <flowable:value id="true" name="通过"/>
+                    <flowable:value id="false" name="拒绝"/>
+                </flowable:formProperty>
+                <flowable:formProperty id="comment" name="审批意见" type="string"/>
+            </extensionElements>
+        </userTask>
+
+        <sequenceFlow id="flow2" sourceRef="managerApprovalTask" targetRef="managerDecision"/>
+
+        <exclusiveGateway id="managerDecision" name="审批判断"/>
+
+        <sequenceFlow id="flow3" sourceRef="managerDecision" targetRef="hrApprovalTask">
+            <conditionExpression xsi:type="tFormalExpression">${approved == true}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow4" sourceRef="managerDecision" targetRef="rejectedEndEvent">
+            <conditionExpression xsi:type="tFormalExpression">${approved == false}</conditionExpression>
+        </sequenceFlow>
+
+        <userTask id="hrApprovalTask" name="HR审批" flowable:candidateGroups="hr">
+            <extensionElements>
+                <flowable:formProperty id="hrApproved" name="审批结果" type="enum" required="true">
+                    <flowable:value id="true" name="通过"/>
+                    <flowable:value id="false" name="拒绝"/>
+                </flowable:formProperty>
+                <flowable:formProperty id="hrComment" name="审批意见" type="string"/>
+            </extensionElements>
+        </userTask>
+
+        <sequenceFlow id="flow5" sourceRef="hrApprovalTask" targetRef="hrDecision"/>
+
+        <exclusiveGateway id="hrDecision" name="HR审批判断"/>
+
+        <sequenceFlow id="flow6" sourceRef="hrDecision" targetRef="approvedEndEvent">
+            <conditionExpression xsi:type="tFormalExpression">${hrApproved == true}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow7" sourceRef="hrDecision" targetRef="rejectedEndEvent">
+            <conditionExpression xsi:type="tFormalExpression">${hrApproved == false}</conditionExpression>
+        </sequenceFlow>
+
+        <endEvent id="approvedEndEvent" name="审批通过">
+            <extensionElements>
+                <flowable:executionListener event="end" class="org.flowable.engine.impl.bpmn.listener.ScriptExecutionListener">
+                    <flowable:field name="script"><string><![CDATA[
+                        System.out.println("Leave approved for: " + execution.getVariable("applicant"));
+                    ]]></string></flowable:field>
+                    <flowable:field name="language"><string>groovy</string></flowable:field>
+                </flowable:executionListener>
+            </extensionElements>
+        </endEvent>
+
+        <endEvent id="rejectedEndEvent" name="审批拒绝">
+            <extensionElements>
+                <flowable:executionListener event="end" class="org.flowable.engine.impl.bpmn.listener.ScriptExecutionListener">
+                    <flowable:field name="script"><string><![CDATA[
+                        System.out.println("Leave rejected for: " + execution.getVariable("applicant"));
+                    ]]></string></flowable:field>
+                    <flowable:field name="language"><string>groovy</string></flowable:field>
+                </flowable:executionListener>
+            </extensionElements>
+        </endEvent>
+
+    </process>
+
+</definitions>
