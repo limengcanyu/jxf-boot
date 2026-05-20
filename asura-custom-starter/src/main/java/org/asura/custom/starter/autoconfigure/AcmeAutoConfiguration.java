@@ -2,7 +2,6 @@ package org.asura.custom.starter.autoconfigure;
 
 import org.asura.custom.starter.service.AcmeService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,12 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * @author rock.jiang
  * Date 2020/01/22 15:42
  */
-// classpath下发现该类时自动配置。
-//@ConditionalOnClass(AcmeService.class)
-
-// acme.enabled 为 true 时自动配置。
-@ConditionalOnProperty(prefix = "acme", name = "enabled", havingValue = "true", matchIfMissing = false)
-
 @EnableConfigurationProperties(AcmeProperties.class)
 @Configuration
 public class AcmeAutoConfiguration {
@@ -31,7 +24,7 @@ public class AcmeAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public AcmeService exampleService (){
-        return  new AcmeService(properties.isCheckLocation(), properties.getLoginTimeout());
+    public AcmeService exampleService() {
+        return new AcmeService(properties.isCheckLocation(), properties.getLoginTimeout());
     }
 }

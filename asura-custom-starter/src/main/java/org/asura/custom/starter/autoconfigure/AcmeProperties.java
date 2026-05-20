@@ -23,5 +23,4 @@ public class AcmeProperties {
      * Timeout for establishing a connection to the acme server.
      */
     private Duration loginTimeout = Duration.ofSeconds(3);
-
 }
