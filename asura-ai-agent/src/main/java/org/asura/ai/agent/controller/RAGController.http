@@ -1,0 +1,43 @@
+### RAG问答
+# curl -X POST http://localhost:8080/api/rag/ask
+#  -H "Content-Type: application/json"
+#  -d '{"question":"What is machine learning?"}'
+POST http://localhost:8080/api/rag/ask
+Content-Type: application/json
+
+{
+  "question": "who are you?"
+}
+
+### RAG问答
+# curl -X POST http://localhost:8080/api/rag/ask
+#  -H "Content-Type: application/json"
+#  -d '{"question":"What is machine learning?"}'
+POST http://localhost:8080/api/rag/ask
+Content-Type: application/json
+
+{
+  "question": "什么是机器学习?"
+}
+
+### RAG问答
+# curl -X POST http://localhost:8080/api/rag/ask
+#  -H "Content-Type: application/json"
+#  -d '{"question":"What is machine learning?"}'
+POST http://localhost:8080/api/rag/ask
+Content-Type: application/json
+
+{
+  "question": "什么是产品设计?"
+}
+
+### RAG问答
+# curl -X POST http://localhost:8080/api/rag/ask
+#  -H "Content-Type: application/json"
+#  -d '{"question":"What is machine learning?"}'
+POST http://localhost:8080/api/rag/ask
+Content-Type: application/json
+
+{
+  "question": "如何进行数据分析?"
+}

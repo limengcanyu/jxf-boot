@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: asura-ai-agent
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      database: 0
+  ai:
+    zhipuai:
+      api-key: ${ZHIPUAI_API_KEY}
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY}
+    vectorstore:
+      redis:
+        index-name: document-embeddings
+  datasource:
+    driver-class-name: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:mem:asura_ai_agent;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema-hsqldb.sql
+      data-locations: classpath:db/data-hsqldb.sql
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
