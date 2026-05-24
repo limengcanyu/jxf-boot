@@ -21,7 +21,7 @@
         <module>asura-actuator</module>
         <module>asura-admin-client</module>
         <module>asura-admin-server</module>
-        <module>asura-ai-agent</module>
+        <module>asura-ai</module>
         <module>asura-akka</module>
         <module>asura-annotation</module>
         <module>asura-aop</module>
