@@ -9,5 +9,4 @@ public class AsuraRestfulApplication {
     public static void main(String[] args) {
         SpringApplication.run(AsuraRestfulApplication.class, args);
     }
-
 }
