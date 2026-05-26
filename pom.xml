@@ -22,6 +22,7 @@
         <module>asura-admin-client</module>
         <module>asura-admin-server</module>
         <module>asura-ai</module>
+        <module>asura-ai-alibaba</module>
         <module>asura-akka</module>
         <module>asura-annotation</module>
         <module>asura-aop</module>
@@ -110,6 +111,7 @@
         <module>asura-redisson-server</module>
         <module>asura-resilience4j</module>
         <module>asura-rest-template</module>
+        <module>asura-restful</module>
         <module>asura-rocketmq</module>
         <module>asura-screw</module>
         <module>asura-security</module>
