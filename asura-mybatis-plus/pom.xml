@@ -17,12 +17,14 @@
             <groupId>org.asura.webmvc.deps</groupId>
             <artifactId>asura-webmvc-deps</artifactId>
             <version>${project.version}</version>
+            <type>pom</type>
         </dependency>
 
         <dependency>
             <groupId>org.asura.mybatis.plus.deps</groupId>
             <artifactId>asura-mybatis-plus-deps</artifactId>
             <version>${project.version}</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 

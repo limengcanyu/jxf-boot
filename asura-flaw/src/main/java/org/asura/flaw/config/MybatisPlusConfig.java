@@ -10,7 +10,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@MapperScan("com.spring.boot.flaw.dao.mapper")
+@MapperScan("org.asura.flaw.dao.mapper")
 @Configuration
 public class MybatisPlusConfig {
 

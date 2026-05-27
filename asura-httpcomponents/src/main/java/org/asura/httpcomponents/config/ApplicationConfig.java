@@ -72,9 +72,9 @@ public class ApplicationConfig {
         CloseableHttpClient httpClient = httpClientBuilder.build();
 
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
-        factory.setConnectTimeout(15000);
+//        factory.setConnectTimeout(15000);
         factory.setReadTimeout(5000);
-        factory.setHttpClient(httpClient);
+//        factory.setHttpClient(httpClient);
         return factory;
     }
 }

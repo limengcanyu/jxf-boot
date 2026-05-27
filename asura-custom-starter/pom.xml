@@ -16,8 +16,8 @@
         <dependency>
             <groupId>org.asura.webmvc.deps</groupId>
             <artifactId>asura-webmvc-deps</artifactId>
-            <type>pom</type>
             <version>${project.version}</version>
+            <type>pom</type>
         </dependency>
 
         <dependency>
@@ -52,7 +52,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.42</version>
+                            <version>1.18.46</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
