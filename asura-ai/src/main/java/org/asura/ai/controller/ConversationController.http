@@ -1,0 +1,19 @@
+
+### 创建新会话
+POST http://localhost:8080/api/conversations
+Content-Type: application/json
+
+### 查询所有会话列表
+GET http://localhost:8080/api/conversations
+
+### 查询指定会话的历史记录
+GET http://localhost:8080/api/conversations/{conversationId}/history
+
+### 查询指定会话的摘要信息
+GET http://localhost:8080/api/conversations/{conversationId}/summary
+
+### 删除指定会话
+DELETE http://localhost:8080/api/conversations/{conversationId}
+
+### 删除所有会话
+DELETE http://localhost:8080/api/conversations
