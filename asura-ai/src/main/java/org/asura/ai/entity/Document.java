@@ -1,6 +1,7 @@
 package org.asura.ai.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -17,6 +18,9 @@ public class Document {
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
 
+    @TableField("title")
+    private String title;
+
     /** 存储文件名（UUID+原始文件名） */
     private String filename;
 
@@ -30,7 +34,15 @@ public class Document {
     private Long fileSize;
 
     /** 文档内容 */
+    @TableField("content")
     private String content;
+
+    /** 分类ID */
+    @TableField("category_id")
+    private String categoryId;
+
+    @TableField("author")
+    private String author;
 
     /** 创建时间 */
     private LocalDateTime createdAt;
@@ -44,6 +56,14 @@ public class Document {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getFilename() {
@@ -84,6 +104,22 @@ public class Document {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public LocalDateTime getCreatedAt() {

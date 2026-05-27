@@ -38,3 +38,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+
+jwt:
+  secret: asura-ai-secret-key-256-bit-minimum-length-for-hs256-algorithm
+  expiration: 86400000

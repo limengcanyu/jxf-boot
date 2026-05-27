@@ -21,10 +21,10 @@ public class RAGController {
     /**
      * 提问接口
      * 根据知识库内容回答用户问题，支持上下文对话
-     * 
-     * POST http://localhost:8080/api/rag/ask
+     *
+     * POST <a href="http://localhost:8080/api/rag/ask">...</a>
      * 请求体: {"question": "问题内容", "conversationId": "对话ID(可选)"}
-     * 
+     *
      * @param request 请求体，包含question和可选的conversationId
      * @return 包含answer和可选conversationId的响应
      */

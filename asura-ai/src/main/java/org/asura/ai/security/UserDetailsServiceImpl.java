@@ -1,0 +1,37 @@
+package org.asura.ai.security;
+
+import jakarta.annotation.Resource;
+import org.asura.ai.entity.User;
+import org.asura.ai.mapper.UserMapper;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+
+/**
+ * 用户详情服务实现
+ * 从数据库加载用户信息
+ */
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    @Resource
+    private UserMapper userMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userMapper.selectByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户不存在: " + username);
+        }
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
+                user.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
+        );
+    }
+}
