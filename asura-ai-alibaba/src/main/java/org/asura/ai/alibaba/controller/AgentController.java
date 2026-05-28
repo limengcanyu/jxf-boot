@@ -20,6 +20,12 @@ public class AgentController {
 
     private final AgentService agentService;
 
+    /**
+     * 智能代理基础对话接口
+     * 
+     * @param request 对话请求对象，包含用户消息和会话ID
+     * @return 返回AI代理生成的对话响应
+     */
     @PostMapping("/chat")
     public ResponseEntity<ChatResponse> chat(@RequestBody ChatRequest request) {
         String conversationId = request.getConversationId();
@@ -38,6 +44,12 @@ public class AgentController {
                 .build());
     }
 
+    /**
+     * 带工具调用的智能代理对话接口
+     * 
+     * @param request 对话请求对象，包含用户消息和会话ID
+     * @return 返回AI代理生成的对话响应（可能包含工具调用结果）
+     */
     @PostMapping("/chat/tools")
     public ResponseEntity<ChatResponse> chatWithTools(@RequestBody ChatRequest request) {
         String conversationId = request.getConversationId();
@@ -56,11 +68,23 @@ public class AgentController {
                 .build());
     }
 
+    /**
+     * 获取智能代理服务信息
+     * 
+     * @return 返回代理的名称、版本、功能描述和可用工具列表
+     */
     @GetMapping("/info")
     public ResponseEntity<Map<String, Object>> getAgentInfo() {
         return ResponseEntity.ok(agentService.getAgentInfo());
     }
 
+    /**
+     * 智能代理对话接口（GET方式）
+     * 
+     * @param conversationId 会话ID
+     * @param message 用户消息内容
+     * @return 返回AI代理生成的对话响应
+     */
     @GetMapping("/chat/{conversationId}")
     public ResponseEntity<ChatResponse> chatGet(
             @PathVariable String conversationId,

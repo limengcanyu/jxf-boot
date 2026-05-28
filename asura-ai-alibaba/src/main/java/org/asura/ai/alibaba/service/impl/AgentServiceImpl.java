@@ -21,6 +21,14 @@ public class AgentServiceImpl implements AgentService {
     private final ChatClient chatClient;
     private final RedisVectorStoreService vectorStoreService;
 
+    /**
+     * 基础对话实现
+     * 直接调用AI模型生成响应
+     * 
+     * @param message 用户消息
+     * @param conversationId 会话ID
+     * @return AI响应内容
+     */
     @Override
     public String chat(String message, String conversationId) {
         log.info("[AGENT] Processing chat request: conversationId={}, message={}", conversationId, message);
@@ -35,6 +43,14 @@ public class AgentServiceImpl implements AgentService {
         return response;
     }
 
+    /**
+     * 带工具调用的对话实现
+     * 先分析用户意图，决定是否调用工具，如不调用则回退到基础对话
+     * 
+     * @param message 用户消息
+     * @param conversationId 会话ID
+     * @return 工具调用结果或AI响应内容
+     */
     @Override
     public String chatWithTools(String message, String conversationId) {
         log.info("[AGENT] Processing tool-enabled chat: conversationId={}, message={}", conversationId, message);
@@ -49,6 +65,12 @@ public class AgentServiceImpl implements AgentService {
         return chat(message, conversationId);
     }
 
+    /**
+     * 分析用户意图并调用相应工具
+     * 
+     * @param message 用户消息
+     * @return 工具执行结果，如不匹配任何工具则返回null
+     */
     private String analyzeAndCallTool(String message) {
         String lowerMessage = message.toLowerCase();
         
@@ -72,6 +94,12 @@ public class AgentServiceImpl implements AgentService {
         return null;
     }
 
+    /**
+     * 调用天气工具
+     * 
+     * @param message 用户消息
+     * @return 天气信息字符串
+     */
     private String callWeatherTool(String message) {
         log.info("[AGENT] Calling weather tool");
         String city = extractCity(message);
@@ -80,6 +108,12 @@ public class AgentServiceImpl implements AgentService {
         return "Weather for " + city + ": Sunny, 25 degrees Celsius";
     }
 
+    /**
+     * 调用计算器工具
+     * 
+     * @param message 用户消息
+     * @return 计算结果字符串
+     */
     private String callCalculatorTool(String message) {
         log.info("[AGENT] Calling calculator tool");
         try {
@@ -94,11 +128,23 @@ public class AgentServiceImpl implements AgentService {
         return "计算错误，请检查表达式";
     }
     
+    /**
+     * 简单表达式求值入口
+     * 
+     * @param expr 数学表达式
+     * @return 计算结果
+     */
     private double simpleEvaluate(String expr) {
         expr = expr.replace(" ", "");
         return evaluateSimpleExpression(expr);
     }
     
+    /**
+     * 递归解析并计算简单数学表达式
+     * 
+     * @param expr 数学表达式
+     * @return 计算结果
+     */
     private double evaluateSimpleExpression(String expr) {
         if (expr.contains("+")) {
             String[] parts = expr.split("\\+", 2);
@@ -119,6 +165,12 @@ public class AgentServiceImpl implements AgentService {
         return Double.parseDouble(expr);
     }
 
+    /**
+     * 调用向量搜索工具
+     * 
+     * @param message 用户消息
+     * @return 搜索结果字符串
+     */
     private String callVectorSearchTool(String message) {
         log.info("[AGENT] Calling vector search tool");
         String query = extractSearchQuery(message);
@@ -136,6 +188,12 @@ public class AgentServiceImpl implements AgentService {
         return sb.toString();
     }
 
+    /**
+     * 从消息中提取城市名称
+     * 
+     * @param message 用户消息
+     * @return 城市名称，未找到则返回空字符串
+     */
     private String extractCity(String message) {
         String[] cities = {"北京", "上海", "广州", "深圳", "杭州", "成都", "武汉", "西安"};
         for (String city : cities) {
@@ -146,6 +204,12 @@ public class AgentServiceImpl implements AgentService {
         return "";
     }
 
+    /**
+     * 从消息中提取数学表达式
+     * 
+     * @param message 用户消息
+     * @return 提取的数学表达式
+     */
     private String extractMathExpression(String message) {
         StringBuilder expr = new StringBuilder();
         for (char c : message.toCharArray()) {
@@ -156,6 +220,13 @@ public class AgentServiceImpl implements AgentService {
         return expr.toString();
     }
 
+    /**
+     * 使用JavaScript引擎计算表达式（备用方法）
+     * 
+     * @param expression 数学表达式
+     * @return 计算结果
+     * @throws javax.script.ScriptException 脚本执行异常
+     */
     private double evaluateExpression(String expression) throws javax.script.ScriptException {
         expression = expression.replace(" ", "");
         Object result = new javax.script.ScriptEngineManager()
@@ -164,6 +235,12 @@ public class AgentServiceImpl implements AgentService {
         return ((Number) result).doubleValue();
     }
 
+    /**
+     * 从消息中提取搜索关键词
+     * 
+     * @param message 用户消息
+     * @return 提取的搜索关键词
+     */
     private String extractSearchQuery(String message) {
         String[] keywords = {"搜索", "查找", "资料", "文档", "知识", "关于"};
         String query = message;
@@ -173,6 +250,11 @@ public class AgentServiceImpl implements AgentService {
         return query.trim();
     }
 
+    /**
+     * 获取代理服务信息
+     * 
+     * @return 代理信息Map
+     */
     @Override
     public Map<String, Object> getAgentInfo() {
         Map<String, Object> info = new HashMap<>();

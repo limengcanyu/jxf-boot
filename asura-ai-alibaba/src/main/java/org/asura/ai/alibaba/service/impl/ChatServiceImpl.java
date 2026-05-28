@@ -27,12 +27,27 @@ public class ChatServiceImpl implements ChatService {
 
     private static final int DEFAULT_HISTORY_LIMIT = 10;
 
+    /**
+     * 基础对话实现
+     * 创建新会话并调用带记忆的对话方法
+     * 
+     * @param request 对话请求
+     * @return 对话响应
+     */
     @Override
     public ChatResponse chat(ChatRequest request) {
         String conversationId = UUID.randomUUID().toString();
         return chatWithMemory(request, conversationId, true);
     }
 
+    /**
+     * 带历史记录的对话实现
+     * 将传入的历史记录保存到记忆服务后调用带记忆的对话方法
+     * 
+     * @param request 对话请求
+     * @param history 历史消息列表
+     * @return 对话响应
+     */
     @Override
     public ChatResponse chatWithHistory(ChatRequest request, java.util.List<?> history) {
         String conversationId = UUID.randomUUID().toString();
@@ -40,6 +55,15 @@ public class ChatServiceImpl implements ChatService {
         return chatWithMemory(request, conversationId, true);
     }
 
+    /**
+     * 带对话记忆的核心对话方法
+     * 从记忆服务获取历史记录，构建带上下文的prompt，调用AI模型生成响应
+     * 
+     * @param request 对话请求
+     * @param conversationId 会话ID
+     * @param saveMemory 是否保存本次对话到记忆
+     * @return 对话响应
+     */
     public ChatResponse chatWithMemory(ChatRequest request, String conversationId, boolean saveMemory) {
         log.info("Processing chat request with memory: conversationId={}, message={}", conversationId, request.getMessage());
 

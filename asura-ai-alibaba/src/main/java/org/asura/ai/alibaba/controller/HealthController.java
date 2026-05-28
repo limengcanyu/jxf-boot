@@ -12,6 +12,11 @@ import java.util.Map;
 @RequestMapping("/api/health")
 public class HealthController {
 
+    /**
+     * 健康检查接口
+     * 
+     * @return 返回服务状态、服务名称和版本信息
+     */
     @GetMapping
     public ResponseEntity<Map<String, Object>> healthCheck() {
         return ResponseEntity.ok(Map.of(

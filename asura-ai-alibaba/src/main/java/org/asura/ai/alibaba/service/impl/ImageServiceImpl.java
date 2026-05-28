@@ -13,6 +13,13 @@ import java.util.Collections;
 @Service
 public class ImageServiceImpl implements ImageService {
 
+    /**
+     * 图片生成实现
+     * 返回空图片列表作为占位符
+     * 
+     * @param request 图片生成请求
+     * @return 图片生成响应
+     */
     @Override
     public ImageResponse generateImage(ImageRequest request) {
         log.info("Generating image with prompt: {}", request.getPrompt());

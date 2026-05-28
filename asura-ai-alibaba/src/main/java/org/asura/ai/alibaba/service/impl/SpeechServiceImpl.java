@@ -17,6 +17,13 @@ import java.util.Collections;
 @Service
 public class SpeechServiceImpl implements SpeechService {
 
+    /**
+     * 文本转语音实现
+     * 生成模拟音频数据作为响应
+     * 
+     * @param request 文本转语音请求
+     * @return 语音合成响应，包含Base64编码的模拟音频
+     */
     @Override
     public TextToSpeechResponse textToSpeech(TextToSpeechRequest request) {
         log.info("Converting text to speech: {}", request.getText());
@@ -31,6 +38,13 @@ public class SpeechServiceImpl implements SpeechService {
                 .build();
     }
 
+    /**
+     * 语音转文本实现
+     * 返回提示信息说明需要额外依赖支持
+     * 
+     * @param request 语音转文本请求
+     * @return 语音识别响应
+     */
     @Override
     public SpeechToTextResponse speechToText(SpeechToTextRequest request) {
         log.info("Converting speech to text");

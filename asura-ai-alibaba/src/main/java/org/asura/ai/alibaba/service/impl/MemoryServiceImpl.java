@@ -25,10 +25,18 @@ public class MemoryServiceImpl implements MemoryService {
 
     private static final int MAX_HISTORY_SIZE = 50;
 
+    /**
+     * 构造函数
+     * 
+     * @param redisConnectionFactory Redis连接工厂
+     */
     public MemoryServiceImpl(RedisConnectionFactory redisConnectionFactory) {
         this.redisConnectionFactory = redisConnectionFactory;
     }
 
+    /**
+     * 初始化方法，检查Redis可用性
+     */
     @PostConstruct
     public void init() {
         try {
@@ -51,6 +59,14 @@ public class MemoryServiceImpl implements MemoryService {
         }
     }
 
+    /**
+     * 保存对话记录实现
+     * 将对话记录保存到内存中，并自动修剪超出限制的历史
+     * 
+     * @param conversationId 会话ID
+     * @param role 角色（user/assistant）
+     * @param content 内容
+     */
     @Override
     public void save(String conversationId, String role, String content) {
         memoryStore.computeIfAbsent(conversationId, k -> new ArrayList<>()).add(
@@ -72,6 +88,14 @@ public class MemoryServiceImpl implements MemoryService {
         }
     }
 
+    /**
+     * 获取对话历史实现
+     * 返回最近指定数量的对话记录
+     * 
+     * @param conversationId 会话ID
+     * @param limit 返回数量限制
+     * @return 对话历史列表
+     */
     @Override
     public List<ConversationMemory> getHistory(String conversationId, int limit) {
         List<ConversationMemory> history = memoryStore.getOrDefault(conversationId, new ArrayList<>());
@@ -95,6 +119,12 @@ public class MemoryServiceImpl implements MemoryService {
         return result;
     }
 
+    /**
+     * 删除会话历史实现
+     * 移除指定会话的所有历史记录
+     * 
+     * @param conversationId 会话ID
+     */
     @Override
     public void delete(String conversationId) {
         int beforeSize = memoryStore.getOrDefault(conversationId, new ArrayList<>()).size();
@@ -109,6 +139,11 @@ public class MemoryServiceImpl implements MemoryService {
         }
     }
 
+    /**
+     * 修剪历史记录，保持最大历史数量限制
+     * 
+     * @param conversationId 会话ID
+     */
     private void trimHistory(String conversationId) {
         List<ConversationMemory> history = memoryStore.get(conversationId);
         if (history != null && history.size() > MAX_HISTORY_SIZE) {
@@ -119,10 +154,20 @@ public class MemoryServiceImpl implements MemoryService {
         }
     }
 
+    /**
+     * 获取Redis可用性状态
+     * 
+     * @return Redis是否可用
+     */
     public boolean isRedisAvailable() {
         return redisAvailable;
     }
 
+    /**
+     * 获取当前存储类型
+     * 
+     * @return 存储类型（MEMORY/REDIS）
+     */
     public String getStorageType() {
         return storageType;
     }

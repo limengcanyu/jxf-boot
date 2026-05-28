@@ -26,6 +26,9 @@ public class RedisVectorStoreServiceImpl implements RedisVectorStoreService {
     private static final String VEC_PREFIX = "asura:vector:vec:";
     private static final String IDX_PREFIX = "asura:vector:idx:";
 
+    /**
+     * 向量文档数据结构
+     */
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
@@ -35,6 +38,11 @@ public class RedisVectorStoreServiceImpl implements RedisVectorStoreService {
         private Map<String, Object> metadata;
     }
 
+    /**
+     * 添加文档到Redis向量存储
+     * 
+     * @param documents 文档列表
+     */
     @Override
     public void addDocuments(List<VectorDocument> documents) {
         log.info("[VECTOR STORE] Adding {} documents", documents.size());
@@ -56,6 +64,11 @@ public class RedisVectorStoreServiceImpl implements RedisVectorStoreService {
         log.info("[VECTOR STORE] Successfully added {} documents", documents.size());
     }
 
+    /**
+     * 删除指定ID的文档
+     * 
+     * @param ids 文档ID列表
+     */
     @Override
     public void deleteDocuments(List<String> ids) {
         log.info("[VECTOR STORE] Deleting {} documents", ids.size());
@@ -68,6 +81,14 @@ public class RedisVectorStoreServiceImpl implements RedisVectorStoreService {
         log.info("[VECTOR STORE] Successfully deleted {} documents", ids.size());
     }
 
+    /**
+     * 搜索相似文档
+     * 目前实现为简单的全量扫描，实际生产环境应使用向量相似度算法
+     * 
+     * @param query 查询文本
+     * @param topK 返回数量
+     * @return 相似文档列表
+     */
     @Override
     public List<VectorDocument> search(String query, int topK) {
         log.info("[VECTOR STORE] Searching for: '{}', topK: {}", query, topK);
@@ -98,6 +119,9 @@ public class RedisVectorStoreServiceImpl implements RedisVectorStoreService {
         return results;
     }
 
+    /**
+     * 清空所有文档
+     */
     @Override
     public void clear() {
         log.info("[VECTOR STORE] Clearing all documents");
