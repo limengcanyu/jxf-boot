@@ -95,6 +95,17 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- ==================== Spring Statemachine ==================== -->
+
+            <!-- Source: https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-bom -->
+            <dependency>
+                <groupId>org.springframework.statemachine</groupId>
+                <artifactId>spring-statemachine-bom</artifactId>
+                <version>4.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- ==================== spring boot admin ==================== -->
 
             <!-- Source: https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->

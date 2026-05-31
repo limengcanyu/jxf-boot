@@ -121,6 +121,7 @@
         <module>asura-skywalking</module>
         <module>asura-sse</module>
         <module>asura-ssl</module>
+        <module>asura-statemachine</module>
         <module>asura-temporal</module>
         <module>asura-test</module>
         <module>asura-thrift</module>
@@ -270,4 +271,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
