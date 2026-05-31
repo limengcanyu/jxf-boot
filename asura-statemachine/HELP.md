@@ -1,27 +1,57 @@
 # Getting Started
 
-### Reference Documentation
+### 项目结构
 
-For further reference, please consider the following sections:
+```d
+asura-statemachine/
+├── pom.xml                                          # Maven配置，使用Spring Statemachine 4.0.1
+├── src/main/java/org/asura/statemachine/
+│   ├── AsuraStatemachineApplication.java            # Spring Boot启动类
+│   ├── config/
+│   │   └── OrderStateMachineConfig.java             # 状态机配置（状态、事件、转换定义）
+│   ├── controller/
+│   │   └── OrderController.java                     # REST API控制器
+│   ├── domain/
+│   │   └── Order.java                               # 订单实体类
+│   ├── dto/response/
+│   │   └── OrderResponse.java                       # 响应DTO
+│   ├── enums/
+│   │   ├── OrderStatus.java                         # 订单状态枚举（CREATED/PAID/SHIPPED等）
+│   │   └── OrderEvent.java                          # 订单事件枚举（PAY/SHIP/CANCEL等）
+│   ├── exception/
+│   │   ├── GlobalExceptionHandler.java              # 全局异常处理
+│   │   └── StateMachineException.java               # 自定义状态机异常
+│   ├── persist/
+│   │   └── InMemoryStateMachinePersister.java       # 内存状态持久化器
+│   ├── service/
+│   │   ├── OrderStateMachineService.java            # 服务接口
+│   │   └── impl/
+│   │       └── OrderStateMachineServiceImpl.java    # 服务实现（含事件重放恢复状态）
+│   └── util/
+│       └── OrderStatusUtil.java                     # 状态工具类
+└── src/test/java/org/asura/statemachine/
+    ├── AsuraStatemachineApplicationTests.java       # 基础测试
+    └── service/
+        └── OrderStateMachineServiceTest.java        # 状态机服务测试（9个测试用例）    
+```
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.5.14/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.5.14/maven-plugin/build-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.5.14/reference/web/servlet.html)
+核心功能
+1. 状态定义：OrderStatus 枚举定义了7种状态：CREATED、PAID、SHIPPED、DELIVERED、COMPLETED、CANCELLED、REFUNDED
 
-### Guides
+2. 事件定义：OrderEvent 枚举定义了6种事件：PAY、SHIP、DELIVER、COMPLETE、CANCEL、REFUND
 
-The following guides illustrate how to use some features concretely:
+3. 状态转换规则：
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+* CREATED → PAID (PAY)
+* PAID → SHIPPED (SHIP)
+* SHIPPED → DELIVERED (DELIVER)
+* DELIVERED → COMPLETED (COMPLETE)
+* CREATED → CANCELLED (CANCEL)
+* PAID → CANCELLED (CANCEL)
+* PAID → REFUNDED (REFUND)
 
-### Maven Parent overrides
+4. REST API：
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
-
+* POST /api/orders - 创建订单
+* GET /api/orders/{orderId} - 查询订单
+* POST /api/orders/{orderId}/events/{event} - 触发订单事件
