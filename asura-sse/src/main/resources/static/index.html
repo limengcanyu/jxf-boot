@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Demo - Asura Boot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .status {
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status.connecting {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .message-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .message-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .message-item .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .message-item .message-content {
+            font-size: 14px;
+            color: #333;
+            word-break: break-all;
+        }
+        
+        .message-item .message-type {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .channel-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .channel-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .channel-tag.active {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Asura SSE Demo</h1>
+            <p>Server-Sent Events 实时消息推送演示</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">连接状态</div>
+                <div class="status disconnected" id="connectionStatus">
+                    <span>🔴</span> 未连接
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="clientIdInput" placeholder="输入客户端ID（可选）" style="flex: 1;">
+                <button class="btn btn-primary" id="connectBtn">连接</button>
+                <button class="btn btn-danger" id="disconnectBtn" disabled>断开</button>
+            </div>
+            <div style="margin-top: 15px;">
+                <div class="channel-tags">
+                    <span class="channel-tag" data-channel="general" id="channel-general">📢 general</span>
+                    <span class="channel-tag" data-channel="notifications" id="channel-notifications">🔔 notifications</span>
+                    <span class="channel-tag" data-channel="private" id="channel-private">🔒 private</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">发送消息</div>
+            </div>
+            <div class="form-group">
+                <label for="messageInput">消息内容</label>
+                <textarea id="messageInput" placeholder="输入要发送的消息..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="eventTypeSelect">事件类型</label>
+                <select id="eventTypeSelect">
+                    <option value="">默认</option>
+                    <option value="chat">聊天消息</option>
+                    <option value="notification">通知</option>
+                    <option value="system">系统消息</option>
+                    <option value="alert">警报</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="targetChannel">目标频道（留空则广播）</label>
+                <input type="text" id="targetChannel" placeholder="general, notifications, private...">
+            </div>
+            <button class="btn btn-success" id="sendBtn" disabled>发送消息</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">消息日志</div>
+                <div style="font-size: 12px; color: #666;">共 <span id="messageCount">0</span> 条消息</div>
+            </div>
+            <div class="message-list" id="messageList">
+                <div style="text-align: center; color: #999; padding: 40px;">等待接收消息...</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">服务统计</div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="connectionCount">0</div>
+                    <div class="stat-label">活跃连接数</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" id="refreshStatsBtn">刷新统计</button>
+        </div>
+    </div>
+
+    <script>
+        let eventSource = null;
+        let messageCount = 0;
+        let currentSessionId = null;
+        let subscribedChannels = [];
+
+        const connectionStatus = document.getElementById('connectionStatus');
+        const connectBtn = document.getElementById('connectBtn');
+        const disconnectBtn = document.getElementById('disconnectBtn');
+        const sendBtn = document.getElementById('sendBtn');
+        const messageInput = document.getElementById('messageInput');
+        const eventTypeSelect = document.getElementById('eventTypeSelect');
+        const targetChannel = document.getElementById('targetChannel');
+        const messageList = document.getElementById('messageList');
+        const messageCountEl = document.getElementById('messageCount');
+        const connectionCountEl = document.getElementById('connectionCount');
+        const clientIdInput = document.getElementById('clientIdInput');
+        const refreshStatsBtn = document.getElementById('refreshStatsBtn');
+
+        connectBtn.addEventListener('click', connect);
+        disconnectBtn.addEventListener('click', disconnect);
+        sendBtn.addEventListener('click', sendMessage);
+        refreshStatsBtn.addEventListener('click', refreshStats);
+
+        document.querySelectorAll('.channel-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                if (!eventSource) return;
+                
+                const channel = tag.dataset.channel;
+                if (tag.classList.contains('active')) {
+                    unsubscribeChannel(channel);
+                    tag.classList.remove('active');
+                } else {
+                    subscribeChannel(channel);
+                    tag.classList.add('active');
+                }
+            });
+        });
+
+        async function connect() {
+            const clientId = clientIdInput.value || 'client-' + Date.now();
+            
+            try {
+                connectionStatus.innerHTML = '<span>🟡</span> 连接中...';
+                connectionStatus.className = 'status connecting';
+                connectBtn.disabled = true;
+
+                const url = `/sse/connect?clientId=${encodeURIComponent(clientId)}`;
+                eventSource = new EventSource(url);
+
+                eventSource.onopen = () => {
+                    connectionStatus.innerHTML = '<span>🟢</span> 已连接';
+                    connectionStatus.className = 'status connected';
+                    disconnectBtn.disabled = false;
+                    sendBtn.disabled = false;
+                    messageList.innerHTML = '<div style="text-align: center; color: #999; padding: 40px;">等待接收消息...</div>';
+                    messageCount = 0;
+                    updateMessageCount();
+                    
+                    refreshStats();
+                };
+
+                eventSource.onmessage = (event) => {
+                    addMessage(event.data, 'message', event.lastEventId);
+                };
+
+                eventSource.addEventListener('chat', (event) => {
+                    addMessage(event.data, 'chat', event.lastEventId);
+                });
+
+                eventSource.addEventListener('notification', (event) => {
+                    addMessage(event.data, 'notification', event.lastEventId);
+                });
+
+                eventSource.addEventListener('system', (event) => {
+                    addMessage(event.data, 'system', event.lastEventId);
+                });
+
+                eventSource.addEventListener('alert', (event) => {
+                    addMessage(event.data, 'alert', event.lastEventId);
+                });
+
+                eventSource.addEventListener('connected', (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        currentSessionId = data.sessionId;
+                        addMessage(data.message, 'system', event.lastEventId);
+                    } catch (e) {
+                        console.error('Failed to parse connected event:', e);
+                    }
+                });
+
+                eventSource.onerror = (error) => {
+                    console.error('SSE error:', error);
+                    connectionStatus.innerHTML = '<span>🔴</span> 连接错误';
+                    connectionStatus.className = 'status disconnected';
+                    disconnect();
+                };
+            } catch (error) {
+                console.error('Failed to connect:', error);
+                connectionStatus.innerHTML = '<span>🔴</span> 连接失败';
+                connectionStatus.className = 'status disconnected';
+                connectBtn.disabled = false;
+            }
+        }
+
+        async function disconnect() {
+            if (eventSource) {
+                eventSource.close();
+                eventSource = null;
+            }
+            
+            if (currentSessionId) {
+                try {
+                    await fetch(`/sse/disconnect?sessionId=${currentSessionId}`, {
+                        method: 'POST'
+                    });
+                } catch (error) {
+                    console.error('Disconnect error:', error);
+                }
+                currentSessionId = null;
+            }
+            
+            connectionStatus.innerHTML = '<span>🔴</span> 未连接';
+            connectionStatus.className = 'status disconnected';
+            connectBtn.disabled = false;
+            disconnectBtn.disabled = true;
+            sendBtn.disabled = true;
+            subscribedChannels = [];
+            document.querySelectorAll('.channel-tag').forEach(tag => tag.classList.remove('active'));
+        }
+
+        async function sendMessage() {
+            const data = messageInput.value;
+            const eventType = eventTypeSelect.value;
+            const channel = targetChannel.value;
+
+            if (!data.trim()) {
+                alert('请输入消息内容');
+                return;
+            }
+
+            try {
+                const response = await fetch('/sse/broadcast', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ data, eventType, channel })
+                });
+
+                if (response.ok) {
+                    messageInput.value = '';
+                } else {
+                    alert('发送失败');
+                }
+            } catch (error) {
+                console.error('Send message error:', error);
+                alert('发送失败');
+            }
+        }
+
+        async function subscribeChannel(channel) {
+            if (!currentSessionId) return;
+
+            try {
+                await fetch(`/sse/subscribe?sessionId=${currentSessionId}&channel=${channel}`, {
+                    method: 'POST'
+                });
+                subscribedChannels.push(channel);
+            } catch (error) {
+                console.error('Subscribe error:', error);
+            }
+        }
+
+        async function unsubscribeChannel(channel) {
+            if (!currentSessionId) return;
+
+            try {
+                await fetch(`/sse/unsubscribe?sessionId=${currentSessionId}&channel=${channel}`, {
+                    method: 'POST'
+                });
+                subscribedChannels = subscribedChannels.filter(c => c !== channel);
+            } catch (error) {
+                console.error('Unsubscribe error:', error);
+            }
+        }
+
+        function addMessage(content, type, id) {
+            const now = new Date();
+            const time = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            
+            const messageItem = document.createElement('div');
+            messageItem.className = 'message-item';
+            messageItem.innerHTML = `
+                <div class="message-header">
+                    <span>${time}</span>
+                    <span class="message-type">${type}</span>
+                </div>
+                <div class="message-content">${escapeHtml(content)}</div>
+            `;
+            
+            if (messageList.querySelector('div[style*="padding: 40px"]')) {
+                messageList.innerHTML = '';
+            }
+            
+            messageList.appendChild(messageItem);
+            messageList.scrollTop = messageList.scrollHeight;
+            
+            messageCount++;
+            updateMessageCount();
+        }
+
+        function updateMessageCount() {
+            messageCountEl.textContent = messageCount;
+        }
+
+        async function refreshStats() {
+            try {
+                const response = await fetch('/sse/stats');
+                const stats = await response.json();
+                connectionCountEl.textContent = stats.activeConnections;
+            } catch (error) {
+                console.error('Refresh stats error:', error);
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        window.addEventListener('beforeunload', () => {
+            disconnect();
+        });
+    </script>
+</body>
+</html>
