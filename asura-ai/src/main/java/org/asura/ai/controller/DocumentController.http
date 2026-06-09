@@ -1,0 +1,35 @@
+### getAllDocuments
+GET http://localhost:8080/api/documents/all
+Content-Type: application/json
+
+
+### 获取单个文档
+# curl http://localhost:8080/api/documents/doc-001
+GET http://localhost:8080/api/documents/doc-001
+
+
+### 搜索文档
+# curl -X POST http://localhost:8080/api/documents/search
+#  -H "Content-Type: application/json"
+#  -d '{"keyword":"AI"}'
+POST http://localhost:8080/api/documents/search
+Content-Type: application/json
+
+{
+  "keyword": "AI"
+}
+
+
+### 上传文档
+# curl -X POST http://localhost:8080/api/documents/upload
+#  -F "file=@your-document.pdf"
+POST http://localhost:8080/api/documents/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="your-document.pdf"
+
+< your-document.pdf
+--WebAppBoundary--
+
+###

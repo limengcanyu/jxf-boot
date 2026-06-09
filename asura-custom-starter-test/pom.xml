@@ -8,18 +8,26 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>org.asura.custom.starter.test</groupId>
     <artifactId>asura-custom-starter-test</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
         </dependency>
 
         <dependency>
-            <groupId>io.github.jiangxingfeng</groupId>
+            <groupId>org.asura.custom.starter</groupId>
             <artifactId>asura-custom-starter</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.asura.ai.mapper.DocumentMapper">
+
+    <resultMap id="BaseResultMap" type="org.asura.ai.entity.Document">
+        <id column="id" property="id" />
+        <result column="filename" property="filename" />
+        <result column="original_filename" property="originalFilename" />
+        <result column="file_type" property="fileType" />
+        <result column="file_size" property="fileSize" />
+        <result column="content" property="content" />
+        <result column="category_id" property="categoryId" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+    <select id="selectByPage" resultMap="BaseResultMap">
+        SELECT id, filename, original_filename, file_type, file_size, content, category_id, created_at, updated_at
+        FROM documents
+        <where>
+            <if test="categoryId != null and categoryId != ''">
+                AND category_id = #{categoryId}
+            </if>
+        </where>
+        ORDER BY created_at DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="countByCategory" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM documents
+        <where>
+            <if test="categoryId != null and categoryId != ''">
+                AND category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
+
+    <select id="searchByKeyword" resultMap="BaseResultMap">
+        SELECT id, filename, original_filename, file_type, file_size, content, category_id, created_at, updated_at
+        FROM documents
+        WHERE content LIKE CONCAT('%', #{keyword}, '%') 
+           OR original_filename LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY created_at DESC
+    </select>
+
+    <select id="searchByKeywordPage" resultMap="BaseResultMap">
+        SELECT id, filename, original_filename, file_type, file_size, content, category_id, created_at, updated_at
+        FROM documents
+        WHERE content LIKE CONCAT('%', #{keyword}, '%') 
+           OR original_filename LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY created_at DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="countByKeyword" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM documents
+        WHERE content LIKE CONCAT('%', #{keyword}, '%') 
+           OR original_filename LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+</mapper>

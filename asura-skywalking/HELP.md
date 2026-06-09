@@ -1,32 +1,37 @@
 # Getting Started
 
-### Reference Documentation
+https://skywalking.apache.org/
 
-For further reference, please consider the following sections:
+### 启动 SkyWalking
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.0.1/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.0.1/maven-plugin/reference/html/#build-image)
-
-### start SkyWalking
+##### Windows启动
 
 ```shell
-cd E:\Skywalking\apache-skywalking-apm-8.9.1\apache-skywalking-apm-bin
+# 设置JDK
+set JAVA_HOME=E:\jdk\OpenJDK17U-jdk_x64_windows_hotspot_17.0.17_10\jdk-17.0.17+10
+echo %JAVA_HOME%
+set PATH=%JAVA_HOME%\bin;%PATH%
+echo %PATH%
 
-cd E:\Skywalking\apache-skywalking-apm-9.3.0\apache-skywalking-apm-bin
+# JDK 17 启动 SkyWalking
+E:
+
+cd E:\dev-tools\apache-skywalking-apm-10.1.0\apache-skywalking-apm-bin
 
 bin\startup.bat
 
 ```
 
-http://localhost:8080
+UI 地址：
+
+http://127.0.0.1:8080
 
 ### IDEA VM参数
 
 ```shell
--javaagent:E:/Skywalking/apache-skywalking-java-agent-8.13.0/skywalking-agent/skywalking-agent.jar
--Dskywalking.collector.backend_service=localhost:11800
--Dskywalking.agent.service_name=spring-boot-skywalking
+-javaagent:E:/dev-tools/apache-skywalking-java-agent-9.6.0/skywalking-agent/skywalking-agent.jar
+-Dskywalking.collector.backend_service=127.0.0.1:11800
+-Dskywalking.agent.service_name=asura-skywalking
 
 ```
 

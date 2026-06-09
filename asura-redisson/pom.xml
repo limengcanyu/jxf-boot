@@ -12,6 +12,13 @@
 	<artifactId>asura-redisson</artifactId>
 
 	<dependencies>
+        <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+
 		<dependency>
 			<groupId>org.redisson</groupId>
 			<artifactId>redisson-spring-boot-starter</artifactId>

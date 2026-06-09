@@ -4,15 +4,15 @@ import org.asura.jwt.constant.JwtConst;
 import org.asura.jwt.constant.TokenConst;
 import org.asura.jwt.entity.TokenEntity;
 import io.jsonwebtoken.*;
-import org.springframework.util.Base64Utils;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
 
 public class JJwtHsUtils {
 
     private static SecretKey getSecretKey() {
-        byte[] encodedKey = Base64Utils.decodeFromString(JwtConst.SECRET_KEY);
+        byte[] encodedKey = Base64.getDecoder().decode(JwtConst.SECRET_KEY);
         return new SecretKeySpec(encodedKey, "HmacSHA256");
     }
 

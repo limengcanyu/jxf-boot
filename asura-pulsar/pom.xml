@@ -12,6 +12,13 @@
     <artifactId>asura-pulsar</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.pulsar/spring-pulsar-spring-boot-starter -->
         <dependency>
             <groupId>org.springframework.pulsar</groupId>

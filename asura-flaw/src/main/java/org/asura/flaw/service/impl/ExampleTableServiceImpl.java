@@ -1,18 +1,18 @@
 package org.asura.flaw.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.asura.flaw.dao.entity.ExampleTable;
 import org.asura.flaw.dao.mapper.ExampleTableMapper;
 import org.asura.flaw.service.ExampleTableService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author rock.jiang

@@ -13,6 +13,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>

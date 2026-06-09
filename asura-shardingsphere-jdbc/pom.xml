@@ -13,8 +13,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
         </dependency>
 
         <dependency>
@@ -42,8 +44,8 @@
         </dependency>
 
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>asura-mybatis-plus</artifactId>
+            <groupId>org.asura.mybatis.plus.deps</groupId>
+            <artifactId>asura-mybatis-plus-deps</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

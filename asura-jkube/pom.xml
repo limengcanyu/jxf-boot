@@ -17,6 +17,15 @@
         <jkube.domain>example.com</jkube.domain>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>spring-boot-jkube-${project.version}</finalName>
         <plugins>
@@ -39,7 +48,7 @@
                                     <!-- 项目启动入口  -->
                                     <shell>java -jar maven/spring-boot-jkube-${project.version}.jar</shell>
 
-                                    <!-- 设置JVM参数，每个arg元素只能设置一个参�?-->
+                                    <!-- 设置JVM参数，每个arg元素只能设置一个参�?-->
                                     <!--                                    <exec>-->
                                     <!--                                        <arg>java</arg>-->
                                     <!--                                        <arg>-jar</arg>-->

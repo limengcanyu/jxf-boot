@@ -1,27 +1,26 @@
 package org.asura.custom.starter.test;
 
 
+import jakarta.annotation.Resource;
 import org.asura.custom.starter.service.AcmeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication(scanBasePackages = {"com.spring.boot.custom.starter"})
+@SpringBootApplication
 public class AsuraCustomStarterTestApplication {
     public static void main(String[] args) {
         SpringApplication.run(AsuraCustomStarterTestApplication.class, args);
     }
 
-    @Autowired
+    @Resource
     private AcmeService acmeService;
 
     /**
-     * http://localhost:8080/print
+     * <a href="http://localhost:8080/print">...</a>
      *
-     * @return
      */
     @GetMapping("/print")
     public String print(){

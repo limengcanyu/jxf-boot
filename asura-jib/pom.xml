@@ -13,21 +13,24 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.asura.webmvc.deps</groupId>
+			<artifactId>asura-webmvc-deps</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Source: https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.5.1</version>
 				<configuration>
 					<from>
 						<!-- 基础镜像 -->
-						<image>eclipse-temurin:17.0.6_10-jre-focal</image>
+						<image>eclipse-temurin:25.0.3_9-jre-jammy</image>
 					</from>
 					<to>
 						<!-- 镜像名称和tag -->

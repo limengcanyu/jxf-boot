@@ -12,6 +12,13 @@
     <artifactId>asura-resilience4j</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.asura.webmvc.deps</groupId>
+            <artifactId>asura-webmvc-deps</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot3 -->
         <dependency>
             <groupId>io.github.resilience4j</groupId>

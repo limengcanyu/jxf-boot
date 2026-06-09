@@ -1,11 +1,4 @@
-# Getting Started
 
-### Reference Documentation
+https://www.flowable.com/open-source
 
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.3/maven-plugin/reference/html/#build-image)
-
-https://www.flowable.com/open-source/docs/oss-introduction
+https://flowable.me/
