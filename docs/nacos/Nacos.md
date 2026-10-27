@@ -5,7 +5,7 @@
 nacos\conf\application.properties
 
 ```properties
-nacos.core.auth.plugin.nacos.token.secret.key=MIICWwIBAAKBgQDAXlJ4sLz0mGkE5XlQ8zJkLz0mGkE5XlQ8zJkLz0mGkE5XlQ8zJkLz
+nacos.core.auth.plugin.nacos.token.secret.key=MTIzNDU2Nzg5MTAxMTEyMTMxNDE1MTYxNzE4MTkyMDIxMjIyMzI0MjUyNjI3MjgyOTMw
 
 nacos.core.auth.server.identity.key=nacos
 nacos.core.auth.server.identity.value=nacos
